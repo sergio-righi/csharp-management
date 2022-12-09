@@ -1,0 +1,107 @@
+﻿
+nav {
+    @include d-flex;
+    height: $nav-height;
+    justify-content: center;
+    @include flex-direction(column);
+    background-color: $background-navbar;
+
+    .navbar {
+        height: 100%;
+        margin: 0 auto;
+        padding: 0 16px;
+        @include d-flex;
+        width: $width-xs;
+        color: $color-navbar;
+
+        .nav-image {
+            height: 100%;
+
+            img {
+                height: 100%;
+                padding: 12px 0;
+                object-fit: contain;
+                @include filter(invert(1));
+            }
+        }
+
+        .nav-toggle {
+            cursor: pointer;
+            text-align: center;
+            height: $nav-height;
+            line-height: $nav-height;
+
+            i {
+                color: $color-navbar;
+            }
+        }
+
+        .nav-control {
+            @include d-flex;
+            margin-left: auto;
+
+            .nav-item {
+                width: 50px;
+                height: 100%;
+                @include d-flex;
+                text-align: center;
+                @include align-items(center);
+                @include justify-content(center);
+
+                img {
+                    height: 100%;
+                    padding: 10px 0;
+                    @extend .avatar;
+                    object-fit: contain;
+                }
+            }
+
+            .dropdown-content {
+
+                i {
+                    float: right;
+                }
+            }
+        }
+    }
+}
+
+@media(min-width: $media-sm) {
+
+    nav {
+
+        .navbar {
+            width: $width-sm;
+        }
+    }
+}
+
+@media(min-width: $media-md) {
+
+    nav {
+
+        .navbar {
+            width: $width-md;
+        }
+    }
+}
+
+@media(min-width: $media-lg) {
+
+    nav {
+
+        .navbar {
+            width: $width-lg;
+        }
+    }
+}
+
+@media(min-width: $media-xl) {
+
+    nav {
+
+        .navbar {
+            width: $width-xl;
+        }
+    }
+}

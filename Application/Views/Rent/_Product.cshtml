@@ -1,0 +1,82 @@
+﻿@namespace Domain.Entity.Specific
+@model Domain.Entity.Specific.SProduct
+@{
+    int index = Model.ProductId;
+
+    string prefix = $"{nameof(Application.Models.Rent.RentModel.Products)}";
+}
+
+<li class="list-item list-disabled list-border product">
+
+    <input type="hidden" name="@($"{prefix}.Index")" value="@index" />
+
+    @Html.Hidden($"{prefix}[{index}].{nameof(SProduct.Id)}", Model.Id)
+    @Html.Hidden($"{prefix}[{index}].{nameof(SProduct.Name)}", Model.Name)
+    @Html.Hidden($"{prefix}[{index}].{nameof(SProduct.Price)}", Model.Price)
+    @Html.Hidden($"{prefix}[{index}].{nameof(SProduct.Weight)}", Model.Weight)
+    @Html.Hidden($"{prefix}[{index}].{nameof(SProduct.ProductId)}", Model.ProductId)
+
+    <div class="list-control">
+
+        <div class="checkbox checkbox-delete">
+
+            @Html.CheckBox($"{prefix}[{index}].{nameof(SProduct.Deleted)}", Model.IsDeleted(), new { @id = $"checkbox_{index}", @value = "true" })
+
+            @Html.Label($"checkbox_{index}", string.Empty)
+
+        </div>
+
+    </div>
+
+    <div class="list-content">
+
+        <div class="list-title">
+
+            @Model.Name
+
+        </div>
+
+    </div>
+
+    <div class="list-form">
+
+        <div class="product-form">
+
+            <div class="product-input">
+
+                @if (Model.CalculationId == ECalculation.SquareMeter)
+                {
+                    <div class="product-group">
+
+                        @Html.TextBox($"{prefix}[{index}].{nameof(SProduct.Width)}", Model.Width, new { @required = "required" })
+
+                        <i class="mdi mdi-alpha-x"></i>
+
+                        @Html.TextBox($"{prefix}[{index}].{nameof(SProduct.Height)}", Model.Height, new { @required = "required" })
+
+                    </div>
+                }
+
+                <div class="product-one">
+
+                    <label>@Label.Quantity</label>
+
+                    @Html.TextBox($"{prefix}[{index}].{nameof(SProduct.Count)}", Model.Count, new { @type = "number", @min = "1", @max = "99", @step = "1", @required = "required" })
+
+                </div>
+
+                <div class="product-one">
+
+                    <label>@ECurrency.BRL.GetDescription()</label>
+
+                    @Html.TextBox($"{prefix}[{index}].{nameof(SProduct.Value)}", Util.GetCalculation(Model.CalculationId, Model.Value, Model.Width, Model.Height, Model.Price, Model.Count), new { @required = "required" })
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</li>

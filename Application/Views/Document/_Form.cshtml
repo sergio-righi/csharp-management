@@ -1,0 +1,125 @@
+﻿@namespace Domain.Entity
+@model Application.Models.Document.DocumentModel
+
+@using (Html.BeginForm("Index", "Document", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Document.Id)
+    @Html.HiddenFor(model => model.Document.PersonId)
+
+    <div class="row">
+
+        <div class="col col-12 col-md-4">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Document.DocumentId, new { @class = "required" })
+
+                @Html.DropDownListFor(model => model.Document.DocumentId, EDocument.Id.GetSelectList<EDocument>(), EStringGender.Male.GetSelectFormat(Label.Document), new { @required = "required" })
+
+                <span>@Html.ValidationMessageFor(model => model.Document.DocumentId)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-6 col-md-4">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Document.CountryId, new { @class = "" })
+
+                @Html.DropDownListFor(model => model.Document.CountryId, Model.Countries.AsSelectList(nameof(Country.Id), nameof(Country.Name), EStringGender.Male.GetSelectFormat(Label.Country)), new { id = "dropdownlist_country" })
+
+                <span>@Html.ValidationMessageFor(model => model.Document.CountryId)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-6 col-md-4">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Document.StateId, new { @class = "" })
+
+                @Html.DropDownListFor(model => model.Document.StateId, Model.States.AsSelectList(nameof(State.Id), nameof(State.NotName), EStringGender.Male.GetSelectFormat(Label.State)), new { id = "dropdownlist_state" })
+
+                <span>@Html.ValidationMessageFor(model => model.Document.StateId)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-4">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Document.Number, new { @class = "required" })
+
+                @Html.TextBoxFor(model => model.Document.Number, string.Empty, new { @required = "required" })
+
+                <span>@Html.ValidationMessageFor(model => model.Document.Number)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-4">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Document.IssueDate, new { @class = "" })
+
+                @Html.TextBoxFor(model => model.Document.IssueDate, StringFormatHelper.Date, new { @class = "m-date" })
+
+                <span>@Html.ValidationMessageFor(model => model.Document.IssueDate)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-4">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Document.ExpiryDate, new { @class = "" })
+
+                @Html.TextBoxFor(model => model.Document.ExpiryDate, StringFormatHelper.Date, new { @class = "" })
+
+                <span>@Html.ValidationMessageFor(model => model.Document.ExpiryDate)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div class="form-group">
+
+                @if (Model.Document.Id.IsPositive())
+                {
+                    <button type="submit" class="button button-save">@Button.Save</button>
+
+                    <a asp-controller="Document"
+                       asp-action="Index"
+                       asp-route-id="0"
+                       asp-route-personId="@Model.Document.PersonId" class="button button-clean">
+
+                        @Button.Clean
+
+                    </a>
+                }
+                else
+                {
+                    <button type="submit" class="button button-add">@Button.Create</button>
+                }
+
+            </div>
+
+            <br />
+
+        </div>
+
+    </div>
+}

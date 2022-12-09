@@ -1,0 +1,62 @@
+﻿@model Application.Models.FilterViewModel<Domain.Entity.Sale>
+
+@using (Html.BeginForm("Index", "Sale", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Sort)
+    @Html.HiddenFor(model => model.Direction)
+
+    <div class="row">
+
+        <div class="col col-12 col-sm-8">
+
+            <div class="form-group">
+
+                <label>@Label.Name</label>
+
+                @Html.TextBoxFor(model => model.Name, new { @class = "", @autocomplete = "off" })
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-4">
+
+            <div class="form-group">
+
+                <label>@Label.Activated</label>
+
+                @Html.DropDownListFor(model => model.Activated, new List<SelectListItem>
+                {
+                    new SelectListItem{ Value = "", Text = Label.All },
+                    new SelectListItem{ Value = "0", Text = Label.No  },
+                    new SelectListItem{ Value = "1", Text = Label.Yes },
+                }, new { @class = "" })
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div class="form-group">
+
+                <button type="submit" class="button button-search">
+
+                    @Button.Find
+
+                </button>
+
+                <a asp-controller="Sale"
+                   asp-action="Index" class="button button-clean">
+
+                    @Button.Clean
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+}

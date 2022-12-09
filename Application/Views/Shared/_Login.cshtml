@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    <base href="@Url.Content("~")" />
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/default.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/default.min.css" asp-append-version="true" />
+    </environment>
+
+</head>
+<body class="login-background">
+
+    <section id="login_content" class="login-content">
+
+        @RenderBody()
+
+    </section>
+
+    @RenderSection("ScriptsFooter", required: false)
+
+</body>
+</html>

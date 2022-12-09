@@ -1,0 +1,58 @@
+﻿@namespace Domain.Entity.Specific
+@model Domain.Entity.Specific.SAttendancePerson
+@{
+    int index = Model.person_id;
+
+    string prefix = $"{nameof(Application.Models.Attendance.AttendancePeopleModel.list)}";
+}
+
+<div class="list-item list-border list-disabled">
+
+    <input type="hidden" name="@($"{prefix}.Index")" value="@index" />
+
+    @Html.Hidden($"{prefix}[{index}].{nameof(SAttendancePerson.id)}", Model.id)
+    @Html.Hidden($"{prefix}[{index}].{nameof(SAttendancePerson.date)}", Model.date)
+    @Html.Hidden($"{prefix}[{index}].{nameof(SAttendancePerson.person_id)}", Model.person_id)
+
+    <div class="list-content">
+
+        <div class="list-title">
+
+            @Model.name
+
+        </div>
+
+    </div>
+
+    <div class="list-control">
+
+        @foreach (var item in EnumExtesion.GetValues<EAttendance>())
+        {
+            <div class="radio">
+
+                @Html.RadioButton($"{prefix}[{index}].{nameof(SAttendancePerson.situation_id)}", item.GetValue(), Model.IsChecked(item), new { @id = $"radio_{index}_{item.GetValue()}", @required = "required" })
+
+                @Html.Label($"radio_{index}_{item.GetValue()}", item.GetDescription())
+
+            </div>
+        }
+
+    </div>
+
+    @if (Model.id.IsPositive())
+    {
+        <div class="list-icon c-pointer" data-modal="#manage_attendance" data-id="@Model.person_id" data-date="@Model.date">
+
+            @if (!string.IsNullOrWhiteSpace(Model.observation))
+            {
+                <i class="mdi mdi-message-text-outline"></i>
+            }
+            else
+            {
+                <i class="mdi mdi-message-outline"></i>
+            }
+
+        </div>
+    }
+
+</div>

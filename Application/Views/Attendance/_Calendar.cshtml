@@ -1,0 +1,81 @@
+﻿@model Application.Models.Attendance.AttendanceFilter
+@{
+    int quantity = DateTime.DaysInMonth(Model.year, Model.month);
+
+    int start = (int)(new DateTime(Model.year, Model.month, 1).DayOfWeek);
+
+    int end = (int)(new DateTime(Model.year, Model.month, quantity).DayOfWeek);
+
+    int week = (quantity + (start == 0 ? 0 : 7 - start) + (end == 7 ? 0 : 7 - end)) / 7;
+}
+
+<br />
+<br />
+
+<div class="calendar">
+
+    <div class="calendar-content">
+
+        <div class="calendar-weekday">
+
+            @foreach (var weekday in Util.GetWeekdays(true))
+            {
+                <div class="item">@weekday</div>
+            }
+
+        </div>
+
+        <div class="calendar-month">
+
+            @for (int i = 0, day = 1; i < week; i++)
+            {
+                <div class="calendar-week">
+
+                    @for (int j = 0; j < 7; j++)
+                    {
+                        if ((i == 0 && j < start) || (i == week - 1 && j > end))
+                        {
+                            <div class="item disabled"></div>
+                        }
+                        else
+                        {
+                            var date = new DateTime(Model.year, Model.month, day);
+
+                            if (date <= DateTime.Now)
+                            {
+                                @if (Model.list.Contains(date))
+                                {
+                                    <a asp-controller="Attendance" asp-action="Manage"
+                                       asp-route-year="@date.Year" asp-route-month="@date.Month" asp-route-day="@date.Day" class="item highlight">
+
+                                        @day
+
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a asp-controller="Attendance" asp-action="Manage"
+                                       asp-route-year="@date.Year" asp-route-month="@date.Month" asp-route-day="@date.Day" class="item">
+
+                                        @day
+
+                                    </a>
+                                }
+                            }
+                            else
+                            {
+                                <div class="item disabled">@day</div>
+                            }
+
+                            day++;
+                        }
+                    }
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+</div>

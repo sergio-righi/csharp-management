@@ -1,0 +1,63 @@
+﻿
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            <form id="search_file_form" asp-controller="SearchFile" asp-action="Search"
+                  data-ajax-success="searchFileSuccess" data-ajax="true" data-ajax-method="POST">
+
+                <div class="row">
+
+                    <div class="col col-12 col-sm-6">
+
+                        <div class="form-group">
+
+                            <label>@Label.Name</label>
+
+                            @Html.TextBox("txt_name", string.Empty, new { @autocomplete = "off", @min = "3" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-6">
+
+                        <div class="form-group">
+
+                            <label>@Label.Type</label>
+
+                            @Html.DropDownList("ddl_category", EExtension.All.GetSelectList<EExtension>(), string.Format(Message.SelectOneMale, Label.Type.ToLower()), new { @class = "" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12">
+
+                        <div class="form-group">
+
+                            <button type="submit" class="button button-search">
+
+                                @Button.Search
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+            <br />
+
+        </div>
+
+        <div id="search_file_result" class="col col-12"></div>
+
+    </div>
+
+</div>

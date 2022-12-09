@@ -1,0 +1,56 @@
+﻿@using reCAPTCHA.AspNetCore
+@using Microsoft.Extensions.Options
+@using reCAPTCHA.AspNetCore.Versions 
+@model Application.Models.Password.PasswordModel
+@inject IOptions<RecaptchaSettings> RecaptchaSettings
+
+<div class="col col-12">
+
+    <div class="form-group">
+
+        @Html.TextBoxFor(model => model.Password, string.Empty, new { @type = "password", @placeholder = Placeholder.Password, @required = "required", @autocomplete = "off" })
+
+        <span>@Html.ValidationMessageFor(model => model.Password)</span>
+
+    </div>
+
+</div>
+
+<div class="col col-12">
+
+    <div class="form-group">
+
+        @Html.TextBoxFor(model => model.PasswordConfirm, string.Empty, new { @type = "password", @placeholder = Placeholder.PasswordConfirm, @required = "required", @autocomplete = "off" })
+
+        <span>@Html.ValidationMessageFor(model => model.PasswordConfirm)</span>
+
+    </div>
+
+</div>
+
+<div class="col col-12">
+
+    <div class="form-group">
+
+        <ul class="mb-2 pl-5">
+
+            <li id="rule_length"><small>@Message.PasswordLength</small></li>
+            <li id="rule_number"><small>@Message.PasswordNumber</small></li>
+            <li id="rule_letter"><small>@Message.PasswordLetter</small></li>
+            <li id="rule_character"><small>@Message.PasswordCharacter</small></li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<div class="col col-12">
+
+    <div class="form-grupo">
+
+        @(Html.Recaptcha<RecaptchaV2Checkbox>(RecaptchaSettings?.Value))
+
+    </div>
+
+</div>

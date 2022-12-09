@@ -1,0 +1,825 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Absent" xml:space="preserve">
+    <value>Ausente</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>Conta</value>
+  </data>
+  <data name="Accounting" xml:space="preserve">
+    <value>Contabilidade</value>
+  </data>
+  <data name="Activated" xml:space="preserve">
+    <value>Ativado</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Ativo</value>
+  </data>
+  <data name="Activity" xml:space="preserve">
+    <value>Atividade</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Endereço</value>
+  </data>
+  <data name="Administrative" xml:space="preserve">
+    <value>Administrativo</value>
+  </data>
+  <data name="Admission" xml:space="preserve">
+    <value>Admissional</value>
+  </data>
+  <data name="Agree" xml:space="preserve">
+    <value>Concordar</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Tudo</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Montante</value>
+  </data>
+  <data name="Annotation" xml:space="preserve">
+    <value>Anotação</value>
+  </data>
+  <data name="April" xml:space="preserve">
+    <value>Abril</value>
+  </data>
+  <data name="Area" xml:space="preserve">
+    <value>Área</value>
+  </data>
+  <data name="Ascending" xml:space="preserve">
+    <value>Crescente</value>
+  </data>
+  <data name="Attention" xml:space="preserve">
+    <value>Atenção</value>
+  </data>
+  <data name="AUD" xml:space="preserve">
+    <value>AU$</value>
+  </data>
+  <data name="Audio" xml:space="preserve">
+    <value>Aúdio</value>
+  </data>
+  <data name="August" xml:space="preserve">
+    <value>Agosto</value>
+  </data>
+  <data name="BankCheck" xml:space="preserve">
+    <value>Cheque</value>
+  </data>
+  <data name="BankTransfer" xml:space="preserve">
+    <value>Tranferência Bancária</value>
+  </data>
+  <data name="Bill" xml:space="preserve">
+    <value>Conta</value>
+  </data>
+  <data name="Birthday" xml:space="preserve">
+    <value>Data de Nascimento</value>
+  </data>
+  <data name="Bonus" xml:space="preserve">
+    <value>Bônus/Comissão</value>
+  </data>
+  <data name="BRL" xml:space="preserve">
+    <value>R$</value>
+  </data>
+  <data name="Budgeted" xml:space="preserve">
+    <value>Orçado</value>
+  </data>
+  <data name="CAD" xml:space="preserve">
+    <value>CA$</value>
+  </data>
+  <data name="Calculation" xml:space="preserve">
+    <value>Cálculo</value>
+  </data>
+  <data name="Canceled" xml:space="preserve">
+    <value>Cancelado</value>
+  </data>
+  <data name="Cash" xml:space="preserve">
+    <value>Dinheiro</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Categoria</value>
+  </data>
+  <data name="Cellphone" xml:space="preserve">
+    <value>Celular</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Cidade</value>
+  </data>
+  <data name="CNPJ" xml:space="preserve">
+    <value>CNPJ</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Código</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Cor</value>
+  </data>
+  <data name="Commercial" xml:space="preserve">
+    <value>Comercial</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Razão Social</value>
+  </data>
+  <data name="Complement" xml:space="preserve">
+    <value>Complemento</value>
+  </data>
+  <data name="Compressed" xml:space="preserve">
+    <value>Compactado</value>
+  </data>
+  <data name="Configurations" xml:space="preserve">
+    <value>Configurações</value>
+  </data>
+  <data name="Confirmed" xml:space="preserve">
+    <value>Confirmado</value>
+  </data>
+  <data name="Cooperative" xml:space="preserve">
+    <value>Coperativa</value>
+  </data>
+  <data name="Corporation" xml:space="preserve">
+    <value>Corporação</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>País</value>
+  </data>
+  <data name="CPF" xml:space="preserve">
+    <value>CPF</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Cadastrar</value>
+  </data>
+  <data name="CreditCard" xml:space="preserve">
+    <value>Crédito</value>
+  </data>
+  <data name="Customer" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="CustomerService" xml:space="preserve">
+    <value>Serviço ao cliente</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Dia</value>
+  </data>
+  <data name="DebitCard" xml:space="preserve">
+    <value>Débito</value>
+  </data>
+  <data name="December" xml:space="preserve">
+    <value>Dezembro</value>
+  </data>
+  <data name="Deduction" xml:space="preserve">
+    <value>Descontos</value>
+  </data>
+  <data name="Delivered" xml:space="preserve">
+    <value>Recebido</value>
+  </data>
+  <data name="Deposit" xml:space="preserve">
+    <value>Depósito</value>
+  </data>
+  <data name="Descending" xml:space="preserve">
+    <value>Decrecente</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descricao</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Detalhes</value>
+  </data>
+  <data name="Dismissal" xml:space="preserve">
+    <value>Demissional</value>
+  </data>
+  <data name="Distribuition" xml:space="preserve">
+    <value>Logística e Distribuição</value>
+  </data>
+  <data name="Document" xml:space="preserve">
+    <value>Documento</value>
+  </data>
+  <data name="DownPayment" xml:space="preserve">
+    <value>Entrada</value>
+  </data>
+  <data name="DriversLicense" xml:space="preserve">
+    <value>Carteira de Motorista</value>
+  </data>
+  <data name="DueDate" xml:space="preserve">
+    <value>Data de vencimento</value>
+  </data>
+  <data name="Earning" xml:space="preserve">
+    <value>Ganho</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Endereço de Email</value>
+  </data>
+  <data name="EmailConfirm" xml:space="preserve">
+    <value>Confirmacao de Email</value>
+  </data>
+  <data name="Employee" xml:space="preserve">
+    <value>Funcionário</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>Data Final</value>
+  </data>
+  <data name="EUR" xml:space="preserve">
+    <value>€</value>
+  </data>
+  <data name="Exam" xml:space="preserve">
+    <value>Exame</value>
+  </data>
+  <data name="Excused" xml:space="preserve">
+    <value>Justificado</value>
+  </data>
+  <data name="ExpiryDate" xml:space="preserve">
+    <value>Data de validade</value>
+  </data>
+  <data name="Extra" xml:space="preserve">
+    <value>Extra</value>
+  </data>
+  <data name="FantasyName" xml:space="preserve">
+    <value>Nome Fantasia</value>
+  </data>
+  <data name="February" xml:space="preserve">
+    <value>Fevereiro</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Feminino</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>Arquivo</value>
+  </data>
+  <data name="Finalized" xml:space="preserve">
+    <value>Finalizado</value>
+  </data>
+  <data name="Finance" xml:space="preserve">
+    <value>Finanças</value>
+  </data>
+  <data name="Folder" xml:space="preserve">
+    <value>Pasta</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Nome Completo</value>
+  </data>
+  <data name="GBP" xml:space="preserve">
+    <value>£</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Gênero</value>
+  </data>
+  <data name="GivenName" xml:space="preserve">
+    <value>Primeiro Nome</value>
+  </data>
+  <data name="GrossEarning" xml:space="preserve">
+    <value>Salário Bruto</value>
+  </data>
+  <data name="Height" xml:space="preserve">
+    <value>Altura</value>
+  </data>
+  <data name="HourRate" xml:space="preserve">
+    <value>Valor da hora</value>
+  </data>
+  <data name="HumanResource" xml:space="preserve">
+    <value>Recursos Humanos</value>
+  </data>
+  <data name="HumanResources" xml:space="preserve">
+    <value>Recursos Humanos</value>
+  </data>
+  <data name="Icon" xml:space="preserve">
+    <value>Ícone</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>Identidade</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>Imagem</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Informações</value>
+  </data>
+  <data name="Initial" xml:space="preserve">
+    <value>Início</value>
+  </data>
+  <data name="InProduction" xml:space="preserve">
+    <value>Em produção</value>
+  </data>
+  <data name="INR" xml:space="preserve">
+    <value>₹</value>
+  </data>
+  <data name="Installment" xml:space="preserve">
+    <value>Parcela</value>
+  </data>
+  <data name="InstallmentCount" xml:space="preserve">
+    <value>Número de parcelas</value>
+  </data>
+  <data name="InterestRate" xml:space="preserve">
+    <value>Taxa de juros (ao mês)</value>
+  </data>
+  <data name="InterestValue" xml:space="preserve">
+    <value>Juros</value>
+  </data>
+  <data name="IssueDate" xml:space="preserve">
+    <value>Data de expedição</value>
+  </data>
+  <data name="Item" xml:space="preserve">
+    <value>Item</value>
+  </data>
+  <data name="January" xml:space="preserve">
+    <value>Janeiro</value>
+  </data>
+  <data name="JPY" xml:space="preserve">
+    <value>¥</value>
+  </data>
+  <data name="July" xml:space="preserve">
+    <value>Julho</value>
+  </data>
+  <data name="June" xml:space="preserve">
+    <value>Junho</value>
+  </data>
+  <data name="JuridicalPerson" xml:space="preserve">
+    <value>Pessoa Jurídica</value>
+  </data>
+  <data name="Late" xml:space="preserve">
+    <value>Atrasado</value>
+  </data>
+  <data name="Legal" xml:space="preserve">
+    <value>Jurídico</value>
+  </data>
+  <data name="LegalDepartment" xml:space="preserve">
+    <value>Departamento Legal</value>
+  </data>
+  <data name="LimitDate" xml:space="preserve">
+    <value>Data limite</value>
+  </data>
+  <data name="LimitedLiabilityCompany" xml:space="preserve">
+    <value>Empresa de responsabilidade limitada</value>
+  </data>
+  <data name="LimitedPartnership" xml:space="preserve">
+    <value>Sociedade Limitada</value>
+  </data>
+  <data name="Loan" xml:space="preserve">
+    <value>Empréstimo</value>
+  </data>
+  <data name="Localize" xml:space="preserve">
+    <value>Localizar</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Sair</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Masculino</value>
+  </data>
+  <data name="Manage" xml:space="preserve">
+    <value>Gerenciar</value>
+  </data>
+  <data name="March" xml:space="preserve">
+    <value>Março</value>
+  </data>
+  <data name="Marketing" xml:space="preserve">
+    <value>Propaganda</value>
+  </data>
+  <data name="Material" xml:space="preserve">
+    <value>Material</value>
+  </data>
+  <data name="May" xml:space="preserve">
+    <value>Maio</value>
+  </data>
+  <data name="Measure" xml:space="preserve">
+    <value>Medida</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="Meter" xml:space="preserve">
+    <value>Meter</value>
+  </data>
+  <data name="Module" xml:space="preserve">
+    <value>Modulo</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Mês</value>
+  </data>
+  <data name="MXN" xml:space="preserve">
+    <value>MX$</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="NaturalPerson" xml:space="preserve">
+    <value>Pessoa Física</value>
+  </data>
+  <data name="Neighborhood" xml:space="preserve">
+    <value>Bairro</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>Novo</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Próximo</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Não</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>Nenhum</value>
+  </data>
+  <data name="NonprofitOrganization" xml:space="preserve">
+    <value>Organização sem fins lucrativos</value>
+  </data>
+  <data name="November" xml:space="preserve">
+    <value>Novembro</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>Numero</value>
+  </data>
+  <data name="NZD" xml:space="preserve">
+    <value>NZ$</value>
+  </data>
+  <data name="Observation" xml:space="preserve">
+    <value>Observação</value>
+  </data>
+  <data name="October" xml:space="preserve">
+    <value>Outubro</value>
+  </data>
+  <data name="Operation" xml:space="preserve">
+    <value>Operação</value>
+  </data>
+  <data name="Operations" xml:space="preserve">
+    <value>Operações</value>
+  </data>
+  <data name="Ordered" xml:space="preserve">
+    <value>Encomendado</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Outro</value>
+  </data>
+  <data name="Overtime" xml:space="preserve">
+    <value>Hora extra</value>
+  </data>
+  <data name="OvertimeValue" xml:space="preserve">
+    <value>Valor de hora extra</value>
+  </data>
+  <data name="Owner" xml:space="preserve">
+    <value>Proprietário</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Pago</value>
+  </data>
+  <data name="Partnership" xml:space="preserve">
+    <value>Sociedade</value>
+  </data>
+  <data name="Passport" xml:space="preserve">
+    <value>Passaporte</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Senha</value>
+  </data>
+  <data name="PasswordConfirm" xml:space="preserve">
+    <value>Confirmar Senha</value>
+  </data>
+  <data name="Payday" xml:space="preserve">
+    <value>Dia de Pagamento</value>
+  </data>
+  <data name="PaymentDate" xml:space="preserve">
+    <value>Data de Pagamento</value>
+  </data>
+  <data name="PaymentMethod" xml:space="preserve">
+    <value>Forma de Pagmento</value>
+  </data>
+  <data name="PDF" xml:space="preserve">
+    <value>PDF</value>
+  </data>
+  <data name="Pediodic" xml:space="preserve">
+    <value>Periódico</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>Pendente</value>
+  </data>
+  <data name="Periodic" xml:space="preserve">
+    <value>Periódico</value>
+  </data>
+  <data name="Person" xml:space="preserve">
+    <value>Pessoa</value>
+  </data>
+  <data name="Personal" xml:space="preserve">
+    <value>Pessoal</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Telefone</value>
+  </data>
+  <data name="PhoneStateCode" xml:space="preserve">
+    <value>DDD</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Foto</value>
+  </data>
+  <data name="Present" xml:space="preserve">
+    <value>Presente</value>
+  </data>
+  <data name="Presentation" xml:space="preserve">
+    <value>Apresentação</value>
+  </data>
+  <data name="President" xml:space="preserve">
+    <value>Presidente</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Anterior</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="Production" xml:space="preserve">
+    <value>Produção</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="Purchase" xml:space="preserve">
+    <value>Compra</value>
+  </data>
+  <data name="PurchasePrice" xml:space="preserve">
+    <value>Preço de Compra</value>
+  </data>
+  <data name="Purchasing" xml:space="preserve">
+    <value>Compra</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Quantidade</value>
+  </data>
+  <data name="Receipt" xml:space="preserve">
+    <value>Recibo</value>
+  </data>
+  <data name="RegularHour" xml:space="preserve">
+    <value>Hora trabalhada</value>
+  </data>
+  <data name="Related" xml:space="preserve">
+    <value>Relacionado</value>
+  </data>
+  <data name="Relationship" xml:space="preserve">
+    <value>Relacionamento</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Manter conectado</value>
+  </data>
+  <data name="Rename" xml:space="preserve">
+    <value>Renomear</value>
+  </data>
+  <data name="RentPrice" xml:space="preserve">
+    <value>Preço de Locação</value>
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value>Obrigatorio</value>
+  </data>
+  <data name="Research" xml:space="preserve">
+    <value>Pesquisa e Desenvolvimento</value>
+  </data>
+  <data name="Residential" xml:space="preserve">
+    <value>Residencial</value>
+  </data>
+  <data name="RG" xml:space="preserve">
+    <value>RG</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Cargo</value>
+  </data>
+  <data name="RUB" xml:space="preserve">
+    <value>‎₽</value>
+  </data>
+  <data name="SalePrice" xml:space="preserve">
+    <value>Preço de Venda</value>
+  </data>
+  <data name="Sales" xml:space="preserve">
+    <value>Vendas</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Pesquisar</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Selecione</value>
+  </data>
+  <data name="September" xml:space="preserve">
+    <value>Setembro</value>
+  </data>
+  <data name="Shape" xml:space="preserve">
+    <value>Forma</value>
+  </data>
+  <data name="Shipped" xml:space="preserve">
+    <value>Despachado</value>
+  </data>
+  <data name="Shipping" xml:space="preserve">
+    <value>Frete</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Tamanho</value>
+  </data>
+  <data name="SocialName" xml:space="preserve">
+    <value>Nome Social</value>
+  </data>
+  <data name="SoleProprietorship" xml:space="preserve">
+    <value>Propriedade exclusiva</value>
+  </data>
+  <data name="Spreadsheet" xml:space="preserve">
+    <value>Planilha</value>
+  </data>
+  <data name="SquareMeter" xml:space="preserve">
+    <value>Metro quadrado</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Data Inicial</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Situação</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>Rua</value>
+  </data>
+  <data name="Surname" xml:space="preserve">
+    <value>Sobrenome</value>
+  </data>
+  <data name="Tax" xml:space="preserve">
+    <value>Imposto</value>
+  </data>
+  <data name="Technology" xml:space="preserve">
+    <value>Tecnologia</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titulo</value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>Hoje</value>
+  </data>
+  <data name="TRY" xml:space="preserve">
+    <value>₺</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="Uninformed" xml:space="preserve">
+    <value>Não Informado</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>Unidade</value>
+  </data>
+  <data name="UpdateDate" xml:space="preserve">
+    <value>Data Atualização</value>
+  </data>
+  <data name="USD" xml:space="preserve">
+    <value>$</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Valor</value>
+  </data>
+  <data name="Vendor" xml:space="preserve">
+    <value>Fornecedor</value>
+  </data>
+  <data name="Video" xml:space="preserve">
+    <value>Vídeo</value>
+  </data>
+  <data name="Voucher" xml:space="preserve">
+    <value>Comprovante</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Atenção</value>
+  </data>
+  <data name="Week" xml:space="preserve">
+    <value>Semana</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>Peso</value>
+  </data>
+  <data name="Width" xml:space="preserve">
+    <value>Largura</value>
+  </data>
+  <data name="WON" xml:space="preserve">
+    <value>₩</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Ano</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Sim</value>
+  </data>
+  <data name="Yesterday" xml:space="preserve">
+    <value>Ontem</value>
+  </data>
+  <data name="Zipcode" xml:space="preserve">
+    <value>CEP</value>
+  </data>
+</root>

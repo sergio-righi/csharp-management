@@ -1,0 +1,68 @@
+﻿@model Application.Models.FilterViewModel<Domain.Entity.Generic.GCustomInformation>
+
+@using (Html.BeginForm("Index", "Exam", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Sort)
+    @Html.HiddenFor(model => model.Direction)
+    @Html.HiddenFor(model => model.Model.Id, new { @id = "hidden_person" })
+
+    <div class="row">
+
+        <div class="col col-12 col-sm-8">
+
+            <div class="form-group">
+
+                <label>@Label.Person</label>
+
+                <div class="input-group">
+
+                    @Html.TextBoxFor(model => model.Model.Name, string.Empty, new { @data_reference = "hidden_person", @readonly = "readonly" })
+
+                    <button type="button" class="button button-search button-plain" data-modal="#search_person">
+
+                        @Button.Search
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-4">
+
+            <div class="form-group">
+
+                <label>@Label.Date</label>
+
+                @Html.TextBoxFor(model => model.Model.Date, string.Empty, new { @autocomplete = "off" })
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div class="form-group">
+
+                <button type="submit" class="button button-search">
+
+                    @Button.Find
+
+                </button>
+
+                <a asp-controller="Exam"
+                   asp-action="Index" class="button button-clean">
+
+                    @Button.Clean
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+}

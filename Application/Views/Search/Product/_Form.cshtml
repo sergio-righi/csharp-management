@@ -1,0 +1,58 @@
+﻿@model Application.Models.Search.Product.SearchProductFilter
+
+<div id="search_product_float" class="component-float">
+
+    <div class="float-header">
+
+        <span>Itens selecionados</span>
+
+    </div>
+
+    <div class="float-content">
+
+        <form asp-controller="SearchProduct" asp-action="Save"
+              data-ajax="true"
+              data-ajax-method="POST"
+              data-ajax-mode="replace"
+              data-ajax-success="saveProductSuccess"
+              data-ajax-update="#search_product_resume">
+
+            @Html.HiddenFor(model => model.Configuration.Id)
+            @Html.HiddenFor(model => model.Configuration.SessionKey)
+            @Html.HiddenFor(model => model.Configuration.ControllerId)
+
+            <div id="search_product_resume" class="float-item">
+
+                @{
+                    await Html.RenderPartialAsync("~/Views/Search/Product/_Resume.cshtml", Model.Products);
+                }
+
+            </div>
+
+            <div class="float-control">
+
+                <a asp-controller="SearchProduct"
+                   asp-action="Reset"
+                   data-ajax="true"
+                   data-ajax-method="GET"
+                   data-ajax-success="resetProductSuccess"
+                   data-ajax-update="#search_product_resume"
+                   data-ajax-confirm="@Message.ConfirmAction" class="button button-clean button-plain button-small">
+
+                    @Button.Clean
+
+                </a>
+
+                <button type="submit" class="button button-save button-plain button-small">
+
+                    @Button.Save
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

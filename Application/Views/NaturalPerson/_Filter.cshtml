@@ -1,0 +1,57 @@
+﻿@model Application.Models.FilterViewModel<Domain.Entity.NaturalPerson>
+
+@using (Html.BeginForm("Index", "NaturalPerson", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Sort)
+    @Html.HiddenFor(model => model.Direction)
+
+    <div class="row">
+
+        <div class="col col-12 col-sm-6">
+
+            <div class="form-group">
+
+                <label>@Label.Name</label>
+
+                @Html.TextBoxFor(model => model.Name, new { @autocomplete = "off" })
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-6">
+
+            <div class="form-group">
+
+                <label>@Label.CPF</label>
+
+                @Html.TextBoxFor(model => model.Code, new { @class = "m-cpf", @autocomplete = "off" })
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div class="form-group">
+
+                <button type="submit" class="button button-search">
+
+                    @Button.Find
+
+                </button>
+
+                <a asp-controller="NaturalPerson"
+                   asp-action="Index" class="button button-clean">
+
+                    @Button.Clean
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+}

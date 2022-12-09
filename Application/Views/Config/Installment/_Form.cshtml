@@ -1,0 +1,60 @@
+﻿@model Domain.Entity.Installment
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            <form id="config_installment_form" asp-controller="ConfigInstallment" asp-action="Save"
+                  data-ajax-success="saveInstallmentSuccess" data-ajax="true" data-ajax-method="POST">
+
+                @Html.HiddenFor(model => model.Id)
+
+                <div class="row">
+
+                    <div class="col col-12">
+
+                        <div class="form-group">
+
+                            <div class="checkbox">
+
+                                @Html.CheckBox("checkbox_installment", new { @class = "", @onChange = "setInstallment(this)" })
+
+                                @Html.Label("checkbox_installment", Message.SetSame, new { @class = "" })
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    @{
+                        await Html.RenderPartialAsync("~/Views/Config/Installment/_List.cshtml", Model.Dates);
+                    }
+
+                    <div class="col col-12">
+
+                        <div class="form-group">
+
+                            <button type="submit" class="button button-save">
+
+                                @Button.Save
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+            <br />
+
+        </div>
+
+    </div>
+
+</div>

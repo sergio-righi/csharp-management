@@ -1,0 +1,84 @@
+﻿@model Application.Models.Group.GroupFilter
+
+@if (Model.Pagination.Count > 0)
+{
+    await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Header.cshtml");
+
+    <div class="table-responsive">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+
+                        <a asp-controller="Group"
+                           asp-action="Index"
+                           asp-route-Sort="1"
+                           asp-route-Name="@Model.Filter.Name"
+                           asp-route-Direction="@Model.Filter.GetDirection(Model.Filter.Sort)"
+                           asp-route-Activated="@Model.Filter.Activated">
+                            @Label.Name
+                        </a>
+
+                    </th>
+                    <th>@Label.Activated</th>
+                    <th class="a-center fit"></th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var group in Model.Pagination)
+                {
+                    <tr>
+
+                        <td>@group.Name</td>
+                        <td>
+
+                            @if (group.IsActivated)
+                            {
+                                <text>@Label.Yes</text>
+                            }
+                            else
+                            {
+                                <text>@Label.No</text>
+                            }
+
+                        </td>
+                        <td class="fit">
+
+                            <a asp-controller="Subgroup" 
+                               asp-action="Index" 
+                               asp-route-referenceId="@group.Id" class="button button-config button-raw"></a>
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    if (Model.Pagination.Quantity > 1)
+    {
+        <ul class="pagination">
+
+            @{
+                await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Footer.cshtml");
+            }
+
+        </ul>
+    }
+}
+else
+{
+    @Html.Feedback(EFeedback.Info, Message.NothingToList, false)
+}

@@ -1,0 +1,25 @@
+﻿@charset 'utf-8';
+
+// Auxiliary
+@import "auxiliary/__auxiliary-dir";
+
+// Theme
+@import "theme/default_theme";
+
+// Base
+@import "base/__base-dir.scss";
+
+// Font
+@import "font/__font-dir";
+
+// Element
+@import "element/__element-dir";
+
+// Structure
+@import "structure/__structure-dir";
+
+// Page
+@import "page/__page-dir";
+
+// Component
+@import "component/__component-dir";

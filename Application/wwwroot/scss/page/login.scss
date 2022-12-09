@@ -1,0 +1,120 @@
+﻿
+.login-header {
+}
+
+.login-background {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-image: url('../sources/images/background_login_2.jpg');
+}
+
+.login-content {
+
+    .login-frame {
+        width: 380px;
+        padding: 38px;
+        color: $color-login;
+        @extend .box-shadow;
+        @extend .center-absolute;
+        background-color: $background-login;
+        @include border-radius($border-radius);
+
+        .frame-header {
+            @include d-flex;
+            @include align-items(center);
+
+            .brand {
+                height: 48px;
+                margin-right: auto;
+            }
+
+            .photo {
+                width: 40px;
+                float: right;
+                height: 40px;
+                @include border-radius($border-radius-circle);
+            }
+        }
+
+        .frame-content {
+            margin-top: 24px;
+
+            .feedback-message {
+                font-size: 12px;
+                color: $color-login;
+            }
+
+            .field-icon {
+                top: 12px;
+                z-index: 2;
+                right: 12px;
+                color: $color-font;
+                @extend .p-absolute;
+            }
+
+            button[type=submit] {
+                margin-top: 12px;
+            }
+        }
+
+        .frame-footer {
+            margin-top: 12px;
+
+            a {
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+@media(min-width: $media-xs) {
+
+    .login-content {
+
+        .login-frame {
+            width: 380px;
+        }
+    }
+}
+
+@media(min-width: $media-sm) {
+
+    .login-content {
+
+        .login-frame {
+            width: 380px;
+        }
+    }
+}
+
+@media(min-width: $media-md) {
+
+    .login-content {
+
+        .login-frame {
+            width: 380px;
+        }
+    }
+}
+
+@media(min-width: $media-lg) {
+
+    .login-content {
+
+        .login-frame {
+            width: 380px;
+        }
+    }
+}
+
+@media(min-width: $media-xl) {
+
+    .login-content {
+
+        .login-frame {
+            width: 380px;
+        }
+    }
+}

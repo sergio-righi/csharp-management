@@ -1,0 +1,25 @@
+﻿
+<div id="search_employee" class="modal">
+
+    <div data-header>
+
+        @Label.Search
+
+    </div>
+
+    <div data-content>
+
+        @{
+            await Html.RenderPartialAsync("~/Views/Search/Employee/_Form.cshtml");
+        }
+
+    </div>
+
+</div>
+
+<environment include="Development">
+    <script type="text/javascript" src="~/js/vanilla/page/search/employee.js"></script>
+</environment>
+<environment exclude="Development">
+    <script type="text/javascript" src="~/js/vanilla/page/search/employee.min.js"></script>
+</environment>

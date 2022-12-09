@@ -1,0 +1,91 @@
+﻿@model Application.Models.Document.DocumentModel
+@{
+    ViewBag.Title = Title.Document;
+}
+
+<section id="section_header" class="section-header">
+
+    <div class="title">@Title.Document</div>
+
+    <div class="toolbar">
+
+        @if (Model.Document.Id.IsPositive())
+        {
+            <a asp-controller="Document" asp-action="Index" asp-route-id="0" asp-route-personId="@Model.Document.PersonId" class="button button-add">
+
+                @Button.New
+
+            </a>
+        }
+
+    </div>
+
+    <ol class="breadcrumb">
+
+        <li><a asp-controller="Home" asp-action="Index">@Title.Home</a></li>
+
+        @{
+            await Html.RenderPartialAsync("~/Views/Person/_Breadcrumb.cshtml", new ViewDataDictionary(ViewData)
+            {
+                { "personId", Model.Document.PersonId },
+                { "typeId", EPerson.Natural }
+            });
+        }
+
+        <li>@Title.Document</li>
+
+    </ol>
+
+</section>
+
+<section id="section_content" class="section-content">
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            <div id="message">
+
+                @await Html.PartialAsync("~/Views/Shared/Feedback/_Message.cshtml")
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div id="form">
+
+                @{
+                    await Html.RenderPartialAsync("~/Views/Document/_Form.cshtml", Model);
+                }
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div id="result">
+
+                @{
+                    await Html.RenderPartialAsync("~/Views/Document/_Table.cshtml", Model.Documents);
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+@section ScriptsFooter
+{
+    <environment include="Development">
+        <script type="text/javascript" src="~/js/vanilla/page/address/index.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script type="text/javascript" src="~/js/vanilla/page/address/index.min.js"></script>
+    </environment>
+}

@@ -1,0 +1,57 @@
+﻿@model ICollection<Domain.Entity.Generic.GCustomInformation>
+
+@if (Model.Count > 0)
+{
+    <form id="select_employee_form" asp-controller="SearchEmployee" asp-action="Select"
+          data-ajax-success="selectEmployeeSuccess" data-ajax="true" data-ajax-method="POST">
+
+        <div class="form-group">
+
+            <div class="list list-border list-hover">
+
+                @foreach (var item in Model)
+                {
+                    <div class="list-item list-border c-pointer">
+
+                        <div class="list-control">
+
+                            <div class="radio">
+
+                                <input type="radio" id="@item.Id" name="rbt_id" value="@item.Id">
+                                <label for="@item.Id"></label>
+
+                            </div>
+
+                        </div>
+
+                        <div class="list-content">
+
+                            <div class="list-title">
+                                @item.Name
+                            </div>
+
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+        <br />
+
+        <div class="form-group">
+
+            <button type="submit" class="button button-send">
+
+                @Button.Select
+
+            </button>
+
+        </div>
+
+        <br />
+
+    </form>
+}

@@ -1,0 +1,14 @@
+﻿
+.countdown {
+
+    .unit {
+        @include d-inline-flex;
+
+        &:not(:last-child):after {
+            content: ':';
+            line-height: 1.6;
+            padding-left: 6px;
+            padding-right: 3px;
+        }
+    }
+}

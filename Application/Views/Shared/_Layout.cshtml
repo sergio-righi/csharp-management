@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    <base href="@Url.Content("~")" />
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/default.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/default.min.css" asp-append-version="true" />
+    </environment>
+
+    <link rel="stylesheet" href="~/css/highlight/shCore.css" />
+    <link rel="stylesheet" href="~/css/highlight/shTheme.css" />
+
+    <environment include="Development">
+        <script src="~/js/vanilla/util/prototype.js"></script>
+        <script src="~/js/vanilla/element/utility.js"></script>
+        <script src="~/js/vanilla/util/route/pt-br.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/vanilla/util/prototype.min.js"></script>
+        <script src="~/js/vanilla/element/utility.min.js"></script>
+        <script src="~/js/vanilla/util/route/pt-br.min.js"></script>
+    </environment>
+
+    @RenderSection("ScriptsHeader", required: false)
+
+</head>
+<body>
+
+    <nav id="navbar_navigation">
+
+        @await Component.InvokeAsync(nameof(Application.Components.NavigationComponent))
+
+    </nav>
+
+    <content>
+
+        <main id="main_content">
+
+            @RenderBody()
+
+        </main>
+
+    </content>
+
+    <section id="confirm_dialog" class="d-none" data-cancel="@Label.No" data-confirm="@Label.Yes">
+
+        <div data-item>
+
+            <div data-header>@Label.Warning!!</div>
+
+            <div data-content>@Message.ConfirmAction</div>
+
+        </div>
+
+    </section>
+
+    <section id="process_animation" class="process">
+
+        <div class="process-position">
+
+            <svg class="process-circle" viewBox="25 25 50 50">
+
+                <circle class="process-animation" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
+
+            </svg>
+
+        </div>
+
+    </section>
+
+    <environment include="Development">
+        <script src="~/js/vanilla/component/dialog.js" asp-append-version="true"></script>
+        <script src="~/js/vanilla/page/layout/default.js" asp-append-version="true"></script>
+        <script src="~/js/vanilla/element/dropdown.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/vanilla/component/dialog.min.js" asp-append-version="true"></script>
+        <script src="~/js/vanilla/page/layout/default.min.js" asp-append-version="true"></script>
+        <script src="~/js/vanilla/element/dropdown.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("ScriptsFooter", required: false)
+
+</body>
+</html>

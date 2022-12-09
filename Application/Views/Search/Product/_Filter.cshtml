@@ -1,0 +1,47 @@
+﻿@model Application.Models.Search.Product.SearchProductFilter
+
+@using (Html.BeginForm("Search", "SearchProduct", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Configuration.Id, new { @id = "search_id" })
+    @Html.HiddenFor(model => model.Configuration.SessionKey, new { @id = "search_key" })
+    @Html.HiddenFor(model => model.Configuration.ControllerId, new { @id = "search_tool" })
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            <div class="form-group">
+
+                <label>@Label.Name</label>
+
+                @Html.TextBoxFor(model => model.Filter.Name, new { @autocomplete = "off" })
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div class="form-group">
+
+                <button type="submit" class="button button-search">
+
+                    @Button.Search
+
+                </button>
+
+                <button type="reset" class="button button-clean">
+
+                    @Button.Clean
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <br />
+}

@@ -1,0 +1,77 @@
+﻿@model Application.Models.Search.Product.SearchProductFilter
+@{
+    ViewBag.Title = Title.SearchProduct;
+}
+
+<section id="section_header" class="section-header">
+
+    <div class="title">@Title.SearchProduct</div>
+
+    <ol class="breadcrumb">
+
+        <li><a asp-controller="Home" asp-action="Index">@Title.Home</a></li>
+        @if (Model.Configuration.ControllerId == EController.Rent)
+        {
+            <li><a asp-controller="Rent" asp-action="Index">@Title.Rent</a></li>
+            <li><a asp-controller="Rent" asp-action="Manage" asp-route-id="@Model.Configuration.Id">@Title.ManageRent</a></li>
+        }
+        else if (Model.Configuration.ControllerId == EController.Sale)
+        {
+            <li><a asp-controller="Sale" asp-action="Index">@Title.Sale</a></li>
+            <li><a asp-controller="Sale" asp-action="Manage" asp-route-id="@Model.Configuration.Id">@Title.ManageSale</a></li>
+        }
+        <li>@Title.SearchProduct</li>
+
+    </ol>
+
+</section>
+
+<section id="section_content" class="section-content">
+
+    <div class="row">
+
+        <div id="search_product_message" class="col col-12">
+
+            @await Html.PartialAsync("~/Views/Shared/Feedback/_Message.cshtml")
+
+        </div>
+
+        <div id="search_product_filter" class="col col-12">
+
+            @{
+                await Html.RenderPartialAsync("~/Views/Search/Product/_Filter.cshtml", Model);
+            }
+
+        </div>
+
+        <div id="search_product_result" class="col col-12">
+
+            @{
+                await Html.RenderPartialAsync("~/Views/Search/Product/_List.cshtml", Model);
+            }
+
+        </div>
+
+        <div id="search_product_form">
+
+            @{
+                await Html.RenderPartialAsync("~/Views/Search/Product/_Form.cshtml", Model);
+            }
+
+        </div>
+
+    </div>
+
+</section>
+
+@section ScriptsFooter
+{
+    <script type="text/javascript" src="~/js/jquery/jquery-3.4.1.min.js"></script>
+    <environment include="Development">
+        <script type="text/javascript" src="~/js/vanilla/page/search/product.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script type="text/javascript" src="~/js/vanilla/page/search/product.min.js"></script>
+    </environment>
+    <script type="text/javascript" src="~/js/jquery/unobtrusive-ajax/jquery-unobtrusive-ajax.min.js"></script>
+}

@@ -1,0 +1,75 @@
+﻿
+.grafico {
+    height: 180px;
+    @include d-flex;
+    margin: 35px 15px;
+    border-bottom: 2px solid $cor-borda-grafico;
+
+    &.barra {
+
+        .coluna {
+            width: 100%;
+            margin-left: 5%;
+            margin-right: 5%;
+            position: relative;
+
+            &:before {
+                left: 50%;
+                bottom: -25px;
+                font-size: 75%;
+                position: absolute;
+                content: attr(data-titulo);
+                @include transform(translate(-50%));
+            }
+
+            .barra {
+                width: 100%;
+
+                &:before {
+                    left: 50%;
+                    top: -20px;
+                    font-size: 87.5%;
+                    position: absolute;
+                    content: attr(data-total);
+                    color: $cor-texto-grafico-legenda;
+                    @include transform(translate(-50%));
+                }
+            }
+
+            .dado {
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 100%;
+                @include d-flex;
+                position: absolute;
+                justify-content: flex-end;
+                @include flex-direction(column);
+                background-color: $cor-fundo-grafico-barra;
+
+                .barra {
+                    position: relative;
+                    @include transition(height 500ms ease);
+
+                    &:before {
+                        left: 100%;
+                        width: 5px;
+                        height: 1px;
+                        content: '';
+                        display: inline-block;
+                        //background-color: #404040;
+                        @extend .vertical-absolute;
+                    }
+
+                    &:after {
+                        font-size: 75%;
+                        left: calc(100% + 10px);
+                        content: attr(data-valor);
+                        @extend .vertical-absolute;
+                        color: $cor-texto-grafico-legenda;
+                    }
+                }
+            }
+        }
+    }
+}

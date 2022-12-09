@@ -1,0 +1,59 @@
+﻿@namespace Domain.Entity.Specific
+@model Domain.Entity.Specific.SProduct
+@{
+    string index = $"{Model.ProductId}{Model.Width}{Model.Height}";
+
+    string prefix = $"{nameof(Application.Models.Search.Product.SearchProductFilter.Products)}";
+}
+
+<li class="list-item list-disabled list-border">
+
+    <input type="hidden" name="@($"{prefix}.Index")" value="@index" />
+
+    @Html.Hidden($"{prefix}[{index}].{nameof(SProduct.Id)}", Model.Id)
+    @Html.Hidden($"{prefix}[{index}].{nameof(SProduct.Value)}", Model.Value)
+    @Html.Hidden($"{prefix}[{index}].{nameof(SProduct.Count)}", Model.Count)
+    @Html.Hidden($"{prefix}[{index}].{nameof(SProduct.Width)}", Model.Width)
+    @Html.Hidden($"{prefix}[{index}].{nameof(SProduct.Price)}", Model.Price)
+    @Html.Hidden($"{prefix}[{index}].{nameof(SProduct.Height)}", Model.Height)
+    @Html.Hidden($"{prefix}[{index}].{nameof(SProduct.Weight)}", Model.Weight)
+    @Html.Hidden($"{prefix}[{index}].{nameof(SProduct.RentId)}", Model.RentId)
+    @Html.Hidden($"{prefix}[{index}].{nameof(SProduct.SaleId)}", Model.SaleId)
+    @Html.Hidden($"{prefix}[{index}].{nameof(SProduct.ProductId)}", Model.ProductId)
+    @Html.Hidden($"{prefix}[{index}].{nameof(SProduct.CalculationId)}", Model.CalculationId)
+
+    <div class="list-content">
+
+        <div class="list-title small">
+
+            @Model.Name @($"{(Model.CalculationId == ECalculation.SquareMeter ? $"{Model.Width}x{Model.Height}" : string.Empty)} (x{Model.Count})")
+
+        </div>
+
+    </div>
+
+    <div class="list-control">
+
+        @if (Model.Id.IsZero())
+        {
+            <a asp-controller="SearchProduct"
+               asp-action="Remove"
+               asp-route-key="@Model.Key"
+               data-ajax="true"
+               data-ajax-method="GET"
+               data-ajax-success="removeProductSuccess"
+               data-ajax-update="#search_product_resume"
+               data-ajax-confirm="@Message.ConfirmAction">
+
+                <i class="mdi mdi-delete"></i>
+
+            </a>
+        }
+        else
+        {
+            <i class="mdi mdi-delete-off"></i>
+        }
+
+    </div>
+
+</li>

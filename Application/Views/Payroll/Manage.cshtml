@@ -1,0 +1,110 @@
+﻿@model Domain.Entity.Payroll
+@{
+    ViewBag.Title = Title.ManagePayroll;
+}
+
+<section id="section_header" class="section-header">
+
+    <div class="title">@Title.ManagePayroll</div>
+
+    <div class="toolbar">
+
+        <a asp-controller="Payroll" asp-action="Manage" asp-route-id="0" class="button button-add">
+
+            @Button.New
+
+        </a>
+
+        @if (Model.Id.IsPositive())
+        {
+            <a asp-controller="Payroll" asp-action="Delete" asp-route-id="@Model.Id" class="button button-delete">
+
+                @Button.Delete
+
+            </a>
+        }
+
+    </div>
+
+    <ol class="breadcrumb">
+
+        <li><a asp-controller="Home" asp-action="Index">@Title.Home</a></li>
+        <li><a asp-controller="Payroll" asp-action="Index">@Title.Payroll</a></li>
+        <li>@Title.ManagePayroll</li>
+
+    </ol>
+
+</section>
+
+<section id="section_content" class="section-content">
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            @await Html.PartialAsync("~/Views/Shared/Feedback/_Message.cshtml")
+
+        </div>
+
+        <div class="col col-12">
+
+            @using (Html.BeginForm("Manage", "Payroll", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.Id)
+
+                <div class="row">
+
+                    <div class="col col-12 col-sm-6">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Year, new { @class = "required" })
+
+                            @Html.TextBoxFor(model => model.Year, string.Empty, new { @required = "required" })
+
+                            <span>@Html.ValidationMessageFor(model => model.Year)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-6">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Month, new { @class = "required" })
+
+                            @Html.DropDownListFor(model => model.Month, EMonth.All.GetSelectList<EMonth>(), EStringGender.Male.GetSelectFormat(Label.Month), new { @class = "required" })
+
+                            <span>@Html.ValidationMessageFor(model => model.Month)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12">
+
+                        <div class="form-group">
+
+                            @if (Model.Id.IsPositive())
+                            {
+                                <button type="submit" class="button button-save">@Button.Save</button>
+                            }
+                            else
+                            {
+                                <button type="submit" class="button button-add">@Button.Create</button>
+                            }
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+</section>

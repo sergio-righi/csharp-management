@@ -1,0 +1,75 @@
+﻿
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            <form id="search_employee_form" asp-controller="SearchEmployee" asp-action="Search"
+                  data-ajax-success="searchEmployeeSuccess" data-ajax="true" data-ajax-method="POST">
+
+                <div class="row">
+
+                    <div class="col col-12">
+
+                        <div class="form-group">
+
+                            <label>@Label.Role</label>
+
+                            @Html.DropDownList("ddl_role", ERole.All.GetSelectList<ERole>(true), new { @class = "" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-6">
+
+                        <div class="form-group">
+
+                            <label>@Label.Name</label>
+
+                            @Html.TextBox("txt_name", string.Empty, new { @autocomplete = "off", @min = "3" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-6">
+
+                        <div class="form-group">
+
+                            <label>@Label.Document</label>
+
+                            @Html.TextBox("txt_document", string.Empty, new { @autocomplete = "off" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12">
+
+                        <div class="form-group">
+
+                            <button type="submit" class="button button-search">
+
+                                @Button.Search
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+            <br />
+
+        </div>
+
+        <div id="search_employee_result" class="col col-12"></div>
+
+    </div>
+
+</div>

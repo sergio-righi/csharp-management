@@ -1,0 +1,91 @@
+﻿
+<div class="navbar">
+
+    <div class="nav-image">
+
+        <a asp-controller="Home" asp-action="Index">
+
+            <img src="~/Images/brand.png" />
+
+        </a>
+
+    </div>
+
+    <div class="nav-control">
+
+        <div class="nav-item">
+
+            <i class="mdi mdi-apps"></i>
+
+        </div>
+
+        <div class="nav-item">
+
+            <i class="mdi mdi-email"></i>
+
+        </div>
+
+        <div class="nav-item">
+
+            <i class="mdi mdi-bell"></i>
+
+        </div>
+
+        <div class="nav-item">
+
+            <div class="dropdown">
+
+                <div class="dropdown-trigger">
+
+                    @if (!string.IsNullOrWhiteSpace(UserSession.Get().Photo))
+                    {
+                        <img class="photo" src="@UserSession.Get().Photo" />
+                    }
+                    else
+                    {
+                        <div class="photo" data-letter="@UserSession.Get().Name.FirstLetter()"></div>
+                    }
+
+                </div>
+
+                <ul class="dropdown-content left">
+
+                    <li>
+
+                        <a href="#">
+
+                            <i class="mdi mdi-account"></i> @Label.Profile
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="#">
+
+                            <i class="mdi mdi-settings"></i> @Label.Configurations
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a asp-controller="Login" asp-action="Logout">
+
+                            <i class="mdi mdi-logout-variant"></i> @Label.Logout
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

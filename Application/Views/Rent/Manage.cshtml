@@ -1,0 +1,295 @@
+﻿@namespace Domain.Entity.Generic
+@model Application.Models.Rent.RentModel
+@{
+    ViewBag.Title = Title.ManageRent;
+}
+
+<section id="section_header" class="section-header">
+
+    <div class="title">@Title.ManageRent</div>
+
+    <div class="toolbar">
+
+        <a asp-controller="Rent" asp-action="Manage" asp-route-id="0" class="button button-add">
+
+            @Button.New
+
+        </a>
+
+        @if (Model.Rent.Id.IsPositive())
+        {
+            <a asp-controller="SearchProduct"
+               asp-action="Index"
+               asp-route-toolId="@Model.Rent.Id"
+               asp-route-controllerId="@EController.Rent" class="button button-config" target="_blank">
+                @Button.Select
+            </a>
+
+            <a asp-controller="Rent" asp-action="Delete" asp-route-id="@Model.Rent.Id" class="button button-delete" data-dialog="#confirm_dialog">
+
+                @Button.Delete
+
+            </a>
+        }
+
+    </div>
+
+    <ol class="breadcrumb">
+
+        <li><a asp-controller="Home" asp-action="Index">@Title.Home</a></li>
+        <li><a asp-controller="Rent" asp-action="Index">@Title.Rent</a></li>
+        <li>@Title.ManageRent</li>
+
+    </ol>
+
+</section>
+
+<section id="section_content" class="section-content">
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            <div id="message">
+
+                @await Html.PartialAsync("~/Views/Shared/Feedback/_Message.cshtml")
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            @using (Html.BeginForm("Manage", "Rent", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.Rent.EmployeeId)
+                @Html.HiddenFor(model => model.Rent.Id, new { @id = "hidden_id" })
+                @Html.HiddenFor(model => model.Rent.CustomerId, new { @id = "hidden_person" })
+                @Html.HiddenFor(model => model.Rent.InstallmentId, new { @id = "hidden_installment" })
+
+                <div class="row">
+
+                    <div class="col col-12 col-sm-4 col-md-6">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Rent.NotCustomerName, new { @class = "required" })
+
+                            <div class="input-group">
+
+                                @Html.TextBoxFor(model => model.Rent.NotCustomerName, string.Empty, new { @data_reference = "hidden_person", @required = "required", @readonly = "readonly" })
+
+                                <button type="button" class="button button-search button-plain" data-modal="#search_person">
+
+                                    @Button.Search
+
+                                </button>
+
+                            </div>
+
+                            <span>@Html.ValidationMessageFor(model => model.Rent.NotCustomerName)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-4 col-md-3">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Rent.StartDate, new { @class = "required" })
+
+                            @Html.TextBoxFor(model => model.Rent.StartDate, StringFormatHelper.Date, new { @id = "date_installment", @class = "m-datetime", @required = "required" })
+
+                            <span>@Html.ValidationMessageFor(model => model.Rent.StartDate)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-4 col-md-3">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Rent.EndDate, new { @class = "required" })
+
+                            @Html.TextBoxFor(model => model.Rent.EndDate, StringFormatHelper.Date, new { @class = "m-datetime", @required = "required" })
+
+                            <span>@Html.ValidationMessageFor(model => model.Rent.EndDate)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-6 col-md-6">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Rent.AddressId, new { @class = "required" })
+
+                            @Html.DropDownListFor(model => model.Rent.AddressId, Model.Addresses.AsSelectList(nameof(GCustomInformation.Id), nameof(GCustomInformation.Name), EStringGender.Male.GetSelectFormat(Label.Address)), new { @id = "dropdownlist_address", @required = "required" })
+
+                            <span>@Html.ValidationMessageFor(model => model.Rent.AddressId)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-3">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Rent.PaymentMethodId, new { @class = "required" })
+
+                            @Html.DropDownListFor(model => model.Rent.PaymentMethodId, EPaymentMethod.Cash.GetSelectList<EPaymentMethod>(), EStringGender.Male.GetSelectFormat(Label.PaymentMethod), new { @required = "required" })
+
+                            <span>@Html.ValidationMessageFor(model => model.Rent.PaymentMethodId)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-3">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Rent.ShippingFee, new { @class = "" })
+
+                            @Html.TextBoxFor(model => model.Rent.ShippingFee, new { @class = "" })
+
+                            <span>@Html.ValidationMessageFor(model => model.Rent.ShippingFee)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-4">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Rent.DownPayment, new { @class = "" })
+
+                            @Html.TextBoxFor(model => model.Rent.DownPayment, new { @class = "" })
+
+                            <span>@Html.ValidationMessageFor(model => model.Rent.DownPayment)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-4">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Rent.InstallmentCount, new { @class = "required" })
+
+                            <div class="input-group">
+
+                                @Html.TextBoxFor(model => model.Rent.InstallmentCount, new { @id = "quantity_installment", @required = "required" })
+
+                                <button type="button" class="button button-config button-plain" data-modal="#config_installment" @(Model.Rent.Id.IsPositive() ? string.Empty : "disabled")>
+
+                                    @Button.Config
+
+                                </button>
+
+                            </div>
+
+                            <span>@Html.ValidationMessageFor(model => model.Rent.InstallmentCount)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-4">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Rent.InterestRate, new { @class = "" })
+
+                            @Html.TextBoxFor(model => model.Rent.InterestRate, new { @class = "" })
+
+                            <span>@Html.ValidationMessageFor(model => model.Rent.InterestRate)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Rent.SituationId, new { @class = "required" })
+
+                            @Html.DropDownListFor(model => model.Rent.SituationId, ERent.Budgeted.GetSelectList<ERent>(), EStringGender.Female.GetSelectFormat(Label.Status), new { @required = "required" })
+
+                            <span>@Html.ValidationMessageFor(model => model.Rent.SituationId)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div id="rent_product" class="col col-12">
+
+                        @{
+                            await Html.RenderPartialAsync("~/Views/Rent/_List.cshtml", Model.Products);
+                        }
+
+                    </div>
+
+                    <div class="col col-12">
+
+                        <div class="form-group">
+
+                            @if (Model.Rent.Id.IsPositive())
+                            {
+                                <button type="submit" class="button button-save">@Button.Save</button>
+                            }
+                            else
+                            {
+                                <button type="submit" class="button button-add">@Button.Create</button>
+                            }
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+    @{
+        await Html.RenderPartialAsync("~/Views/Search/Person/_Person.cshtml");
+    }
+
+    @{
+        await Html.RenderPartialAsync("~/Views/Config/Installment/_Installment.cshtml");
+    }
+
+</section>
+
+@section ScriptsHeader
+{
+    <environment include="Development">
+        <script type="text/javascript" src="~/js/vanilla/element/list.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/component/mask.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/component/modal.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script type="text/javascript" src="~/js/vanilla/element/list.min.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/component/mask.min.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/component/modal.min.js"></script>
+    </environment>
+}
+
+@section ScriptsFooter
+{
+    <script type="text/javascript" src="~/js/jquery/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="~/js/vanilla/page/rent/manage.min.js"></script>
+    <script type="text/javascript" src="~/js/vanilla/page/address/index.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery/unobtrusive-ajax/jquery-unobtrusive-ajax.min.js"></script>
+}

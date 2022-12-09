@@ -1,0 +1,70 @@
+﻿@model Application.Models.User.UserModel
+@{
+    ViewBag.Title = Title.User;
+
+    Layout = "~/Views/Shared/_Login.cshtml";
+}
+
+<div id="login_frame" class="login-frame">
+
+    <div class="frame-header">
+
+        <img class="brand" src="~/images/brand.png" />
+
+    </div>
+
+    <div class="frame-content">
+
+        <div class="feedback-message">
+
+            @await Html.PartialAsync("~/Views/Shared/Feedback/_Message.cshtml")
+
+        </div>
+
+        @using (Html.BeginForm("Index", "User", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.Token)
+
+            <div class="row">
+
+                <div class="col col-12">
+
+                    <div class="form-group">
+
+                        @Html.TextBoxFor(model => model.Login, string.Empty, new { @required = "true", @placeholder = Placeholder.Username, @autofocus = "true", @autocomplete = "off" })
+
+                    </div>
+
+                </div>
+
+                @{
+                    await Html.RenderPartialAsync("~/Views/Password/_Form.cshtml", Model.Password);
+                }
+
+                <div class="col col-12">
+
+                    <div class="form-group">
+
+                        <button type="submit" class="button button-save">@Button.Save</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+</div>
+
+@section ScriptsFooter
+{
+    <environment include="Development">
+        <script type="text/javascript" src="~/js/vanilla/page/password/password.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script type="text/javascript" src="~/js/vanilla/page/password/password.min.js"></script>
+    </environment>
+}

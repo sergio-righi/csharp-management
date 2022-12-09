@@ -1,0 +1,101 @@
+﻿@model Domain.Entity.JuridicalPerson
+@{
+    ViewBag.Title = Title.ManageJuridicalPerson;
+}
+
+<section id="section_header" class="section-header">
+
+    <div class="title">@Title.ManageJuridicalPerson</div>
+
+    <div class="toolbar">
+
+        <a asp-controller="JuridicalPerson" asp-action="Manage" asp-route-id="0" class="button button-add">
+
+            @Button.New
+
+        </a>
+
+        @if (Model.Id.IsPositive())
+        {
+            <a asp-controller="JuridicalPerson" asp-action="Delete" asp-route-id="@Model.Id" class="button button-delete" data-dialog="#confirm_dialog">
+
+                @Button.Delete
+
+            </a>
+        }
+
+    </div>
+
+    <ol class="breadcrumb">
+
+        <li><a asp-controller="Home" asp-action="Index">@Title.Home</a></li>
+        <li><a asp-controller="JuridicalPerson" asp-action="Index">@Title.JuridicalPerson</a></li>
+        <li>@Title.ManageJuridicalPerson</li>
+
+    </ol>
+
+</section>
+
+<section id="section_content" class="section-content">
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            @await Html.PartialAsync("~/Views/Shared/Feedback/_Message.cshtml")
+
+        </div>
+
+        @if (Model.Id.IsPositive())
+        {
+            <div class="col col-12">
+
+                <div class="tab">
+
+                    <div class="tab-header small">
+
+                        <a asp-controller="Address" 
+                           asp-action="Index"
+                           asp-route-id="0" 
+                           asp-route-personId="@Model.Id" class="tab-item">
+
+                            @Title.Address
+
+                        </a>
+
+                        <a asp-controller="Phone" 
+                           asp-action="Index" 
+                           asp-route-id="0" 
+                           asp-route-personId="@Model.Id" class="tab-item">
+
+                            @Title.Phone
+
+                        </a>
+
+                        <a asp-controller="Email" 
+                           asp-action="Index" 
+                           asp-route-id="0" 
+                           asp-route-personId="@Model.Id" class="tab-item">
+
+                            @Title.Email
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+        <div class="col col-12">
+
+            @{
+                await Html.RenderPartialAsync("~/Views/JuridicalPerson/_Form.cshtml", Model);
+            }
+
+        </div>
+
+    </div>
+
+</section>

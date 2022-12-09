@@ -1,0 +1,27 @@
+﻿.field-validation-error {
+    color: $color-red;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    background-color: #FFEEEE;
+    border: 1px solid $color-red;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.validation-summary-errors {
+    padding: 8px;
+    background-color: #F69678;
+
+    ul li {
+        font-size: 87.5%;
+        font-weight: 700;
+        line-height: $line-height;
+    }
+}

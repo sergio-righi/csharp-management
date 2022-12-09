@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Domain.Entity.Email>
+
+@if (Model.Count() > 0)
+{
+    <div class="table-responsive">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th class="fit"></th>
+                    <th>@Label.Email</th>
+                    <th>@Label.Type</th>
+                    <th class="fit"></th>
+                    <th class="fit"></th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td class="fit">
+
+                            <a asp-controller="Email"
+                               asp-action="Index"
+                               asp-route-personId="@item.PersonId"
+                               asp-route-id="@item.Id" class="button button-edit button-raw"></a>
+
+                        </td>
+                        <td>@item.Address</td>
+                        <td>@item.TypeId.GetDescription()</td>
+                        <td>
+
+                            @if (item.ConfirmationDate.HasValue)
+                            {
+                                <text>@Label.Confirmed</text>
+                            }
+                            else
+                            {
+                                <a asp-controller="Email"
+                                   asp-action="Resend"
+                                   asp-route-personId="@item.PersonId"
+                                   asp-route-id="@item.Id" class="button button-small button-send button-plain">
+
+                                    @Button.Resend
+
+                                </a>
+                            }
+
+                        </td>
+                        <td>
+
+                            @if (Model.Count() > 1)
+                            {
+                                <a asp-controller="Email"
+                                   asp-action="Delete"
+                                   asp-route-personId="@item.PersonId"
+                                   asp-route-id="@item.Id" class="button button-delete button-raw" data-dialog="#confirm_dialog"></a>
+                            }
+                            else
+                            {
+                                <i class="mdi mdi-delete-off"></i>
+                            }
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+}
+else
+{
+    @Html.Feedback(EFeedback.Info, Message.NothingToList, false)
+}

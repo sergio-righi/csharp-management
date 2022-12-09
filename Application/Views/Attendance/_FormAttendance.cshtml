@@ -1,0 +1,60 @@
+﻿@model Domain.Entity.Specific.SAttendancePerson
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            <div id="manage_attendance_feedback"></div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <form id="manage_attendance_form" asp-controller="Attendance" asp-action="ManageAttendance"
+                  data-ajax-success="manageAttendanceSuccess" data-ajax="true" data-ajax-method="POST">
+
+                @Html.HiddenFor(model => model.date)
+                @Html.HiddenFor(model => model.person_id)
+                @Html.HiddenFor(model => model.id)
+
+                <div class="row">
+
+                    <div class="col col-12">
+
+                        <div class="form-group">
+
+                            <label class="required">@Label.Observation</label>
+
+                            @Html.TextAreaFor(model => model.observation, new { @required = "required" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12">
+
+                        <div class="form-group">
+
+                            <button type="submit" class="button button-save">
+
+                                @Button.Save
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+            <br />
+
+        </div>
+
+    </div>
+
+</div>

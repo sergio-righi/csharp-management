@@ -1,0 +1,80 @@
+﻿
+.component-float {
+    bottom: 0;
+    z-index: 2;
+    right: 50px;
+    position: fixed;
+    min-width: 300px;
+    max-width: 400px;
+    @extend .box-shadow;
+
+    &.active {
+
+        .float-header {
+
+            &:after {
+                @include transform(rotate(-180deg));
+            }
+        }
+
+        .float-content {
+            max-height: 300px;
+        }
+    }
+
+    .float-header {
+        width: 100%;
+        cursor: pointer;
+        font-weight: 400;
+        padding: 6px 16px;
+        align-items: center;
+        @include d-inline-flex;
+        line-height: $line-height;
+        @extend .block-selection;
+        color: $color-float-header;
+        background-color: $background-float-header;
+
+        span {
+            margin-right: 6px;
+        }
+
+        &:after {
+            font-size: 150%;
+            margin-left: auto;
+            content: mdi("chevron-up");
+            font-family: $font-family-material;
+        }
+    }
+
+    .float-content {
+        max-height: 0;
+        @include transition(max-height 300ms ease);
+
+        a {
+            color: $color-float-content;
+        }
+
+        .float-item {
+            overflow-y: auto;
+            background-color: $background-float-content;
+            border-left: 1px solid $border-color-float-content;
+            border-right: 1px solid $border-color-float-content;
+        }
+
+        .float-control {
+            height: 50px;
+            padding: 0 8px;
+            @include d-flex;
+            @include align-items(center);
+            @include justify-content(flex-end);
+            background-color: $background-float-footer;
+
+            & > * {
+
+                &:not(:last-child) {
+                    margin-right: 8px;
+                }
+            }
+        }
+    }
+}

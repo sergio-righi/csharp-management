@@ -1,0 +1,505 @@
+﻿form {
+    width: 100%;
+}
+
+.form-group {
+    /*margin-top: 12px;
+    margin-bottom: 8px;*/
+    position: relative;
+
+    & > label {
+        width: 100%;
+        display: block;
+        font-size: 87.5%;
+        margin-top: 12px;
+        position: relative;
+        margin-bottom: 8px;
+        color: $color-label;
+        font-weight: 400;
+
+        &.required {
+
+            &:after {
+                content: '*';
+            }
+        }
+    }
+
+    & > .file,
+    & > input,
+    & > select,
+    & > textarea {
+        margin-bottom: 8px;
+    }
+
+    button + button {
+        margin-left: 8px;
+    }
+
+    & > .checkbox {
+        margin-bottom: 8px;
+    }
+}
+
+select,
+textarea,
+input[type=url],
+input[type=text],
+input[type=email],
+input[type=number],
+input[type=password],
+input[type=file] + label {
+    z-index: 2;
+    width: 100%;
+    display: block;
+    padding: 0 12px;
+    min-height: 48px;
+    font-size: 87.5%;
+    position: relative;
+    color: $color-field;
+    line-height: $line-height;
+    background-color: $background-field;
+    border: 1px solid $border-color-field;
+    @include border-radius($border-radius);
+    @include transition(box-shadow 300ms ease);
+
+    &:not(:disabled):focus {
+        border-color: $border-color-field-focus;
+        //@include box-shadow(0 0 0 3px $cor-sombra-field-focus);
+    }
+
+    &::-moz-focus-inner {
+        border: 0;
+    }
+
+    &:-moz-placeholder {
+        color: $color-field-placeholder;
+    }
+
+    &::-moz-placeholder {
+        color: $color-field-placeholder;
+    }
+
+    &:-ms-input-placeholder {
+        color: $color-field-placeholder;
+    }
+
+    &::-webkit-input-placeholder {
+        color: $color-field-placeholder;
+    }
+}
+
+/*select {
+    @include appearance(none);
+}*/
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    margin: 0;
+    @include appearance(none);
+}
+
+textarea {
+    font-size: 87.5%;
+    resize: vertical;
+    min-height: 120px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.input-group {
+    width: 100%;
+    @include d-flex;
+
+    input {
+        @include border-radius($border-radius 0 0 $border-radius !important);
+    }
+
+    & > a,
+    & > i,
+    & > button {
+        height: auto;
+        text-decoration: none;
+        @include border-radius(0 $border-radius $border-radius 0);
+    }
+}
+
+.radio,
+.checkbox {
+    position: relative;
+    @include d-inline-flex;
+    @include align-items(center);
+    @include justify-content(start);
+
+    label {
+        font-size: 87.5%;
+        align-items: center;
+        @include d-inline-flex;
+        @extend .block-selection;
+        line-height: $line-height;
+
+        &:before {
+            font-size: 150%;
+            margin-top: -2px;
+            margin-right: 4px;
+            font-family: $font-family-material;
+            @include transition(background-color, 300ms, ease-in-out);
+        }
+    }
+
+    input[type=radio],
+    input[type=checkbox] {
+        top: 3px;
+        left: -1px;
+        opacity: 0;
+        position: absolute;
+
+        & + label,
+        & + input + label {
+            color: $color-checkbox;
+        }
+
+        &:focus + label,
+        &:focus + input + label {
+            color: $color-checkbox-focus;
+        }
+
+        &:disabled + label,
+        &:disabled + input + label {
+            opacity: .6;
+            cursor: default;
+            color: $color-disabled;
+        }
+
+        & + label,
+        & + input + label {
+            //color: $color-checkbox-checked;
+            &:before {
+                font-family: $font-family-material;
+            }
+        }
+    }
+
+    label,
+    input[type=radio],
+    input[type=checkbox] {
+        cursor: pointer;
+        font-weight: 300;
+        //display: inline-block;
+        //vertical-align: middle;
+    }
+}
+
+.radio {
+
+    input[type=radio] {
+        & + label {
+            &:before {
+                content: mdi("radiobox-blank");
+            }
+        }
+
+        &:checked + label,
+        &:checked + input + label {
+
+            &:before {
+                content: mdi("radiobox-marked");
+            }
+        }
+    }
+
+    & + .radio {
+        margin-left: 6px;
+    }
+}
+
+.checkbox {
+
+    input[type=checkbox] {
+
+        & + label,
+        & + input + label {
+
+            &:before {
+                content: mdi("checkbox-blank-outline");
+            }
+        }
+
+        &:checked + label,
+        &:checked + input + label {
+
+            &:before {
+                content: mdi("checkbox-marked");
+            }
+        }
+        /*&[readonly] {
+
+            & + label,
+            & + input + label {
+                color: $color-checkbox-indeterminate;
+
+                &:before {
+                    content: '\F375';
+                }
+            }
+        }*/
+    }
+
+    & + .checkbox {
+        margin-left: 6px;
+    }
+
+    &.checkbox-delete {
+
+        input[type=checkbox] {
+
+            & + label,
+            & + input + label {
+
+                &:before {
+                    content: mdi("delete");
+                }
+            }
+
+            &:checked + label,
+            &:checked + input + label {
+
+                &:before {
+                    content: mdi("undo-variant");
+                }
+            }
+        }
+    }
+}
+
+.file {
+    width: 100%;
+
+    input[type=file] {
+        opacity: 0;
+        width: .1px;
+        z-index: -1;
+        height: .1px;
+        overflow: hidden;
+        position: absolute;
+        @include transition(all 300ms ease);
+
+        &[multiple] {
+
+            & + label {
+
+                &:before {
+                    content: mdi("upload-multiple");
+                }
+            }
+        }
+
+        & + label {
+            @include d-flex;
+            cursor: pointer;
+            overflow: hidden;
+            white-space: nowrap;
+            color: $color-field;
+            text-overflow: ellipsis;
+            @include align-items(center);
+
+            &:before {
+                font-size: 150%;
+                margin-right: 8px;
+                content: mdi("upload");
+                font-family: $font-family-material;
+            }
+        }
+
+        &:focus + label {
+            border-color: $border-color-field-focus;
+            //@include box-shadow(0 0 0 3px $cor-sombra-field-focus);
+        }
+    }
+}
+
+.switch {
+    margin: 10px 0;
+    @include d-flex;
+
+    label {
+        width: 30px;
+        height: 12px;
+        display: block;
+        cursor: pointer;
+        position: relative;
+        @include border-radius(100px);
+        @include transition(all 300ms ease);
+        background-color: $background-switch-label;
+
+        &:after {
+            top: -2px;
+            left: -2px;
+            width: 16px;
+            content: '';
+            height: 16px;
+            display: block;
+            position: absolute;
+            @extend .box-shadow;
+            @include border-radius(100px);
+            @include transition(all 300ms ease);
+            background-color: $background-switch;
+        }
+    }
+
+    input[type=checkbox] {
+        opacity: 0;
+        position: absolute;
+        /*&:focus ~ label {
+            background-color: $background-switch-label-focus;
+
+            &:after {
+                background-color: darken($background-switch-label-focus, 10);
+            }
+        }*/
+        /*&:checked ~ label:active {
+
+            &:after {
+                box-shadow: 0 0 0 10px rgba($background-switch-label-checked, .3);
+            }
+        }*/
+        &:checked ~ label {
+            background-color: $background-switch-label-checked;
+
+            &:after {
+                left: 15px;
+                background-color: darken($background-switch-label-checked, 10);
+            }
+        }
+
+        &:disabled ~ label {
+            pointer-events: none;
+            background-color: $background-disabled;
+
+            &:after {
+                background-color: darken($background-disabled, 10);
+            }
+        }
+    }
+}
+
+input[type=range] {
+    display: none;
+
+    &[disabled] {
+
+        & + .range {
+            background-color: $background-disabled;
+
+            .bar {
+                background-color: $background-disabled;
+
+                .pointer {
+                    background-color: $background-disabled;
+
+                    &:active {
+                        @include box-shadow(none !important);
+                    }
+                }
+            }
+        }
+    }
+
+    &[readonly] {
+
+        & + .range {
+            background-color: $background-readonly;
+
+            .bar {
+                background-color: $background-readonly;
+
+                .pointer {
+                    background-color: $background-readonly;
+
+                    &:active {
+                        @include box-shadow(none !important);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.range {
+    width: 100%;
+    height: 4px;
+    margin: 16px 0;
+    display: block;
+    cursor: pointer;
+    position: relative;
+    @extend .block-selection;
+    background-color: rgba(160, 160, 160, .5);
+
+    &.active {
+
+        .pointer {
+            box-shadow: 0 0 0 10px rgba($color-primary-3, .3);
+        }
+    }
+
+    .bar {
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 2;
+        height: 100%;
+        position: absolute;
+        @extend .block-selection;
+        background-color: $color-primary-3;
+
+        .pointer {
+            top: -8px;
+            width: 30px;
+            height: 20px;
+            right: -15px;
+            position: absolute;
+            @extend .block-selection;
+            background-color: $color-primary-3;
+            @include transition(box-shadow 300ms ease);
+            @include border-radius($border-radius-rounded);
+
+            &:before {
+                display: block;
+                color: #FFFFFF;
+                font-weight: 500;
+                font-size: 61.25%;
+                line-height: 20px;
+                text-align: center;
+                content: attr(data-value);
+            }
+
+            &:active {
+                @include box-shadow(0 0 0 10px rgba($color-primary-3, .3));
+            }
+        }
+    }
+}
+
+[disabled] {
+    opacity: .6;
+    cursor: default;
+    @include box-shadow(none);
+    color: $color-disabled !important;
+    background-color: $background-disabled !important;
+    /*background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36zwjjgzhhYWGMYAEYB8RmROaABADeOQ8CXl/xfgAAAABJRU5ErkJggg==) repeat;*/
+    &:after {
+        background-color: $background-disabled !important;
+    }
+}
+
+[readonly] {
+    opacity: .6;
+    cursor: default;
+    @include box-shadow(none);
+    color: $color-readonly !important;
+    //background-color: $background-readonly !important;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36zwjjgzhhYWGMYAEYB8RmROaABADeOQ8CXl/xfgAAAABJRU5ErkJggg==) repeat;
+    /*&:after {
+        background-color: darken($background-readonly, 10) !important;
+    }*/
+}

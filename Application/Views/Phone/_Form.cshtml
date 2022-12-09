@@ -1,0 +1,71 @@
+﻿@model Domain.Entity.Phone
+@{
+    Html.ViewData.TemplateInfo.HtmlFieldPrefix = nameof(Application.Models.Phone.PhoneModel.Phone);
+}
+
+@using (Html.BeginForm("Index", "Phone", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.PersonId)
+
+    <div class="row">
+
+        <div class="col col-12 col-sm-6">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.TypeId, new { @class = "required" })
+
+                @Html.DropDownListFor(model => model.TypeId, EPhone.Other.GetSelectList<EPhone>(), EStringGender.Male.GetSelectFormat(Label.Type), new { @required = "required" })
+
+                <span>@Html.ValidationMessageFor(model => model.TypeId)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-6">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Number, new { @class = "required" })
+
+                @Html.TextBoxFor(model => model.Number, new { @class = "m-phone", @required = "required", @autocomplete = "off" })
+
+                <span>@Html.ValidationMessageFor(model => model.Number)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div class="form-group">
+
+                @if (Model.Id.IsPositive())
+                {
+                    <button type="submit" class="button button-save">@Button.Save</button>
+
+                    <a asp-controller="Phone" 
+                       asp-action="Index" 
+                       asp-route-id="0" 
+                       asp-route-personId="@Model.PersonId" class="button button-clean">
+
+                        @Button.Clean
+
+                    </a>
+                }
+                else
+                {
+                    <button type="submit" class="button button-add">@Button.Create</button>
+                }
+
+            </div>
+
+            <br />
+
+        </div>
+
+    </div>
+}

@@ -1,0 +1,81 @@
+﻿@model Application.Models.Phone.PhoneModel
+@{
+    ViewBag.Title = Title.Phone;
+}
+
+<section id="section_header" class="section-header">
+
+    <div class="title">@Title.Phone</div>
+
+    <div class="toolbar">
+
+        @if (Model.Phone.Id > 0)
+        {
+            <a asp-controller="Phone" asp-action="Index" asp-route-personId="@Model.Phone.PersonId" class="button button-add">
+
+                @Button.New
+
+            </a>
+        }
+
+    </div>
+
+    <ol class="breadcrumb">
+
+        <li><a asp-controller="Home" asp-action="Index">@Title.Home</a></li>
+
+        @{
+            await Html.RenderPartialAsync("~/Views/Person/_Breadcrumb.cshtml", new ViewDataDictionary(ViewData)
+            {
+                { "personId", Model.Phone.PersonId },
+                { "typeId", Model.Phone.NotPersonTypeId }
+            });
+        }
+
+        <li>@Title.Phone</li>
+
+    </ol>
+
+</section>
+
+<section id="section_content" class="section-content">
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            <div id="message">
+
+                @await Html.PartialAsync("~/Views/Shared/Feedback/_Message.cshtml")
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div id="form">
+
+                @{
+                    await Html.RenderPartialAsync("~/Views/Phone/_Form.cshtml", Model.Phone);
+                }
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div id="result">
+
+                @{
+                    await Html.RenderPartialAsync("~/Views/Phone/_Table.cshtml", Model.Phones);
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

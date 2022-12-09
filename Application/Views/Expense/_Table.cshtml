@@ -1,0 +1,75 @@
+﻿@model Application.Models.Expense.ExpenseFilter
+
+@if (Model.Pagination.Count > 0)
+{
+    await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Header.cshtml");
+
+    <div class="table-responsive">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th class="fit"></th>
+                    <th>
+
+                        <a asp-controller="Expense"
+                           asp-action="Index"
+                           asp-route-Sort="1"
+                           asp-route-Direction="@Model.Filter.GetDirection(Model.Filter.Sort)"
+                           asp-route-StartDate="@Model.Filter.StartDate"
+                           asp-route-ReferenceId="@Model.Filter.ReferenceId">
+                            @Label.Date
+                        </a>
+
+                    </th>
+                    <th class="w-25 w-sm-40 w-md-50">@Label.Description</th>
+                    <th>@Label.Value</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var expense in Model.Pagination)
+                {
+                    <tr>
+
+                        <td class="fit">
+
+                            <a asp-controller="Expense" 
+                               asp-action="Manage" 
+                               asp-route-id="@expense.Id" class="button button-edit button-raw"></a>
+
+                        </td>
+                        <td>@expense.Date</td>
+                        <td>@expense.Description</td>
+                        <td class="currency-real">@expense.Value</td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    if (Model.Pagination.Quantity > 1)
+    {
+        <ul class="pagination">
+
+            @{
+                await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Footer.cshtml");
+            }
+
+        </ul>
+    }
+}
+else
+{
+    @Html.Feedback(EFeedback.Info, Message.NothingToList, false)
+}

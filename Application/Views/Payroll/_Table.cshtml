@@ -1,0 +1,92 @@
+﻿@model Application.Models.Payroll.PayrollFilter
+
+@if (Model.Pagination.Count > 0)
+{
+    await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Header.cshtml");
+
+    <div class="table-responsive">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th class="fit"></th>
+                    <th>
+
+                        <a asp-controller="Payroll"
+                           asp-action="Index"
+                           asp-route-Sort="1"
+                           asp-route-Direction="@Model.Filter.GetDirection(Model.Filter.Sort)"
+                           asp-route-Model-Year="@Model.Filter.Model.Year">
+                            @Label.Year
+                        </a>
+
+                    </th>
+                    <th>
+
+                        <a asp-controller="Payroll"
+                           asp-action="Index"
+                           asp-route-Sort="2"
+                           asp-route-Direction="@Model.Filter.GetDirection(Model.Filter.Sort)"
+                           asp-route-Model-Month="@Model.Filter.Model.Month">
+                            @Label.Month
+                        </a>
+
+                    </th>
+                    <th>@Label.Status</th>
+                    <th class="fit"></th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var payroll in Model.Pagination)
+                {
+                    <tr>
+
+                        <td class="fit">
+
+                            <a asp-controller="Payroll"
+                               asp-action="Manage"
+                               asp-route-id="@payroll.Id" class="button button-edit button-raw"></a>
+
+                        </td>
+                        <td>@payroll.Year</td>
+                        <td>@payroll.Month.GetDescription()</td>
+                        <td></td>
+                        <td>
+
+                            <a asp-controller="Paycheck"
+                               asp-action="Index"
+                               asp-route-referenceId="@payroll.Id" class="button button-config button-raw"></a>
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    if (Model.Pagination.Quantity > 1)
+    {
+        <ul class="pagination">
+
+            @{
+                await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Footer.cshtml");
+            }
+
+        </ul>
+    }
+}
+else
+{
+    @Html.Feedback(EFeedback.Info, Message.NothingToList, false)
+}

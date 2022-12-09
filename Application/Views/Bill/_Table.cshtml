@@ -1,0 +1,99 @@
+﻿@model Application.Models.Bill.BillFilter
+
+@if (Model.Pagination.Count > 0)
+{
+    await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Header.cshtml");
+
+    <div class="table-responsive">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th class="fit"></th>
+                    <th>
+
+                        <a asp-controller="Bill"
+                           asp-action="Index"
+                           asp-route-Sort="1"
+                           asp-route-Direction="@Model.Filter.GetDirection(Model.Filter.Sort)"
+                           asp-route-StartDate="@Model.Filter.StartDate"
+                           asp-route-ReferenceId="@Model.Filter.ReferenceId">
+                            @Label.DueDate
+                        </a>
+
+                    </th>
+                    <th>@Label.Type</th>
+                    <th>@Label.PaymentDate</th>
+                    <th>@Label.Late</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var bill in Model.Pagination)
+                {
+                    <tr>
+
+                        <td class="fit">
+
+                            <a asp-controller="Bill" 
+                               asp-action="Manage" 
+                               asp-route-id="@bill.Id" class="button button-edit button-raw"></a>
+
+                        </td>
+                        <td>@bill.DueDate.Value.ToShortDateString()</td>
+                        <td>@bill.TypeId.GetDescription()</td>
+                        <td>
+
+                            @if (bill.PaymentDate.HasValue)
+                            {
+                                <text>@bill.PaymentDate.Value.ToShortDateString()</text>
+                            }
+                            else
+                            {
+                                <text>-</text>
+                            }
+
+                        </td>
+                        <td>
+
+                            @if (!bill.IsPaid && bill.DueDate.Value > DateTime.Now.Date)
+                            {
+                                <text>@Label.Yes</text>
+                            }
+                            else
+                            {
+                                <text>@Label.No</text>
+                            }
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    if (Model.Pagination.Quantity > 1)
+    {
+        <ul class="pagination">
+
+            @{
+                await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Footer.cshtml");
+            }
+
+        </ul>
+    }
+}
+else
+{
+    @Html.Feedback(EFeedback.Info, Message.NothingToList, false)
+}

@@ -1,0 +1,86 @@
+﻿@model Application.Models.Paycheck.PaycheckFilter
+
+@if (Model.Pagination.Count > 0)
+{
+    await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Header.cshtml");
+
+    <div class="table-responsive">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th class="fit"></th>
+                    <th>
+
+                        <a asp-controller="Paycheck"
+                           asp-action="Index"
+                           asp-route-Sort="1"
+                           asp-route-Direction="@Model.Filter.GetDirection(Model.Filter.Sort)"
+                           asp-route-referenceId="@Model.Filter.ReferenceId"
+                           asp-route-Name="@Model.Filter.Name">
+                            @Label.Name
+                        </a>
+
+                    </th>
+                    <th>@Label.Extra</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var paycheckPerson in Model.Pagination)
+                {
+                    <tr>
+
+                        <td class="fit">
+
+                            <a asp-controller="Paycheck"
+                               asp-action="Manage"
+                               asp-route-id="@paycheckPerson.Id"
+                               asp-route-personId="@paycheckPerson.PersonId"
+                               asp-route-payrollId="@Model.Filter.ReferenceId" class="button button-edit button-raw"></a>
+
+                        </td>
+                        <td>@paycheckPerson.Name</td>
+                        <td>
+
+                            @if (paycheckPerson.IsExtra)
+                            {
+                                <text>@Label.Yes</text>
+                            }
+                            else
+                            {
+                                <text>@Label.No</text>
+                            }
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    if (Model.Pagination.Quantity > 1)
+    {
+        <ul class="pagination">
+
+            @{
+                await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Footer.cshtml");
+            }
+
+        </ul>
+    }
+}
+else
+{
+    @Html.Feedback(EFeedback.Info, Message.NothingToList, false)
+}

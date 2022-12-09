@@ -1,0 +1,101 @@
+﻿@model Application.Models.Sale.SaleFilter
+
+@if (Model.Pagination.Count > 0)
+{
+    await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Header.cshtml");
+
+    <div class="table-responsive">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th class="fit"></th>
+                    <th>
+
+                        <a asp-controller="Sale"
+                           asp-action="Index"
+                           asp-route-Sort="1"
+                           asp-route-Name="@Model.Filter.Name"
+                           asp-route-Direction="@Model.Filter.GetDirection(Model.Filter.Sort)"
+                           asp-route-startDate="@Model.Filter.StartDate">
+                            @Label.Name
+                        </a>
+
+                    </th>
+                    <th>
+
+                        <a asp-controller="Sale"
+                           asp-action="Index"
+                           asp-route-Sort="2"
+                           asp-route-Name="@Model.Filter.Name"
+                           asp-route-Direction="@Model.Filter.GetDirection(Model.Filter.Sort)"
+                           asp-route-startDate="@Model.Filter.StartDate">
+                            @Label.Date
+                        </a>
+
+                    </th>
+                    <th>@Label.Status</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var sale in Model.Pagination)
+                {
+                    <tr>
+
+                        <td class="fit">
+
+                            <a asp-controller="Sale"
+                               asp-action="Manage"
+                               asp-route-id="@sale.Id" class="button button-edit button-raw"></a>
+
+                        </td>
+                        <td>
+
+                            @if (sale.Customer.NaturalPerson != null)
+                            {
+                                <text>@sale.Customer.NaturalPerson.FullName</text>
+                            }
+                            else if (sale.Customer.JuridicalPerson != null)
+                            {
+                                <text>@sale.Customer.JuridicalPerson.CompanyName</text>
+                            }
+                            else
+                            {
+                                <text>@Message.NotFound</text>
+                            }
+
+                        </td>
+                        <td>@sale.Date.Value.ToShortDateString()</td>
+                        <td>@sale.SituationId.GetDescription()</td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    if (Model.Pagination.Quantity > 1)
+    {
+        <ul class="pagination">
+
+            @{
+                await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Footer.cshtml");
+            }
+
+        </ul>
+    }
+}
+else
+{
+    @Html.Feedback(EFeedback.Info, Message.NothingToList, false)
+}

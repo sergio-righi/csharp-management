@@ -1,0 +1,243 @@
+﻿
+.calendar {
+    @include d-flex;
+    overflow: hidden;
+    position: relative;
+    color: $color-calendar;
+    @include flex-wrap(wrap);
+    @include flex-direction(column);
+    background-color: $background-calendar;
+
+    .calendar-header {
+        width: 100%;
+        height: 50px;
+        @include d-flex;
+        text-align: center;
+        @extend .block-selection;
+        @include align-items(center);
+        color: $color-calendar-header;
+
+        .header-left,
+        .header-right {
+            width: 20%;
+            height: 100%;
+            cursor: pointer;
+            cursor: pointer;
+            @include d-flex;
+            @include align-items(center);
+            color: $color-calendar-header;
+            @include justify-content(center);
+
+            &:before {
+                font-size: 200%;
+                font-family: $font-family-material;
+            }
+
+            &.disabled {
+                color: $color-calendar-header-disabled;
+            }
+        }
+
+        .header-left {
+
+            &:before {
+                content: mdi("chevron-left");
+            }
+        }
+
+        .header-right {
+
+            &:before {
+                content: mdi("chevron-right");
+            }
+        }
+
+        .header-label {
+            width: 100%;
+            font-size: 100%;
+            font-weight: 500;
+            letter-spacing: .4px;
+            text-transform: uppercase;
+        }
+
+        .header-year,
+        .header-month {
+            margin: 0 4px;
+        }
+    }
+
+    .calendar-content {
+        width: 100%;
+        @include d-flex;
+        font-size: 87.5%;
+        @include flex-wrap(wrap);
+
+        .calendar-weekday {
+            width: 100%;
+            @include d-flex;
+            @include align-items(center);
+            @include justify-content(space-around);
+
+            .item {
+                @include d-flex;
+                font-weight: 400;
+                @include align-items(center);
+                @include justify-content(center);
+            }
+        }
+
+        .calendar-month {
+            width: 100%;
+
+            .calendar-week {
+                @include d-flex;
+                padding: 8px 0;
+                @include justify-content(space-around);
+
+                .item {
+                    @include d-flex;
+                    position: relative;
+                    @include flex-wrap(wrap);
+                    line-height: $line-height;
+                    @include align-items(center);
+                    @include justify-content(center);
+                    @include border-radius($border-radius);
+                    /*&[data-quantidade]:after {
+                        top: -9px;
+                        right: -9px;
+                        height: 15px;
+                        padding: .180px;
+                        color: #FFFFFF;
+                        min-width: 15px;
+                        font-size: 68.75%;
+                        line-height: 15px;
+                        text-align: center;
+                        position: absolute;
+                        content: attr(data-quantidade);
+                        background-color: $background-emblema;
+                        @include border-radius($border-radius-circulo);
+                    }*/
+                    .group {
+                        left: 0;
+                        right: 0;
+                        bottom: 3px;
+                        width: 100%;
+                        @include d-flex;
+                        position: absolute;
+                        @include justify-content(center);
+
+                        .category {
+                            width: 4px;
+                            height: 4px;
+                            @include border-radius($border-radius-circle);
+
+                            &:before {
+                                content: '';
+                                background: inherit;
+                            }
+
+                            &:not(:last-child) {
+                                margin-right: .2680px;
+                            }
+                        }
+                    }
+
+                    &.out {
+                        opacity: .2;
+                    }
+
+                    &.highlight {
+                        cursor: pointer;
+                        font-weight: 500;
+                        color: $color-calendar-highlight;
+                        border: 2px solid $background-calendar-highlight;
+                        background-color: darken($background-calendar, 5);
+
+                        &:after {
+                            //content: attr(data-quantidade);
+                            background-color: $background-calendar-highlight;
+                        }
+                    }
+
+                    &.today {
+                        font-weight: 600;
+                        color: $color-calendar-today;
+                        border-color: $background-calendar-today;
+                        background-color: $background-calendar-today;
+                    }
+
+                    &.selected {
+                        color: $color-calendar-selected;
+                        border-color: $background-calendar-selected;
+                        background-color: $background-calendar-selected;
+                    }
+
+                    &.disabled {
+                        opacity: .2;
+                    }
+
+                    &.active,
+                    &:not(.disabled):hover {
+                        color: $color-calendar-hover;
+                        border-color: $background-calendar-hover;
+                        background-color: $background-calendar-hover;
+                    }
+                }
+            }
+        }
+
+        .calendar-day .item,
+        .calendar-month .calendar-week .item {
+            width: 35px;
+            height: 35px;
+            position: relative;
+            text-align: center;
+        }
+    }
+
+    .calendar-footer {
+        width: 100%;
+        height: 100%;
+        @include d-flex;
+        position: absolute;
+        @include flex-wrap(wrap);
+        @include transform(translateY(100%));
+        @include transition(transform 300ms);
+        background-color: $background-calendar-footer;
+
+        &.ativo {
+            @include transform(translateY(0%));
+            border-top: 1px solid $border-color-calendar-footer;
+            border-bottom: 1px solid $border-color-calendar-footer;
+        }
+
+        .calendar-footer-icon {
+            top: 16px;
+            right: 16px;
+            cursor: pointer;
+            position: absolute;
+            color: $color-calendar-footer;
+
+            &:before {
+                font-size: 200%;
+                content: mdi("chevron-down");
+                font-family: $font-family-material;
+            }
+        }
+
+        .calendar-footer-header {
+            width: 100%;
+            font-weight: 500;
+            padding: 18px 16px;
+            border-bottom: 1px solid $border-color-calendar-footer;
+        }
+
+        .calendar-footer-content {
+            width: 100%;
+            height: 80%;
+            display: inherit;
+            overflow-y: auto;
+            padding: 8px 16px;
+        }
+    }
+}

@@ -1,0 +1,116 @@
+﻿@model Application.Models.Drive.DriveFilter
+@{
+    ViewBag.Title = Title.Drive;
+}
+
+<section id="section_header" class="section-header">
+
+    <div class="title">
+
+        @if (string.IsNullOrWhiteSpace(Model.FolderName))
+        {
+            <text>@Title.Drive</text>
+        }
+        else
+        {
+            <text>@ViewBag.folderName</text>
+        }
+
+    </div>
+
+    <div class="toolbar">
+
+        <button id="new_file" type="button" class="button button-add">
+
+            @Label.File
+
+        </button>
+
+    </div>
+
+    <ol class="breadcrumb">
+
+        <li><a asp-controller="Home" asp-action="Index">@Title.Home</a></li>
+        <li>@Title.Drive</li>
+
+    </ol>
+
+</section>
+
+<section id="section_content" class="section-content">
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            <div id="message">
+
+                @await Html.PartialAsync("~/Views/Shared/Feedback/_Message.cshtml")
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            <div id="form">
+
+                @{
+                    await Html.RenderPartialAsync("~/Views/Drive/_Filter.cshtml", Model.Filter);
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <br />
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            <div class="row">
+
+                @foreach (var folder in Model.Folders)
+                {
+                    await Html.RenderPartialAsync("~/Views/Drive/_Folder.cshtml", folder);
+                }
+
+            </div>
+
+            <div class="row">
+
+                @foreach (var file in Model.Pagination)
+                {
+                    await Html.RenderPartialAsync("~/Views/Drive/_File.cshtml", file);
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+@section ScriptsFooter
+{
+    <environment include="Development">
+        <script type="text/javascript" src="~/js/vanilla/element/dropdown.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/component/modal.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/component/dropzone.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/page/drive/drive.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script type="text/javascript" src="~/js/vanilla/element/dropdown.min.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/component/modal.min.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/component/dropzone.min.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/page/drive/drive.min.js"></script>
+    </environment>
+}

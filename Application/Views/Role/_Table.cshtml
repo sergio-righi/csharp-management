@@ -1,0 +1,39 @@
+﻿
+<div class="table-responsive">
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th class="fit"></th>
+                <th>@Label.Name</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @foreach (var role in EnumExtesion.GetValues<ERole>())
+            {
+                <tr>
+
+                    <td class="fit">
+
+                        <a asp-controller="Role" 
+                           asp-action="Manage" 
+                           asp-route-id="@role" class="button button-edit button-raw"></a>
+
+                    </td>
+                    <td>@role.GetDescription()</td>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>

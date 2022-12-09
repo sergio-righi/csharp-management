@@ -1,0 +1,149 @@
+﻿
+.sidebar {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    position: fixed;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: $nav-width-xs;
+    @extend .block-selection;
+    @include transform(translateX(-100%));
+    background-color: $background-sidebar;
+    @include transition(transform 300ms ease);
+    @include box-shadow(0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12));
+
+    &.active {
+        z-index: 7;
+        @include transform(translateX(0));
+    }
+
+    &.animation-close {
+        @include transform(translateX(-100%));
+    }
+
+    .items {
+        margin-top: 16px;
+
+        & > .menu-item,
+        .menu-group > .menu-item {
+            height: 50px;
+            padding: 0 16px;
+            @include d-flex;
+            font-weight: 400;
+            font-size: 87.5%;
+            align-items: center;
+            color: $color-sidebar;
+
+            &:hover {
+                background-color: $background-sidebar-hover;
+            }
+
+            &:not(:last-child) {
+                border-bottom: 1px solid $border-color-sidebar;
+            }
+
+            i {
+                margin-right: 16px;
+            }
+        }
+
+        .menu-group {
+
+            & > .menu-item {
+                cursor: pointer;
+
+                &:after {
+                    font-size: 150%;
+                    margin-left: auto;
+                    content: mdi("chevron-down");
+                    font-family: $font-family-material;
+                }
+
+                &.active {
+                    color: $color-sidebar-active;
+                    background-color: $background-sidebar-active;
+
+                    &:after {
+                        content: mdi("chevron-up");
+                    }
+                }
+            }
+
+            .subitems {
+                max-height: 0;
+                display: none;
+                visibility: hidden;
+                @include transition(max-height 300ms ease);
+
+                &.active {
+                    display: block;
+                    max-height: 1000px;
+                    visibility: visible;
+                }
+
+                &.animation-close {
+                    max-height: 0;
+                    visibility: hidden;
+                }
+
+                & > .menu-item {
+                    height: 50px;
+                    display: block;
+                    padding: 0 38px;
+                    font-size: 87.5%;
+                    line-height: 50px;
+                    font-weight: inherit;
+                    color: $color-sidebar-subitem;
+                    background-color: $background-sidebar-subitem;
+
+                    &:hover {
+                        color: $color-sidebar-subitem-hover;
+                        background-color: $background-sidebar-subitem-hover;
+                    }
+
+                    &:not(:last-child) {
+                        border-bottom: 1px solid $border-color-sidebar-subitem;
+                    }
+                }
+            }
+        }
+
+        .group-title {
+            padding: 0 16px;
+            font-weight: 500;
+            margin: 16px auto;
+            font-size: 81.25%;
+            text-transform: uppercase;
+        }
+    }
+}
+
+@media (min-width: $media-sm) {
+
+    .sidebar {
+        width: $nav-width-sm;
+    }
+}
+
+@media (min-width: $media-md) {
+
+    .sidebar {
+        width: $nav-width-md;
+    }
+}
+
+@media (min-width: $media-lg) {
+
+    .sidebar {
+        width: $nav-width-lg;
+    }
+}
+
+@media (min-width: $media-xl) {
+
+    .sidebar {
+        width: $nav-width-xl;
+    }
+}

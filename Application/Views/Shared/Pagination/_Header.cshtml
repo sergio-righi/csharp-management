@@ -1,0 +1,9 @@
+﻿
+@if (Model.Pagination.Total > 0)
+{
+    <div class="f-right mb-2">
+
+        @string.Format(Message.PaginationHeader, (Model.Pagination.Show * Model.Pagination.Page - Model.Pagination.Show + 1), (Model.Pagination.Show * Model.Pagination.Page > Model.Pagination.Total ? Model.Pagination.Total : Model.Pagination.Show * Model.Pagination.Page), Model.Pagination.Total)
+
+    </div>
+}

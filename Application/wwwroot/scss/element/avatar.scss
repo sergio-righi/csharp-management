@@ -1,0 +1,18 @@
+﻿
+.avatar {
+    width: 40px;
+    height: 40px;
+    @include border-radius($border-radius-circle);
+}
+
+[data-letter]:before {
+    display: block;
+    font-size: 16px;
+    @extend .avatar;
+    line-height: 40px;
+    text-align: center;
+    color: $color-avatar;
+    vertical-align: middle;
+    content: attr(data-letter);
+    background-color: $background-avatar;
+}

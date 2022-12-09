@@ -1,0 +1,14 @@
+﻿@{
+    int id = (int)ViewData["personId"];
+}
+
+@if ((EPerson)ViewData["typeId"] == EPerson.Natural)
+{
+    <li><a asp-controller="NaturalPerson" asp-action="Index">@Title.NaturalPerson</a></li>
+    <li><a asp-controller="NaturalPerson" asp-action="Manage" asp-route-id="@id">@Title.ManageNaturalPerson</a></li>
+}
+else
+{
+    <li><a asp-controller="JuridicalPerson" asp-action="Index">@Title.JuridicalPerson</a></li>
+    <li><a asp-controller="JuridicalPerson" asp-action="Manage" asp-route-id="@id">@Title.ManageJuridicalPerson</a></li>
+}

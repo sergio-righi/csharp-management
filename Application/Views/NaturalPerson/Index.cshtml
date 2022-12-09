@@ -1,0 +1,69 @@
+﻿@model Application.Models.NaturalPerson.NaturalPersonFilter
+@{
+    ViewBag.Title = Title.NaturalPerson;
+}
+
+<section id="section_header" class="section-header">
+
+    <div class="title">@Title.NaturalPerson</div>
+
+    <div class="toolbar">
+
+        <a asp-controller="NaturalPerson" asp-action="Manage" asp-route-id="0" class="button button-add">
+
+            @Button.Create
+
+        </a>
+
+    </div>
+
+    <ol class="breadcrumb">
+
+        <li><a asp-controller="Home" asp-action="Index">@Title.Home</a></li>
+        <li>@Title.NaturalPerson</li>
+
+    </ol>
+
+</section>
+
+<section id="section_content" class="section-content">
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            <div id="message">
+
+                @await Html.PartialAsync("~/Views/Shared/Feedback/_Message.cshtml")
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div id="filter">
+
+                @{
+                    await Html.RenderPartialAsync("~/Views/NaturalPerson/_Filter.cshtml", Model.Filter);
+                }
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div id="result">
+
+                @{
+                    await Html.RenderPartialAsync("~/Views/NaturalPerson/_Table.cshtml", Model);
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

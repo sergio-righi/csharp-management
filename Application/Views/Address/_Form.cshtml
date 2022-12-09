@@ -1,0 +1,168 @@
+﻿@namespace Domain.Entity 
+@model Application.Models.Address.AddressModel
+
+@using (Html.BeginForm("Index", "Address", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Address.Id)
+    @Html.HiddenFor(model => model.Address.PersonId)
+    @Html.HiddenFor(model => model.Address.NotPersonTypeId)
+
+    <div class="row">
+
+        <div class="col col-12 col-sm-6">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Address.TypeId, new { @class = "required" })
+
+                @Html.DropDownListFor(model => model.Address.TypeId, EAddress.Other.GetSelectList<EAddress>(), EStringGender.Male.GetSelectFormat(Label.Type), new { @required = "required" })
+
+                <span>@Html.ValidationMessageFor(model => model.Address.TypeId)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-6">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Address.Zipcode, new { @class = "required" })
+
+                @Html.TextBoxFor(model => model.Address.Zipcode, new { @class = "m-cep", @required = "required" })
+
+                <span>@Html.ValidationMessageFor(model => model.Address.Zipcode)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-6 col-md-4">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Address.NotCountryId, new { @class = "" })
+
+                @Html.DropDownListFor(model => model.Address.NotCountryId, Model.Countries.AsSelectList(nameof(Country.Id), nameof(Country.Name), EStringGender.Male.GetSelectFormat(Label.Country)), new { id = "dropdownlist_country" })
+
+                <span>@Html.ValidationMessageFor(model => model.Address.NotCountryId)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-6 col-md-4">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Address.NotStateId, new { @class = "" })
+
+                @Html.DropDownListFor(model => model.Address.NotStateId, Model.States.AsSelectList(nameof(State.Id), nameof(State.Name), EStringGender.Male.GetSelectFormat(Label.State)), new { id = "dropdownlist_state" })
+
+                <span>@Html.ValidationMessageFor(model => model.Address.NotStateId)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-6 col-md-4">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Address.CityId, new { @class = "required" })
+
+                @Html.DropDownListFor(model => model.Address.CityId, Model.Citites.AsSelectList(nameof(City.Id), nameof(City.Name), EStringGender.Female.GetSelectFormat(Label.City)), new { id = "dropdownlist_city" })
+
+                <span>@Html.ValidationMessageFor(model => model.Address.CityId)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-6 col-md-4">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Address.Street, new { @class = "required" })
+
+                @Html.TextBoxFor(model => model.Address.Street, new { @required = "required" })
+
+                <span>@Html.ValidationMessageFor(model => model.Address.Street)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-6 col-md-4">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Address.Neighborhood, new { @class = "required" })
+
+                @Html.TextBoxFor(model => model.Address.Neighborhood, new { @required = "required" })
+
+                <span>@Html.ValidationMessageFor(model => model.Address.Neighborhood)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-3 col-md-2">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Address.Number, new { @class = "required" })
+
+                @Html.TextBoxFor(model => model.Address.Number, new { @required = "required" })
+
+                <span>@Html.ValidationMessageFor(model => model.Address.Number)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-3 col-md-2">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Address.Complement, new { @class = "" })
+
+                @Html.TextBoxFor(model => model.Address.Complement, new { @class = "" })
+
+                <span>@Html.ValidationMessageFor(model => model.Address.Complement)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div class="form-group">
+
+                @if (Model.Address.Id.IsPositive())
+                {
+                    <button type="submit" class="button button-save">@Button.Save</button>
+
+                    <a asp-controller="Address"
+                       asp-action="Index"
+                       asp-route-id="0"
+                       asp-route-personId="@Model.Address.PersonId" class="button button-clean">
+
+                        @Button.Clean
+
+                    </a>
+                }
+                else
+                {
+                    <button type="submit" class="button button-add">@Button.Create</button>
+                }
+
+            </div>
+
+            <br />
+
+        </div>
+
+    </div>
+}

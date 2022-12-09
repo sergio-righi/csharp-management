@@ -1,0 +1,34 @@
+﻿@model Domain.Entity.Folder
+
+<div class="col col-6 col-sm-3 col-md-2">
+
+    <a asp-controller="Drive" asp-action="Index" asp-route-ReferenceId="@Model.Id" class="card card-fluid block-selection" data-folder="@Model.Id">
+
+        <div class="card-avatar">
+
+            <div class="card-description">
+
+                <h6>@Model.Name</h6>
+
+            </div>
+
+            <div class="card-icon">
+
+                <div class="dropdown">
+
+                    <div class="dropdown-trigger">
+
+                        <i class="mdi mdi-dots-vertical"></i>
+
+                    </div>
+
+                    <ul class="dropdown-content left" tabindex="1"></ul>
+
+                </div>
+            </div>
+
+        </div>
+
+    </a>
+
+</div>

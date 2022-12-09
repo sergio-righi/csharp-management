@@ -1,0 +1,349 @@
+﻿
+.datetime-overlay {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9;
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: fixed;
+    overflow-y: auto;
+    background-color: $background-overlay;
+
+    &.active {
+        display: block;
+    }
+
+    .datetime {
+        @extend .box-shadow;
+        @extend .center-absolute;
+    }
+}
+
+.datetime {
+    top: 100%;
+    z-index: 9;
+    min-width: 250px;
+    position: absolute;
+    @extend .box-shadow;
+    background-color: $background-datetime;
+
+    .datetime-header {
+        color: $color-datetime-header;
+        background-color: $background-datetime-header;
+
+        .calendar-header {
+            height: 80px;
+            display: none;
+            text-align: center;
+            @include align-items(center);
+
+            &.active {
+                @include d-flex;
+            }
+
+            .calendar-day {
+                width: 33.33%;
+
+                .day {
+                    font-size: 150%;
+                    font-weight: 500;
+                }
+
+                .weekday {
+                    font-size: 62.5%;
+                    font-weight: 500;
+                }
+            }
+
+            .calendar-month {
+
+                .month {
+                    text-transform: uppercase;
+                }
+            }
+
+            .calendar-year {
+            }
+
+            .calendar-month,
+            .calendar-year {
+                width: 33.33%;
+                font-weight: 600;
+
+                .arrow {
+
+                    &.up:before,
+                    &.down:before {
+                        cursor: pointer;
+                        color: $color-datetime-arrow;
+                        font-family: $font-family-material;
+                    }
+
+                    &.up:before {
+                        content: mdi("chevron-up");
+                    }
+
+                    &.down:before {
+                        content: mdi("chevron-down");
+                    }
+                }
+            }
+        }
+
+        .clock-header {
+            height: 80px;
+            display: none;
+            text-align: center;
+            color: $color-datetime-header;
+            background-color: $background-datetime-header;
+
+            &.active {
+                @include d-flex;
+                @extend .align-items-center;
+                @extend .justify-content-center;
+            }
+
+            .clock-hour {
+
+                &:after {
+                    content: 'h';
+                }
+            }
+
+            .clock-minute {
+
+                &:after {
+                    content: 'min';
+                }
+            }
+
+            .clock-hour,
+            .clock-minute {
+                font-size: 250%;
+                font-weight: 600;
+                line-height: 100px;
+            }
+        }
+    }
+
+    .datetime-content {
+        position: relative;
+
+        .calendar-content {
+            width: 100%;
+            display: none;
+
+            &.active {
+                display: block;
+            }
+
+            .calendar-day {
+                width: 100%;
+                height: 35px;
+                @include d-flex;
+                @include align-items(center);
+                @include justify-content(center);
+
+                .item {
+                    @include d-flex;
+                    font-weight: 400;
+                    font-size: 81.25%;
+                    text-transform: uppercase;
+                    @include align-items(center);
+                    @include justify-content(center);
+                }
+            }
+
+            .calendar-month {
+                width: 100%;
+
+                .calendar-week {
+                    @include d-flex;
+
+                    .item {
+                        @include d-flex;
+                        cursor: pointer;
+                        font-size: 87.5%;
+                        position: relative;
+                        @include align-items(center);
+                        @include flex-direction(column);
+                        @include justify-content(center);
+
+                        &.today {
+                            font-weight: 600;
+                            color: $color-datetime-today;
+                            background-color: $color-primary-4;
+                        }
+
+                        &.selected {
+                            color: $color-datetime-selected;
+                            background-color: $background-datetime-selected;
+                        }
+
+                        &.disabled {
+                            opacity: .2;
+                            cursor: default;
+                        }
+                    }
+                }
+            }
+
+            .calendar-day .item,
+            .calendar-month .calendar-week .item {
+                width: 20%;
+                height: 35px;
+                position: relative;
+                text-align: center;
+            }
+        }
+
+        .clock-content {
+            width: 100%;
+            display: none;
+            position: relative;
+            @include align-items(center);
+
+            &.active {
+                @include d-flex;
+            }
+
+            .clock-hour {
+
+                .hour {
+                    width: 75px;
+                    text-align: center;
+                }
+            }
+
+            .clock-minute {
+
+                .minute {
+                    width: 75px;
+                    text-align: center;
+                }
+            }
+
+            .clock-hour,
+            .clock-minute {
+                width: 100%;
+                padding: 16px;
+                @include d-flex;
+                @include align-items(center);
+                @include flex-direction(column);
+                @include justify-content(center);
+            }
+
+            .clock-hour .arrow,
+            .clock-minute .arrow {
+
+                &.up:before,
+                &.down:before {
+                    margin: 16px 0;
+                    cursor: pointer;
+                    font-size: 200%;
+                    vertical-align: sub;
+                    color: $color-calendar;
+                    font-family: $font-family-material;
+                }
+
+                &.up:before {
+                    content: mdi("chevron-up");
+                }
+
+                &.down:before {
+                    content: mdi("chevron-down");
+                }
+            }
+        }
+    }
+
+    .datetime-footer {
+
+        .control-calendar {
+
+            .control-item {
+
+                &.calendar {
+
+                    &:before {
+                        content: mdi("clock-outline");
+                    }
+                }
+
+                &.clean {
+
+                    &:before {
+                        content: mdi("eraser");
+                    }
+                }
+
+                &.today {
+
+                    &:before {
+                        content: mdi("calendar-today");
+                    }
+                }
+
+                &.ok {
+
+                    &:before {
+                        content: mdi("check-bold");
+                    }
+                }
+            }
+        }
+
+        .control-clock {
+
+            .control-item {
+
+                &.clock {
+
+                    &:before {
+                        content: mdi("calendar-blank");
+                    }
+                }
+
+                &.ok {
+
+                    &:before {
+                        content: mdi("check-bold");
+                    }
+                }
+            }
+        }
+
+        .control-clock,
+        .control-calendar {
+            display: none;
+            background-color: $background-datetime-control;
+
+            &.active {
+                @include d-flex;
+                @include align-items(center);
+            }
+
+            .control-item {
+                width: 100%;
+                padding: 8px;
+                font-size: 75%;
+                cursor: pointer;
+                font-weight: 500;
+                text-align: center;
+                text-transform: uppercase;
+
+                &:hover {
+                    background-color: $background-datetime-control-hover;
+                }
+
+                &:before {
+                    font-size: 125%;
+                    font-family: $font-family-material;
+                }
+            }
+        }
+    }
+}

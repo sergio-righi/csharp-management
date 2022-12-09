@@ -1,0 +1,101 @@
+﻿
+.dropdown {
+    height: 100%;
+    cursor: pointer;
+    position: relative;
+    @include d-inline-flex;
+    @include align-items(center);
+    @include justify-content(center);
+
+    &.active {
+        z-index: 3;
+
+        .dropdown-content {
+            visibility: visible;
+        }
+    }
+
+    &.arrow {
+
+        &:after {
+            margin-left: 16px;
+            content: mdi("menu-down");
+            font-family: $font-family-material;
+        }
+    }
+
+    .dropdown-trigger {
+
+        img {
+            width: 40px;
+        }
+    }
+
+    .dropdown-content {
+        left: 0;
+        top: 100%;
+        z-index: -1;
+        min-width: 200px;
+        overflow-y: auto;
+        max-width: 350px;
+        max-height: 350px;
+        position: absolute;
+        visibility: hidden;
+        white-space: nowrap;
+        list-style-type: none;
+        padding-left: 0 !important;
+        background-color: $background-dropdown;
+        @include box-shadow(0 4px 4px 1px rgba(0, 0, 0, .12));
+
+        &.left {
+            right: 0;
+            left: unset;
+        }
+
+        li {
+            width: 100%;
+            height: 45px;
+            line-height: 1;
+            @include d-flex;
+            padding: 0 12px;
+            text-align: left;
+            font-size: 87.5%;
+            list-style: none;
+            color: $color-dropdown;
+            @include align-items(center);
+
+            &:not(.item-title):hover {
+                color: $color-dropdown-hover;
+                background-color: $background-dropdown-hover;
+            }
+
+            &:not(.item-title) {
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid $border-color-dropdown;
+                }
+            }
+
+            &.item-title {
+                font-size: 75%;
+                font-weight: 400;
+                padding-bottom: 8px;
+            }
+
+            a {
+                height: 100%;
+                color: inherit;
+                width: inherit;
+                @include d-flex;
+                position: relative;
+                white-space: nowrap;
+                font-weight: inherit;
+                @include align-items(center);
+            }
+
+            img {
+                width: 25px;
+            }
+        }
+    }
+}

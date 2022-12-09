@@ -1,0 +1,146 @@
+﻿
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    font-family: $font-family;
+    box-sizing: border-box;
+    outline: none;
+    border: 0;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: auto;
+    @include d-flex;
+    min-height: 100%;
+    position: relative;
+    color: $color-content;
+    @include flex-direction(column);
+    background-color: $background-content;
+
+    content {
+        margin: 0 auto;
+        @include d-flex;
+        @include flex(1);
+        width: $width-xs;
+        position: relative;
+        @include flex-direction(column);
+
+        main {
+            height: 100%;
+            padding: 16px 0;
+            @include flex(1);
+
+            .section-header {
+                @extend .container-fluid;
+            }
+
+            .section-content {
+                @extend .container-fluid;
+            }
+        }
+    }
+}
+
+hr {
+    width: 100%;
+    height: 1px;
+    border: none;
+    background-color: $background-horizontal-line;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: middle;
+    @include border-radius($border-radius);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    overflow: visible;
+}
+
+::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    min-height: 28px;
+    padding: 100px 0 0;
+    border: solid transparent;
+    background-clip: padding-box;
+    border-width: 1px 1px 1px 1px;
+    background-color: $background-scrollbar-track;
+    @include border-radius($border-radius-rounded);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: $background-scrollbar-hover;
+}
+
+::-webkit-scrollbar-track {
+    border-width: 0 0 0 4px;
+    border: solid transparent;
+    background-clip: padding-box;
+}
+
+::-webkit-scrollbar-track:hover {
+    background-color: $background-scrollbar-track-hover;
+}
+
+@media(min-width: $media-sm) {
+
+    body {
+
+        content {
+            width: $width-sm;
+        }
+    }
+}
+
+@media(min-width: $media-md) {
+
+    body {
+
+        content {
+            width: $width-md;
+        }
+    }
+}
+
+@media(min-width: $media-lg) {
+
+    body {
+
+        content {
+            width: $width-lg;
+        }
+    }
+}
+
+@media(min-width: $media-xl) {
+
+    body {
+
+        content {
+            width: $width-xl;
+        }
+    }
+}

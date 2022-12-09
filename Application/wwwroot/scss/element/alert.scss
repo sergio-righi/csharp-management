@@ -1,0 +1,175 @@
+﻿
+.alert {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    @include d-flex;
+    font-size: 87.5%;
+    position: relative;
+    text-align: center;
+    @include flex-wrap(wrap);
+    @include align-items(center);
+    @include justify-content(center);
+    @include border-radius($border-radius);
+
+    &:before {
+        width: 100%;
+        font-size: 300%;
+    }
+
+    &.info:before,
+    &.error:before,
+    &.success:before,
+    &.warning:before,
+    .alert-close:after,
+    .alert-control:after {
+        font-family: $font-family-material;
+    }
+
+    .alert-close,
+    .alert-control,
+    .alert-button {
+        align-self: center;
+
+        &:after {
+            font-size: 125%;
+        }
+    }
+
+    .alert-close {
+        top: 0;
+        right: .48px;
+        cursor: pointer;
+        font-size: 150%;
+        position: absolute;
+
+        &:after {
+            content: mdi("close");
+        }
+    }
+
+    .alert-control {
+
+        &:after {
+            content: mdi("open-in-new");
+        }
+    }
+
+    .alert-button {
+        margin: 8px 0;
+        @extend .button;
+        @extend .button-small;
+    }
+
+    &.error {
+        color: $color-alert-error;
+        background-color: $background-alert-error;
+
+        &:before {
+            content: mdi("alert-rhombus-outline");
+        }
+
+        .alert-button {
+            color: $color-alert-error !important;
+            background-color: darken($background-alert-error, 10);
+        }
+    }
+
+    &.success {
+        color: $color-alert-success;
+        background-color: $background-alert-success;
+
+        &:before {
+            content: mdi("check-box-outline");
+        }
+
+        .alert-button {
+            color: $color-alert-success !important;
+            background-color: darken($background-alert-success, 10);
+        }
+    }
+
+    &.warning {
+        color: $color-alert-warning;
+        background-color: $background-alert-warning;
+
+        &:before {
+            content: mdi("alert-box-outline");
+        }
+
+        .alert-button {
+            color: $color-alert-warning !important;
+            background-color: darken($background-alert-warning, 10);
+        }
+    }
+
+    &.info {
+        color: $color-alert-info;
+        background-color: $background-alert-info;
+
+        &:before {
+            content: mdi("information-outline");
+        }
+
+        .alert-button {
+            color: $color-alert-info !important;
+            background-color: darken($background-alert-info, 10);
+        }
+    }
+
+    .alert-content {
+        width: 100%;
+        color: inherit;
+        margin-right: auto;
+
+        .alert-title {
+            display: block;
+            font-size: 125%;
+            font-weight: 600;
+
+            & + .alert-description {
+                margin-top: 8px;
+            }
+        }
+
+        .alert-description {
+            font-size: 100%;
+            font-weight: 300;
+            line-height: $line-height;
+        }
+
+        a {
+            color: inherit;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+}
+
+@media(min-width: $media-sm) {
+
+    .alert {
+        @include flex-wrap(unset);
+        @include justify-content(unset);
+
+        &:before {
+            width: unset;
+            color: inherit;
+            font-size: 200%;
+            margin-left: 6px;
+            margin-right: 10px;
+        }
+
+        .alert-close,
+        .alert-button,
+        .alert-control {
+            position: unset;
+            margin-left: 10px;
+            margin-right: 6px;
+        }
+
+        .alert-content {
+            text-align: left;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+/* BEGIN Regular */
+@font-face {
+	font-family: $font-family;
+	@include fontdef-ttf($font-family, "Regular");
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: $font-family;
+	@include fontdef-ttf($font-family, "Regular");
+	font-weight: normal;
+	font-style: normal;
+}
+/* END Regular */

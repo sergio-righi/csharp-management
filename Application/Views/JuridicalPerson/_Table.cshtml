@@ -1,0 +1,74 @@
+﻿@model Application.Models.JuridicalPerson.JuridicalPersonFilter
+
+@if (Model.Pagination.Count > 0)
+{
+    await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Header.cshtml");
+
+    <div class="table-responsive">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th class="fit"></th>
+                    <th>
+
+                        <a asp-controller="JuridicalPerson"
+                           asp-action="Index"
+                           asp-route-Sort="1"
+                           asp-route-Name="@Model.Filter.Name"
+                           asp-route-Code="@Model.Filter.Code"
+                           asp-route-Direction="@Model.Filter.GetDirection(Model.Filter.Sort)"
+                           asp-route-Activated="@Model.Filter.Activated">
+                            @Label.Name
+                        </a>
+
+                    </th>
+                    <th>@Label.CNPJ</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var juridicalPerson in Model.Pagination)
+                {
+                    <tr>
+
+                        <td class="fit">
+
+                            <a asp-controller="JuridicalPerson" 
+                               asp-action="Manage" 
+                               asp-route-id="@juridicalPerson.Id" class="button button-edit button-raw"></a>
+
+                        </td>
+                        <td>@juridicalPerson.CompanyName</td>
+                        <td>@juridicalPerson.CNPJ.ToCNPJ()</td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    if (Model.Pagination.Quantity > 1)
+    {
+        <ul class="pagination">
+
+            @{
+                await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Footer.cshtml");
+            }
+
+        </ul>
+    }
+}
+else
+{
+    @Html.Feedback(EFeedback.Info, Message.NothingToList, false)
+}

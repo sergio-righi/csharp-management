@@ -1,0 +1,105 @@
+﻿@model Application.Models.Item.ItemFilter
+
+@if (Model.Pagination.Count > 0)
+{
+    await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Header.cshtml");
+
+    <div class="table-responsive">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th class="fit"></th>
+                    <th>
+
+                        <a asp-controller="Item"
+                           asp-action="Index"
+                           asp-route-Sort="1"
+                           asp-route-Name="@Model.Filter.Name"
+                           asp-route-Direction="@Model.Filter.GetDirection(Model.Filter.Sort)"
+                           asp-route-Activated="@Model.Filter.Activated"
+                           asp-route-ReferenceId="@Model.Filter.ReferenceId">
+                            @Label.Name
+                        </a>
+
+                    </th>
+
+                    <th>@Label.Activated</th>
+                    <th class="fit">@Title.Product</th>
+                    <th class="fit">@Title.Item</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model.Pagination)
+                {
+                    <tr>
+
+                        <td class="fit">
+
+                            <a asp-controller="Item" 
+                               asp-action="Manage" 
+                               asp-route-itemId="@item.ItemId" 
+                               asp-route-id="@item.Id" class="button button-edit button-raw"></a>
+
+                        </td>
+                        <td>@item.Name</td>
+                        <td>
+
+                            @if (item.IsActivated)
+                            {
+                                <text>@Label.Yes</text>
+                            }
+                            else
+                            {
+                                <text>@Label.No</text>
+                            }
+
+                        </td>
+
+                        <td>
+
+                            <a asp-controller="Product" 
+                               asp-action="Index" 
+                               asp-route-referenceId="@item.Id" class="button button-config button-raw"></a>
+
+                        </td>
+
+                        <td>
+
+                            <a asp-controller="Item" 
+                               asp-action="Index" 
+                               asp-route-referenceId="@item.Id" class="button button-config button-raw"></a>
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    if (Model.Pagination.Quantity > 1)
+    {
+        <ul class="pagination">
+
+            @{
+                await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Footer.cshtml");
+            }
+
+        </ul>
+    }
+}
+else
+{
+    @Html.Feedback(EFeedback.Info, Message.NothingToList, false)
+}

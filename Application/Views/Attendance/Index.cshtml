@@ -1,0 +1,69 @@
+﻿@model Application.Models.Attendance.AttendanceFilter
+@{
+    ViewBag.Title = Title.Attendance;
+}
+
+<section id="section_header" class="section-header">
+
+    <div class="title">@Title.Attendance</div>
+
+    <div class="toolbar"></div>
+
+    <ol class="breadcrumb">
+
+        <li><a asp-controller="Home" asp-action="Index">@Title.Home</a></li>
+        <li>@Title.Attendance</li>
+
+    </ol>
+
+</section>
+
+<section id="section_content" class="section-content">
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            <div id="message">
+
+                @await Html.PartialAsync("~/Views/Shared/Feedback/_Message.cshtml")
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            <div id="form">
+
+                @{
+                    await Html.RenderPartialAsync("~/Views/Attendance/_Filter.cshtml", Model);
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            <div id="table">
+
+                @{
+                    await Html.RenderPartialAsync("~/Views/Attendance/_Calendar.cshtml", Model);
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

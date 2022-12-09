@@ -1,0 +1,19 @@
+﻿@{
+    int pagina = int.Parse(TempData["feedback"].ToString());
+}
+
+<div class="alert success">
+
+    <div class="alert-content">
+
+        <div class="alert-description">
+
+            @TempData["feedback"].ToString()
+
+        </div>
+
+    </div>
+
+    <div class="alert-close" data-dismiss="alert"></div>
+
+</div>

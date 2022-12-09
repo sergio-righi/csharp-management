@@ -1,0 +1,50 @@
+﻿@model Domain.Entity.File
+
+<div class="col col-6 col-sm-3 col-md-2">
+
+    <div class="card card-fluid block-selection file" data-file="@Model.Id">
+
+        <div class="card-content h-100">
+
+            @if (FileManagement.IsImage(Model.Extension))
+            {
+                <img src="@($"{FileManagement.Read}{FileManagement.GetExtensionDirectory(Model.Extension)}{Model.GeneratedName}{Model.Extension}")">
+            }
+            else
+            {
+                <div class="file-thumb">
+
+                    <i class="file-icon-@Model.Extension.TrimStart('.')"></i>
+
+                </div>
+            }
+
+        </div>
+
+        <div class="card-separator"></div>
+
+        <div class="card-control">
+
+            <small class="card-header o-ellipsis">@Model.Name</small>
+
+            <div class="card-icon">
+
+                <div class="dropdown">
+
+                    <div class="dropdown-trigger">
+
+                        <i class="mdi mdi-dots-vertical"></i>
+
+                    </div>
+
+                    <ul class="dropdown-content left" tabindex="1"></ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

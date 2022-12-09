@@ -1,0 +1,165 @@
+﻿@model Domain.Entity.NaturalPerson
+
+@using (Html.BeginForm("Manage", "NaturalPerson", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.Person.PhotoId)
+
+    <div class="row">
+
+        <div class="col col-12 col-sm-6">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.GivenName, new { @class = "required" })
+
+                @Html.TextBoxFor(model => model.GivenName, string.Empty, new { @autofocus = "autofocus", @required = "required" })
+
+                <span>@Html.ValidationMessageFor(model => model.GivenName)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-6">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Surname, new { @class = "required" })
+
+                @Html.TextBoxFor(model => model.Surname, string.Empty, new { @required = "required" })
+
+                <span>@Html.ValidationMessageFor(model => model.Surname)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-6 col-md-4">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.SocialName, new { @class = "" })
+
+                @Html.TextBoxFor(model => model.SocialName, string.Empty, new { @class = "" })
+
+                <span>@Html.ValidationMessageFor(model => model.SocialName)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-3 col-md-4">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Birthday, new { @class = "" })
+
+                @Html.TextBoxFor(model => model.Birthday, StringFormatHelper.Date, new { @class = "m-date" })
+
+                <span>@Html.ValidationMessageFor(model => model.Birthday)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-3 col-md-4">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.GenderId, new { @class = "required" })
+
+                @Html.DropDownListFor(model => model.GenderId, EGender.Other.GetSelectList<EGender>(), EStringGender.Male.GetSelectFormat(Label.Gender), new { @required = "required" })
+
+                <span>@Html.ValidationMessageFor(model => model.GenderId)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div class="form-group">
+
+                <div class="checkbox">
+
+                    @Html.CheckBoxFor(model => model.Person.IsActivated, new { @class = "" })
+
+                    @Html.LabelFor(model => model.Person.IsActivated, new { @class = "" })
+
+                </div>
+
+                <span>@Html.ValidationMessageFor(model => model.Person.IsActivated)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div class="form-group">
+
+                <label>@Label.Photo</label>
+
+                <div class="file">
+
+                    @Html.TextBoxFor(model => model.Person.NotPhoto.HttpFile, string.Empty, new { @type = "file" })
+
+                    @Html.LabelFor(model => model.Person.NotPhoto.HttpFile, EStringGender.Female.GetSelectFormat(Label.Photo), new { @data_message = "{counter} arquivos selecionados" })
+
+                </div>
+
+                @if (Model.Person?.Photo != null)
+                {
+                    <div class="checkbox">
+
+                        @Html.CheckBoxFor(model => model.Person.NotPhoto.IsSetDefault, new { @class = "" })
+
+                        @Html.LabelFor(model => model.Person.NotPhoto.IsSetDefault, Message.SetEmpty, new { @class = "" })
+
+                    </div>
+
+                    <span>@Html.ValidationMessageFor(model => model.Person.NotPhoto.IsSetDefault)</span>
+                }
+
+            </div>
+
+        </div>
+
+        @if (Model.Person?.Photo != null)
+        {
+            <div class="col col-12 col-sm-4 col-md-3">
+
+                <div class="card">
+
+                    <div class="card-content">
+
+                        <img src="@($"{FileManagement.Avatar.Read}{Model.Person.Photo.NotGeneratedName}")" />
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+        <div class="col col-12">
+
+            <div class="form-group">
+
+                @if (Model.Id.IsPositive())
+                {
+                    <button type="submit" class="button button-save">@Button.Save</button>
+                }
+                else
+                {
+                    <button type="submit" class="button button-add">@Button.Create</button>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+}

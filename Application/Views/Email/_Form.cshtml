@@ -1,0 +1,86 @@
+﻿@model Domain.Entity.Email
+@{
+    Html.ViewData.TemplateInfo.HtmlFieldPrefix = nameof(Application.Models.Email.EmailModel.Email);
+}
+
+@using (Html.BeginForm("Index", "Email", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.PersonId)
+    @Html.HiddenFor(model => model.NotPersonTypeId)
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.TypeId, new { @class = "required" })
+
+                @Html.DropDownListFor(model => model.TypeId, EEmail.Other.GetSelectList<EEmail>(), EStringGender.Male.GetSelectFormat(Label.Type), new { @required = "required" })
+
+                <span>@Html.ValidationMessageFor(model => model.TypeId)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-6">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Address, new { @class = "required" })
+
+                @Html.TextBoxFor(model => model.Address, string.Empty, new { @type = "email", @required = "required", @autocomplete = "off" })
+
+                <span>@Html.ValidationMessageFor(model => model.Address)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-6">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.NotAddress, new { @class = "required" })
+
+                @Html.TextBoxFor(model => model.NotAddress, string.Empty, new { @type = "email", @required = "required", @autocomplete = "off" })
+
+                <span>@Html.ValidationMessageFor(model => model.NotAddress)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div class="form-group">
+
+                @if (Model.Id.IsPositive())
+                {
+                    <button type="submit" class="button button-save">@Button.Save</button>
+
+                    <a asp-controller="Email" 
+                       asp-action="Index" 
+                       asp-route-id="0" 
+                       asp-route-personId="@Model.PersonId" class="button button-clean">
+
+                        @Button.Clean
+
+                    </a>
+                }
+                else
+                {
+                    <button type="submit" class="button button-add">@Button.Create</button>
+                }
+
+            </div>
+
+            <br />
+
+        </div>
+
+    </div>
+}

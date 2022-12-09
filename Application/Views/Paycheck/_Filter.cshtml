@@ -1,0 +1,47 @@
+﻿@model Application.Models.FilterViewModel<Domain.Entity.Specific.SPaycheckPerson>
+
+@using (Html.BeginForm("Index", "Paycheck", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Sort)
+    @Html.HiddenFor(model => model.Direction)
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            <div class="form-group">
+
+                <label>@Label.Name</label>
+
+                @Html.TextBoxFor(model => model.Name, new { @autocomplete = "off" })
+
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div class="form-group">
+
+                <button type="submit" class="button button-search">
+
+                    @Button.Find
+
+                </button>
+
+                <a asp-controller="Paycheck"
+                   asp-action="Index"
+                   asp-route-referenceId="@Model.ReferenceId" class="button button-clean">
+
+                    @Button.Clean
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+}

@@ -1,0 +1,160 @@
+﻿
+sup {
+    vertical-align: super;
+}
+
+sub {
+    vertical-align: sub;
+}
+
+a {
+    cursor: pointer;
+    font-weight: 700;
+    color: $color-anchor;
+    text-decoration: none !important;
+
+    &:not(.button):hover {
+        color: lighten($color-anchor, 5);
+    }
+}
+
+html {
+    line-height: $line-height;
+
+    @media only screen and (min-width: 0) {
+        font-size: 14px;
+    }
+
+    @media only screen and (min-width: $media-md) {
+        font-size: 16px;
+    }
+
+    @media only screen and (min-width: $media-lg) {
+        font-size: 14px;
+    }
+
+    color: $color-font;
+    font-family: $font-family;
+    font-weight: $font-weight;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    width: 100%;
+    display: block;
+    text-transform: inherit;
+    text-decoration: inherit;
+    line-height: $line-height;
+    -webkit-font-smoothing: antialiased;
+}
+
+// Header Styles
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    font-weight: inherit;
+}
+
+h1,
+h2 {
+    font-weight: 300;
+}
+
+h1 {
+    font-size: $fontsize-h1;
+    //letter-spacing: -.0156280px;
+    //margin: ($fontsize-h1 / 1.5) 0 ($fontsize-h1 / 2.5) 0;
+}
+
+h2 {
+    font-size: $fontsize-h2;
+    //letter-spacing: -.00833333348px;
+    //margin: ($fontsize-h2 / 1.5) 0 ($fontsize-h2 / 2.5) 0;
+}
+
+h3,
+h4,
+h5 {
+    font-weight: 400;
+}
+
+h3 {
+    font-size: $fontsize-h3;
+    //margin: ($fontsize-h3 / 1.5) 0 ($fontsize-h3 / 2.5) 0;
+}
+
+h4 {
+    font-size: $fontsize-h4;
+    //letter-spacing: .00735294132px;
+    //margin: ($fontsize-h4 / 1.5) 0 ($fontsize-h4 / 2.5) 0;
+}
+
+h5 {
+    font-size: $fontsize-h5;
+    //margin: ($fontsize-h5 / 1.5) 0 ($fontsize-h5 / 2.5) 0;
+}
+
+h6 {
+    font-weight: 500;
+    font-size: $fontsize-h6;
+    //letter-spacing: .01280px;
+    //margin: ($fontsize-h6 / 1.5) 0 ($fontsize-h6 / 2.5) 0;
+}
+
+blockquote {
+    margin: 32px 0;
+    padding: 0 0 0 16px;
+    line-height: $line-height;
+    border-left: 4px solid #DEDEDE;
+
+    cite {
+        font-style: normal;
+
+        &:after,
+        &:before {
+            content: '"';
+        }
+    }
+
+    author {
+        color: #A5A5A5;
+        display: block;
+        margin-top: 8px;
+
+        &:before {
+            content: ' — ';
+            font-weight: 500;
+            margin-right: 6px;
+        }
+    }
+}
+
+p {
+    width: 100%;
+    display: block;
+    font-size: 100%;
+    color: $color-font;
+    margin-bottom: 10px;
+    text-transform: inherit;
+    letter-spacing: .031280px;
+    line-height: $line-height;
+    text-decoration: inherit;
+    -webkit-font-smoothing: antialiased;
+
+    a {
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+em {
+    font-style: italic;
+}
+
+strong {
+    font-weight: 500;
+}
+
+small {
+    font-size: 75%;
+    letter-spacing: .03333333348px;
+}

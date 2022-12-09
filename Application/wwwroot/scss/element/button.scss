@@ -1,0 +1,769 @@
+﻿
+.button {
+    width: auto;
+    line-height: 1;
+    cursor: pointer;
+    font-size: 100%;
+    font-weight: 400;
+    overflow: hidden;
+    padding: 10px 16px;
+    text-align: center;
+    position: relative;
+    white-space: nowrap;
+    text-decoration: none;
+    vertical-align: bottom;
+    @include d-inline-flex;
+    color: var(--color-button);
+    @include align-items(center);
+    --color-button: $color-button;
+    --bg-button: $background-button;
+    @include justify-content(center);
+    background-color: var(--bg-button);
+    @include border-radius($border-radius);
+    --bg-button-hover: darken($background-button, 5);
+    --bg-button-active-focus: darken($background-button, 10);
+
+    &::-moz-focus-inner {
+        border: 0;
+    }
+
+    &:hover:not(:disabled) {
+        background-color: var(--bg-button-hover);
+    }
+
+    &:focus:not(:active),
+    &:focus:not(:disabled) {
+        background-color: var(--bg-button-active-focus);
+    }
+
+    &:active {
+        background-color: var(--bg-button-active-focus);
+    }
+
+    &.button-small {
+        font-size: 75%;
+    }
+
+    &.button-large {
+        font-size: 125%;
+    }
+
+    &.button-rounded {
+        @include border-radius($border-radius-rounded);
+    }
+
+    &.button-stretch {
+        width: 100%;
+    }
+
+    &.button-text {
+        padding: 0;
+        color: $color-anchor;
+        text-transform: none;
+        background-color: unset;
+
+        &:hover {
+            background-color: unset;
+            @include box-shadow(none);
+        }
+    }
+
+    &.button-outline {
+        color: var(--bg-button) !important;
+        background-color: transparent !important;
+        @include box-shadow(inset 0 0 0 1px var(--bg-button));
+
+        &:hover {
+            color: var(--color-button) !important;
+            background-color: var(--bg-button) !important;
+        }
+    }
+
+    &.button-selected {
+        --color-button: $color-button-selected;
+        --bg-button: $background-button-selected;
+        --bg-button-hover: darken($background-button-selected, 5);
+        --bg-button-active-focus: darken($background-button-selected, 10);
+    }
+
+    &.button-flat {
+        --color-button: $color-button-flat;
+        --bg-button: $background-button-flat;
+        --bg-button-hover: darken($background-button-flat, 5);
+        --bg-button-active-focus: darken($background-button-flat, 10);
+
+        &:hover {
+            @include box-shadow(none);
+        }
+    }
+
+    &.button-attach {
+        --color-button: $color-button-attach;
+        --bg-button: $background-button-attach;
+        --bg-button-hover: darken($background-button-attach, 5);
+        --bg-button-active-focus: darken($background-button-attach, 10);
+
+        &:after {
+            content: mdi("attachment");
+        }
+    }
+
+    &.button-cancel {
+        --color-button: $color-button-cancel;
+        --bg-button: $background-button-cancel;
+        --bg-button-hover: darken($background-button-cancel, 5);
+        --bg-button-active-focus: darken($background-button-cancel, 10);
+
+        &:after {
+            content: mdi("close");
+        }
+    }
+
+    &.button-edit {
+        --color-button: $color-button-edit;
+        --bg-button: $background-button-edit;
+        --bg-button-hover: darken($background-button-edit, 5);
+        --bg-button-active-focus: darken($background-button-edit, 10);
+
+        &:after {
+            content: mdi("pencil");
+        }
+    }
+
+    &.button-send {
+        --color-button: $color-button-send;
+        --bg-button: $background-button-send;
+        --bg-button-hover: darken($background-button-send, 5);
+        --bg-button-active-focus: darken($background-button-send, 10);
+
+        &:after {
+            content: mdi("arrow-right");
+        }
+    }
+
+    &.button-delete {
+        --color-button: $color-button-delete;
+        --bg-button: $background-button-delete;
+        --bg-button-hover: darken($background-button-delete, 5);
+        --bg-button-active-focus: darken($background-button-delete, 10);
+
+        &:after {
+            content: mdi("delete");
+        }
+    }
+
+    &.button-add {
+        --color-button: $color-button-add;
+        --bg-button: $background-button-add;
+        --bg-button-hover: darken($background-button-add, 5);
+        --bg-button-active-focus: darken($background-button-add, 10);
+
+        &:after {
+            content: mdi("plus");
+        }
+    }
+
+    &.button-save {
+        --color-button: $color-button-save;
+        --bg-button: $background-button-save;
+        --bg-button-hover: darken($background-button-save, 5);
+        --bg-button-active-focus: darken($background-button-save, 10);
+
+        &:after {
+            content: mdi("content-save");
+        }
+    }
+
+    &.button-search {
+        --color-button: $color-button-search;
+        --bg-button: $background-button-search;
+        --bg-button-hover: darken($background-button-search, 5);
+        --bg-button-active-focus: darken($background-button-search, 10);
+
+        &:after {
+            content: mdi("magnify");
+        }
+    }
+
+    &.button-print {
+        --color-button: $color-button-print;
+        --bg-button: $background-button-print;
+        --bg-button-hover: darken($background-button-print, 5);
+        --bg-button-active-focus: darken($background-button-print, 10);
+
+        &:after {
+            content: mdi("printer");
+        }
+    }
+
+    &.button-switch {
+        --color-button: $color-button-switch;
+        --bg-button: $background-button-switch;
+        --bg-button-hover: darken($background-button-switch, 5);
+        --bg-button-active-focus: darken($background-button-switch, 10);
+
+        &:after {
+            content: mdi("swap-horizontal");
+        }
+    }
+
+    &.button-clean {
+        --color-button: $color-button-clean;
+        --bg-button: $background-button-clean;
+        --bg-button-hover: darken($background-button-clean, 5);
+        --bg-button-active-focus: darken($background-button-clean, 10);
+
+        &:after {
+            content: mdi("eraser");
+        }
+    }
+
+    &.button-download {
+        --color-button: $color-button-download;
+        --bg-button: $background-button-download;
+        --bg-button-hover: darken($background-button-download, 5);
+        --bg-button-active-focus: darken($background-button-download, 10);
+
+        &:after {
+            content: mdi("download");
+        }
+    }
+
+    &.button-upload {
+        --color-button: $color-button-upload;
+        --bg-button: $background-button-upload;
+        --bg-button-hover: darken($background-button-upload, 5);
+        --bg-button-active-focus: darken($background-button-upload, 10);
+
+        &:after {
+            content: mdi("upload");
+        }
+    }
+
+    &.button-config {
+        --color-button: $color-button-config;
+        --bg-button: $background-button-config;
+        --bg-button-hover: darken($background-button-config, 5);
+        --bg-button-active-focus: darken($background-button-config, 10);
+
+        &:after {
+            content: mdi("cog");
+        }
+    }
+
+    &.button-sort {
+        --color-button: $color-button-sort;
+        --bg-button: $background-button-sort;
+        --bg-button-hover: darken($background-button-sort, 5);
+        --bg-button-active-focus: darken($background-button-sort, 10);
+
+        &:after {
+            content: mdi("sort");
+        }
+    }
+
+    &.button-external {
+        --color-button: $color-button-external;
+        --bg-button: $background-button-external;
+        --bg-button-hover: darken($background-button-external, 5);
+        --bg-button-active-focus: darken($background-button-external, 10);
+
+        &:after {
+            content: mdi("open-in-new");
+        }
+    }
+
+    &.button-filter {
+        --color-button: $color-button-filter;
+        --bg-button: $background-button-filter;
+        --bg-button-hover: darken($background-button-filter, 5);
+        --bg-button-active-focus: darken($background-button-filter, 10);
+
+        &:after {
+            content: mdi("filter-variant");
+        }
+    }
+
+    &.button-send,
+    &.button-edit,
+    &.button-attach,
+    &.button-save,
+    &.button-search,
+    &.button-switch,
+    &.button-clean,
+    &.button-process,
+    &.button-download,
+    &.button-upload,
+    &.button-config,
+    &.button-sort,
+    &.button-external,
+    &.button-delete,
+    &.button-cancel,
+    &.button-print,
+    &.button-filter,
+    &.button-add {
+
+        &.button-plain {
+
+            &:after {
+                content: '';
+                margin-left: 0;
+            }
+        }
+
+        &:after {
+            margin-left: 8px;
+            font-size: 112.5%;
+            vertical-align: sub;
+            font-family: $font-family-material;
+        }
+    }
+
+    &.button-raw,
+    &.button-icon {
+        position: relative;
+
+        &.button-attach {
+
+            &:before {
+                content: mdi("attachment");
+            }
+        }
+
+        &.button-cancel {
+
+            &:before {
+                content: mdi("close");
+            }
+        }
+
+        &.button-edit {
+
+            &:before {
+                content: mdi("pencil");
+            }
+        }
+
+        &.button-send {
+
+            &:before {
+                content: mdi("arrow-right");
+            }
+        }
+
+        &.button-delete {
+
+            &:before {
+                content: mdi("delete");
+            }
+        }
+
+        &.button-add {
+
+            &:before {
+                content: mdi("plus");
+            }
+        }
+
+        &.button-save {
+
+            &:before {
+                content: mdi("content-save");
+            }
+        }
+
+        &.button-search {
+
+            &:before {
+                content: mdi("magnify");
+            }
+        }
+
+        &.button-print {
+
+            &:before {
+                content: mdi("printer");
+            }
+        }
+
+        &.button-switch {
+
+            &:before {
+                content: mdi("swap-horizontal");
+            }
+        }
+
+        &.button-clean {
+
+            &:before {
+                content: mdi("eraser");
+            }
+        }
+
+        &.button-download {
+
+            &:before {
+                content: mdi("download");
+            }
+        }
+
+        &.button-upload {
+
+            &:before {
+                content: mdi("upload");
+            }
+        }
+
+        &.button-config {
+
+            &:before {
+                content: mdi("cog");
+            }
+        }
+
+        &.button-sort {
+
+            &:before {
+                content: mdi("sort");
+            }
+        }
+
+        &.button-external {
+
+            &:before {
+                content: mdi("open-in-new");
+            }
+        }
+
+        &.button-filter {
+
+            &:before {
+                content: mdi("filter-variant");
+            }
+        }
+
+        &.button-process {
+            padding-right: 12px;
+        }
+
+        &:after {
+            display: none;
+        }
+
+        &:before {
+            font-family: $font-family-material;
+        }
+    }
+
+    &.button-raw {
+        padding: 0;
+        min-width: 30px;
+        color: unset !important;
+        background-color: unset !important;
+
+        &:before {
+            font-size: 150%;
+        }
+    }
+
+    &.button-icon {
+        min-width: 50px;
+
+        &:before {
+            font-size: 112.5%;
+        }
+    }
+
+    & i {
+        vertical-align: middle;
+    }
+
+    &.button-process {
+        color: var(--color-button);
+
+        &:before {
+            display: none;
+        }
+
+        &:after {
+            margin: 0;
+            color: inherit;
+            @extend .a-rotate;
+            @include d-inline-flex;
+            content: mdi("loading");
+        }
+    }
+}
+
+.button-group {
+    width: 100%;
+    @include d-flex;
+
+    &.group-small {
+
+        .button {
+            @extend .button-small;
+        }
+    }
+
+    &.group-large {
+
+        .button {
+            @extend .button-large;
+        }
+    }
+
+    .button {
+        width: 100%;
+        margin: 0 !important;
+        display: inline-block;
+        text-overflow: ellipsis;
+        @include border-radius(0);
+    }
+
+    &:first-child {
+        @include border-radius($border-radius 0 0 $border-radius);
+    }
+
+    &:last-child {
+        @include border-radius(0 $border-radius $border-radius 0);
+    }
+}
+
+.button-float-content {
+    z-index: 50;
+    width: 55px;
+    right: 30px;
+    bottom: 30px;
+    //height: 55px;
+    position: fixed;
+    @include d-flex;
+    @include align-items(center);
+    @include flex-direction(column);
+
+    &.active {
+        height: auto;
+
+        .button-float {
+
+            .first {
+                @include animation(first_icon_in 150ms linear);
+                @include animation-fill-mode(forwards);
+            }
+
+            .second {
+                @include animation-delay(100ms);
+                @include animation(second_icon_in 200ms);
+                @include animation-fill-mode(forwards);
+            }
+        }
+
+        .item {
+            @include animation(item_in 100ms linear);
+            @include animation-fill-mode(forwards);
+
+            &:nth-child(1) {
+                @include animation-delay(200ms);
+            }
+
+            &:nth-child(2) {
+                @include animation-delay(150ms);
+            }
+
+            &:nth-child(3) {
+                @include animation-delay(75ms);
+            }
+
+            &:nth-child(4) {
+                @include animation-delay(50ms);
+            }
+
+            &:nth-child(4) {
+                @include animation-delay(25ms);
+            }
+
+            &:nth-child(5) {
+                @include animation-delay(0ms);
+            }
+        }
+    }
+
+    &.horizontal {
+        width: auto;
+        height: 55px;
+        margin-bottom: 0;
+        @include flex-direction(unset);
+        @include justify-content(flex-end);
+
+        .item {
+            margin-bottom: 0;
+            margin-right: 14px;
+        }
+    }
+
+    .item {
+        width: 40px;
+        height: 40px;
+        z-index: 300;
+        cursor: pointer;
+        text-align: center;
+        position: relative;
+        @extend .box-shadow;
+        margin-bottom: 14px;
+        animation-name: item_out;
+        @extend .block-selection;
+        @include transform(scale(0));
+        animation-fill-mode: forwards;
+        animation-timing-function: linear;
+        @include border-radius($border-radius-circle);
+
+        i {
+            display: block;
+            margin: 0 auto;
+
+            &:before {
+                line-height: 40px;
+            }
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            @include border-radius($border-radius-circle);
+        }
+
+        .letter {
+            margin-top: 2px;
+            font-size: 143.75%;
+            @extend .center-absolute;
+        }
+    }
+
+    .button-float {
+        width: 55px;
+        height: 55px;
+        cursor: pointer;
+        position: relative;
+        @extend .box-shadow;
+        color: $color-button-float;
+        background-color: $background-button-float;
+        @include border-radius($border-radius-circle);
+
+        .first {
+            text-align: center;
+            @include transition(all 300ms);
+            @include animation(first_icon_out 300ms);
+
+            i {
+                &:before {
+                    line-height: 55px;
+                }
+            }
+        }
+
+        .second {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0;
+            display: block;
+            position: absolute;
+            text-align: center;
+            @include transition(all 300ms);
+            @include transform(rotateZ(-70deg));
+            @include animation(second_icon_out 300ms);
+
+            i {
+                &:before {
+                    line-height: 55px;
+                }
+            }
+        }
+    }
+}
+
+@keyframes second_icon_in {
+    from {
+        opacity: 0;
+        @include transform(rotateZ(-70deg));
+    }
+
+    to {
+        opacity: 1;
+        @include transform(rotateZ(0deg));
+    }
+}
+
+@keyframes second_icon_out {
+    from {
+        opacity: 1;
+        @include transform(rotateZ(0deg));
+    }
+
+    to {
+        opacity: 0;
+        @include transform(rotateZ(-70deg));
+    }
+}
+
+@keyframes first_icon_in {
+    from {
+        opacity: 1;
+        @include transform(rotateZ(0deg));
+    }
+
+    to {
+        opacity: 0;
+        @include transform(rotateZ(180deg));
+    }
+}
+
+@keyframes first_icon_out {
+    from {
+        opacity: 0;
+        @include transform(rotateZ(180deg));
+    }
+
+    to {
+        opacity: 1;
+        @include transform(rotateZ(0deg));
+    }
+}
+
+@keyframes item_in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+        @include transform(scale(1));
+    }
+}
+
+@keyframes item_out {
+    from {
+        opacity: 1;
+        @include transform(scale(1));
+    }
+
+    to {
+        width: 0;
+        margin: 0;
+        opacity: 0;
+        @include transform(scale(0));
+    }
+}
+
+@media(min-width: $media-sm) {
+
+    .button-group {
+
+        .button {
+            width: auto;
+        }
+    }
+}

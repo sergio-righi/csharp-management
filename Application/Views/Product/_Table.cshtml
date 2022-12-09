@@ -1,0 +1,169 @@
+﻿@model Application.Models.Product.ProductFilter
+
+@if (Model.Pagination.Count > 0)
+{
+    await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Header.cshtml");
+
+    <div class="table-responsive">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th class="fit"></th>
+                    <th>
+
+                        <a asp-controller="Product"
+                           asp-action="Index"
+                           asp-route-Sort="1"
+                           asp-route-Name="@Model.Filter.Name"
+                           asp-route-Direction="@Model.Filter.GetDirection(Model.Filter.Sort)"
+                           asp-route-Activated="@Model.Filter.Activated">
+                            @Label.Name
+                        </a>
+
+                    </th>
+                    <th>
+
+                        <a asp-controller="Product"
+                           asp-action="Index"
+                           asp-route-Sort="2"
+                           asp-route-Name="@Model.Filter.Name"
+                           asp-route-Direction="@Model.Filter.GetDirection(Model.Filter.Sort)"
+                           asp-route-Activated="@Model.Filter.Activated">
+                            @Label.PurchasePrice
+                        </a>
+
+                    </th>
+                    <th>
+
+                        <a asp-controller="Product"
+                           asp-action="Index"
+                           asp-route-Sort="3"
+                           asp-route-Name="@Model.Filter.Name"
+                           asp-route-Direction="@Model.Filter.GetDirection(Model.Filter.Sort)"
+                           asp-route-Activated="@Model.Filter.Activated">
+                            @Label.RentPrice
+                        </a>
+
+                    </th>
+                    <th>
+
+                        <a asp-controller="Product"
+                           asp-action="Index"
+                           asp-route-Sort="4"
+                           asp-route-Name="@Model.Filter.Name"
+                           asp-route-Direction="@Model.Filter.GetDirection(Model.Filter.Sort)"
+                           asp-route-Activated="@Model.Filter.Activated">
+                            @Label.SalePrice
+                        </a>
+
+                    </th>
+                    <th>
+
+                        <a asp-controller="Product"
+                           asp-action="Index"
+                           asp-route-Sort="5"
+                           asp-route-Name="@Model.Filter.Name"
+                           asp-route-Direction="@Model.Filter.GetDirection(Model.Filter.Sort)"
+                           asp-route-Activated="@Model.Filter.Activated">
+                            @Label.Quantity
+                        </a>
+
+                    </th>
+                    <th>@Label.Activated</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var product in Model.Pagination)
+                {
+                    <tr>
+
+                        <td class="fit">
+
+                            <a asp-controller="Product" 
+                               asp-action="Manage" 
+                               asp-route-id="@product.Id" class="button button-edit button-raw"></a>
+
+                        </td>
+                        <td>@product.Name</td>
+                        <td>
+
+                            @if (product.PurchasePrice.HasValue)
+                            {
+                                <span class="currency-real">@product.PurchasePrice.Value</span>
+                            }
+                            else
+                            {
+                                <text>-</text>
+                            }
+
+                        </td>
+                        <td>
+
+                            @if (product.RentPrice.HasValue)
+                            {
+                                <span class="currency-real">@product.RentPrice.Value</span>
+                            }
+                            else
+                            {
+                                <text>-</text>
+                            }
+
+                        </td>
+                        <td>
+
+                            @if (product.SalePrice.HasValue)
+                            {
+                                <span class="currency-real">@product.SalePrice.Value</span>
+                            }
+                            else
+                            {
+                                <text>-</text>
+                            }
+
+                        </td>
+                        <td>@product.Count.Value</td>
+                        <td>
+
+                            @if (product.IsActivated)
+                            {
+                                <text>@Label.Yes</text>
+                            }
+                            else
+                            {
+                                <text>@Label.No</text>
+                            }
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    if (Model.Pagination.Quantity > 1)
+    {
+        <ul class="pagination">
+
+            @{
+                await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Footer.cshtml");
+            }
+
+        </ul>
+    }
+}
+else
+{
+    @Html.Feedback(EFeedback.Info, Message.NothingToList, false)
+}

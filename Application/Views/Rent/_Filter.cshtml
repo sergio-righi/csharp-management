@@ -1,0 +1,69 @@
+﻿@model Application.Models.FilterViewModel<Domain.Entity.Rent>
+
+@using (Html.BeginForm("Index", "Rent", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Sort)
+    @Html.HiddenFor(model => model.Direction)
+
+    <div class="row">
+
+        <div class="col col-12 col-sm-4">
+
+            <div class="form-group">
+
+                <label>@Label.StartDate</label>
+
+                @Html.TextBoxFor(model => model.StartDate, new { @class = "" })
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-4">
+
+            <div class="form-group">
+
+                <label>@Label.EndDate</label>
+
+                @Html.TextBoxFor(model => model.EndDate, new { @class = "" })
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-4">
+
+            <div class="form-group">
+
+                <label>@Label.Status</label>
+
+                @Html.DropDownListFor(model => model.SituationId, ERent.Budgeted.GetSelectList<ERent>(), string.Format(Message.SelectOneFemale, Label.Status), new { @class = "" })
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div class="form-group">
+
+                <button type="submit" class="button button-search">
+
+                    @Button.Find
+
+                </button>
+
+                <a asp-controller="Rent"
+                   asp-action="Index" class="button button-clean">
+
+                    @Button.Clean
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+}

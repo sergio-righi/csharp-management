@@ -1,0 +1,91 @@
+﻿
+.autocomplete {
+    width: 100%;
+    padding: 0 12px;
+    min-height: 48px;
+    font-size: 87.5%;
+    @include d-inline-flex;
+    @include flex-wrap(wrap);
+    color: $color-chip-content;
+    @include align-items(center);
+    background-color: $background-field;
+    border: 1px solid $border-color-field;
+    @include border-radius($border-radius);
+    @include transition(box-shadow 300ms ease);
+
+    &.active {
+        border-color: $border-color-field-focus;
+        @include box-shadow(0 0 0 3px $color-shadow-field-focus);
+    }
+
+    &.focus {
+        border-color: $border-color-field-focus;
+    }
+
+    .chip {
+        margin-top: 4px;
+        margin-bottom: 4px;
+        border: 1px solid $border-color-chip;
+        background-color: darken($background-chip, 5);
+
+        .chip-control {
+
+            &:before {
+                font-size: 125%;
+                text-align: center;
+                content: mdi("close-circle");
+                font-family: $font-family-material;
+            }
+        }
+
+        &.active {
+            color: $color-chip-active;
+            background-color: $background-chip-active;
+
+            .chip-control {
+                color: $color-chip-active;
+                background-color: $background-chip-active;
+            }
+        }
+    }
+
+    .autocomplete-component {
+        border: 0;
+        padding: 0;
+        width: auto;
+        font-size: 100%;
+        min-height: 32px;
+    }
+
+    .autocomplete-dropdown {
+        width: auto;
+        @extend .dropdown;
+        @include align-items(center);
+
+        &:hover {
+            background-color: unset !important;
+        }
+
+        input[type=text] {
+            border: 0;
+
+            &:focus {
+                @include box-shadow(none);
+            }
+        }
+
+        .dropdown-content {
+            width: 250px;
+
+            li {
+                font-size: 100%;
+                white-space: normal;
+
+                &.selected {
+                    color: $color-dropdown-active;
+                    background-color: $background-dropdown-active;
+                }
+            }
+        }
+    }
+}

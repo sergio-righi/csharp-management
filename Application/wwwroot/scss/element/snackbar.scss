@@ -1,0 +1,33 @@
+﻿
+.snackbar {
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    z-index: 99;
+    width: 100%;
+    @include d-flex;
+    position: fixed;
+    padding: 18px 24px;
+    color: $color-snackbar;
+    line-height: $line-height;
+    @include align-items(center);
+    @include transition(all 500ms ease);
+    background-color: $background-snackbar;
+    @include justify-content(space-between);
+
+    .action {
+    }
+}
+
+@media (min-width: $media-md) {
+
+    .snackbar {
+        left: 16px;
+        width: auto;
+        bottom: 16px;
+        max-width: $width-xs;
+        @include d-inline-flex;
+        min-width: calc($width-xs/2);
+        @include border-radius($border-radius);
+    }
+}

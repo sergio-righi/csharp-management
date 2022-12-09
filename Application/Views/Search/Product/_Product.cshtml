@@ -1,0 +1,90 @@
+﻿@model Domain.Entity.Specific.SProduct
+
+<li class="list-item list-disabled list-border product">
+
+    <div class="list-icon">
+
+        <i class="mdi mdi-dots-vertical"></i>
+
+    </div>
+
+    <div class="list-content">
+
+        <div class="list-title">
+
+            @Model.Name
+
+        </div>
+
+    </div>
+
+    <div class="list-form">
+
+        <form asp-controller="SearchProduct" asp-action="Add" onsubmit="addProductSubmit(this)"
+              data-ajax="true"
+              data-ajax-method="POST"
+              data-ajax-mode="replace"
+              data-ajax-success="addProductSuccess"
+              data-ajax-update="#search_product_resume">
+
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.Name)
+            @Html.HiddenFor(model => model.Price)
+            @Html.HiddenFor(model => model.Weight)
+            @Html.HiddenFor(model => model.SaleId)
+            @Html.HiddenFor(model => model.RentId)
+            @Html.HiddenFor(model => model.ProductId)
+            @Html.HiddenFor(model => model.CalculationId)
+
+            <div class="product-form">
+
+                <div class="product-input">
+
+                    @if (Model.CalculationId == ECalculation.SquareMeter)
+                    {
+                        <div class="product-group">
+
+                            @Html.TextBoxFor(model => model.Width, string.Empty, new { @required = "required" })
+
+                            <i class="mdi mdi-alpha-x"></i>
+
+                            @Html.TextBoxFor(model => model.Height, string.Empty, new { @required = "required" })
+
+                        </div>
+                    }
+                    else if (Model.CalculationId == ECalculation.Meter)
+                    {
+                        <div class="product-group">
+
+                            @Html.TextBoxFor(model => model.Width, string.Empty, new { @required = "required" })
+
+                        </div>
+                    }
+
+                    <div class="product-one">
+
+                        <label>@Label.Quantity</label>
+
+                        @Html.TextBoxFor(model => model.Count, "1", new { @type = "number", @min = "1", @max = "99", @step = "1", @required = "required" })
+
+                    </div>
+
+                </div>
+
+                <div class="product-button">
+
+                    <button type="submit" class="button button-add button-small">
+
+                        @Button.Add
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</li>

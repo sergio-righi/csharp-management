@@ -1,0 +1,45 @@
+﻿
+.badge {
+    font-size: 100%;
+    font-weight: 400;
+    padding: 8px 16px;
+    text-align: center;
+    white-space: nowrap;
+    color: $color-badge;
+    @include d-inline-flex;
+    line-height: $line-height;
+    @include align-items(center);
+    background-color: $background-badge;
+    @include border-radius($border-radius);
+
+    &.badge-small {
+        font-size: 81.25%;
+    }
+
+    &.badge-large {
+        font-size: 125%;
+    }
+
+    i {
+        margin-left: -4px;
+        position: relative;
+        margin-right: 10px;
+    }
+}
+
+[data-badge]:after {
+    top: -8px;
+    z-index: 3;
+    right: -6px;
+    height: 18px;
+    min-width: 18px;
+    font-size: 12px;
+    line-height: 20px;
+    position: absolute;
+    text-align: center;
+    @extend .box-shadow;
+    content: attr(data-badge);
+    color: $color-badge-float;
+    @include border-radius($border-radius);
+    background-color: $background-badge-float;
+}

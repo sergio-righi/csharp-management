@@ -1,0 +1,263 @@
+﻿
+.card {
+    z-index: 1;
+    width: 100%;
+    @include d-flex;
+    position: relative;
+    color: $color-card;
+    margin-bottom: 16px;
+    @include flex-direction(column);
+    background-color: $background-card;
+    border: 1px solid $border-color-card;
+    @include border-radius($border-radius);
+
+/*    &:hover {
+        color: initial;
+    }*/
+
+    &.card-fluid {
+        height: calc(100% - 16px);
+    }
+
+    &.no-border {
+        border: unset !important;
+    }
+
+    .card-separator {
+        width: 100%;
+        display: block;
+        border-bottom: 1px solid;
+        border-bottom-color: inherit;
+    }
+
+    .card-header {
+        margin: 16px;
+        font-weight: 500;
+        line-height: $line-height;
+
+        &.small {
+            font-weight: 300;
+            font-size: 87.5%;
+        }
+
+        & + .card-header {
+            margin: -8px 16px 12px;
+        }
+    }
+
+    .card-avatar {
+        margin: 16px;
+        @include d-flex;
+        @include align-items(center);
+
+        & > img {
+            width: 40px;
+            margin-right: 16px;
+            @include border-radius($border-radius-circle);
+        }
+
+        & > i {
+            width: 60px;
+            text-align: center;
+            margin-right: 8px;
+
+            &:before {
+                font-size: 200%;
+            }
+        }
+
+        .card-description {
+            width: 100%;
+        }
+
+        .card-description + i,
+        .card-description + img {
+            margin-right: 0;
+            margin-left: 16px;
+        }
+    }
+
+    .card-info {
+        margin: 16px;
+        height: 100%;
+        @include d-flex;
+        position: relative;
+        @include flex-direction(column);
+
+        .card-icon {
+            right: 0;
+            @extend .vertical-absolute;
+        }
+
+        p {
+            color: inherit;
+        }
+    }
+
+    .card-content {
+        color: inherit;
+
+        & > ul {
+
+            li {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+        }
+
+        & > img {
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            position: relative;
+            vertical-align: middle;
+        }
+
+        & > p {
+            margin: 0;
+            padding: 16px;
+            color: inherit;
+        }
+
+        .card-scroll {
+            overflow-y: auto;
+            max-height: 240px;
+        }
+
+        .card-scroll-horizontal {
+            overflow-x: scroll;
+            white-space: nowrap;
+            -ms-overflow-style: none;
+            overflow: -moz-scrollbars-none;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            div {
+                overflow: hidden;
+
+                & > * {
+                    display: inline-block;
+                }
+            }
+        }
+
+        .card-row {
+            margin-top: 12px;
+            padding: 0 16px 12px;
+        }
+    }
+
+    .card-control {
+        color: inherit;
+        @include d-flex;
+        margin: 12px 16px;
+        @include flex(none);
+        @extend .block-selection;
+        @include align-items(center);
+
+        .card-header {
+            margin-left: 16px;
+        }
+
+        .card-icon {
+            margin-left: auto;
+            color: $color-card-icon;
+
+            &:hover {
+                color: $color-card-icon-hover;
+            }
+
+            &.highlight {
+                color: $color-red;
+            }
+        }
+
+        .card-button {
+            font-size: 87.5%;
+            color: $color-card-button;
+
+            &:hover {
+                color: $color-card-button-hover;
+                background-color: $background-card-button-hover;
+            }
+
+            & + .card-button {
+                margin-left: 16px;
+            }
+        }
+
+        .card-icon,
+        .card-button {
+            color: inherit;
+            font-weight: 500;
+            position: relative;
+            text-transform: uppercase;
+        }
+
+        .badge,
+        .card-icon {
+
+            & + .badge,
+            & + .card-icon {
+                margin-left: 16px;
+            }
+        }
+
+        .disabled {
+            color: $color-disabled;
+
+            &:hover {
+                color: unset;
+                background-color: unset;
+            }
+        }
+    }
+
+    .card-control,
+    .card-content {
+        position: relative;
+    }
+
+    .card-info,
+    .card-control,
+    .card-description {
+
+        .card-header {
+            margin: 0;
+
+            & + .card-header {
+                margin-top: 8px;
+            }
+        }
+    }
+
+    .card-overlay {
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        padding: 12px;
+        color: #FFFFFF;
+        position: absolute;
+        background-color: rgba(25, 25, 25, .5);
+
+        &.top {
+            top: 0;
+            bottom: unset;
+        }
+
+        & > * {
+            color: inherit;
+        }
+
+        & > p {
+            margin: 0;
+
+            & + p {
+                margin-top: 10px;
+            }
+        }
+    }
+}

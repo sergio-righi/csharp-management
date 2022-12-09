@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ConfirmAction" xml:space="preserve">
+    <value>A operação é permanente. Você tem certeza de que deseja continuar?</value>
+  </data>
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>A exclusão é permanente. Você tem certeza de que deseja continuar?</value>
+  </data>
+  <data name="DuplicateException" xml:space="preserve">
+    <value>Este registro já existe</value>
+  </data>
+  <data name="EmailConfirmationSent" xml:space="preserve">
+    <value>E-mail de confirmação enviado</value>
+  </data>
+  <data name="EmailRecoverSent" xml:space="preserve">
+    <value>E-mail de recuperação de senha enviado</value>
+  </data>
+  <data name="EqualField" xml:space="preserve">
+    <value>O campo {0} deve ser igual ao {1}</value>
+  </data>
+  <data name="ErrorOnDelete" xml:space="preserve">
+    <value>Erro ao tentar excluir o registro</value>
+  </data>
+  <data name="ErrorOnSave" xml:space="preserve">
+    <value>Erro ao tentar salvar o registro</value>
+  </data>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>Arquivo não encontrado</value>
+  </data>
+  <data name="FileNotSelected" xml:space="preserve">
+    <value>Nenhum arquivo foi selecionado</value>
+  </data>
+  <data name="FillAllRequiredField" xml:space="preserve">
+    <value>Verifique se você preencheu todos os campos obrigatórios</value>
+  </data>
+  <data name="FilterRequired" xml:space="preserve">
+    <value>Preencha pelo menos um campo</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Esqueceu sua senha?</value>
+  </data>
+  <data name="FormFile" xml:space="preserve">
+    <value>{counter} arquivos selecionados</value>
+  </data>
+  <data name="InavalidCPF" xml:space="preserve">
+    <value>Informe um CPF válido</value>
+  </data>
+  <data name="IncorrectPassword" xml:space="preserve">
+    <value>Senha incorreta</value>
+  </data>
+  <data name="InternalServerError" xml:space="preserve">
+    <value>Erro interno do servidor</value>
+  </data>
+  <data name="InvalidDateFormat" xml:space="preserve">
+    <value>A data deve ser informada no formato dd/mm/aaaa</value>
+  </data>
+  <data name="InvalidDocument" xml:space="preserve">
+    <value>Informe um documento válido</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>Informe um e-mail válido</value>
+  </data>
+  <data name="InvalidImageURL" xml:space="preserve">
+    <value>Informe uma imagem usando uma URL válida</value>
+  </data>
+  <data name="InvalidPhone" xml:space="preserve">
+    <value>Infome um telefone válido</value>
+  </data>
+  <data name="InvalidURL" xml:space="preserve">
+    <value>Informe uma URL válida</value>
+  </data>
+  <data name="LessOrEqualThan" xml:space="preserve">
+    <value>O campo {0} deve ser menor ou igual ao campo {1}</value>
+  </data>
+  <data name="LessThan" xml:space="preserve">
+    <value>O campo {0} deve ser menor que o campo {1}</value>
+  </data>
+  <data name="LogAccess" xml:space="preserve">
+    <value>Acesso</value>
+  </data>
+  <data name="LogAccessGet" xml:space="preserve">
+    <value>Acesso GET</value>
+  </data>
+  <data name="LogAccessPost" xml:space="preserve">
+    <value>Acesso POST</value>
+  </data>
+  <data name="LogErrorOnSave" xml:space="preserve">
+    <value>Erro ao salvar</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>O usuário efetuou logout</value>
+  </data>
+  <data name="LogSuccessOnSave" xml:space="preserve">
+    <value>Salvo com sucesso</value>
+  </data>
+  <data name="MaximumSize" xml:space="preserve">
+    <value>O campo {0} deve possuir no máximo {1} caracteres</value>
+  </data>
+  <data name="MinimumAgeRequired" xml:space="preserve">
+    <value>Idade mínima requerida {0}</value>
+  </data>
+  <data name="MinimumOneRequired" xml:space="preserve">
+    <value>Preencha pelo menos um campo {0} ou {1}</value>
+  </data>
+  <data name="MinimumSize" xml:space="preserve">
+    <value>O campo {0} deve possuir no mínino {1} caracteres</value>
+  </data>
+  <data name="MoreOrEqual" xml:space="preserve">
+    <value>O campo {0} deve ser maior ou igual ao campo {1}</value>
+  </data>
+  <data name="MoreThan" xml:space="preserve">
+    <value>O campo {0} deve ser maior que o campo {1}</value>
+  </data>
+  <data name="NoneSelected" xml:space="preserve">
+    <value>Nenhum item selecionado</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Não encontrado</value>
+  </data>
+  <data name="NothingToList" xml:space="preserve">
+    <value>Nenhum registro foi encontrado</value>
+  </data>
+  <data name="NotRobotRequired" xml:space="preserve">
+    <value>A verificação de robô é obrigatória</value>
+  </data>
+  <data name="NotShowAgain" xml:space="preserve">
+    <value>Não mostrar novamente</value>
+  </data>
+  <data name="OutOfRange" xml:space="preserve">
+    <value>Excede o tamanho máximo</value>
+  </data>
+  <data name="PaginationHeader" xml:space="preserve">
+    <value>Mostrando {0} — {1} de {2}</value>
+  </data>
+  <data name="PasswordCharacter" xml:space="preserve">
+    <value>Um caracter espercial (@@#$%&amp;*)</value>
+  </data>
+  <data name="PasswordLength" xml:space="preserve">
+    <value>No mínimo 8 e no máximo 12 caracteres</value>
+  </data>
+  <data name="PasswordLetter" xml:space="preserve">
+    <value>Ao menos uma letra maiúscula e uma minúscula (a-Z)</value>
+  </data>
+  <data name="PasswordNumber" xml:space="preserve">
+    <value>Um número (0-9)</value>
+  </data>
+  <data name="PasswordPolicy" xml:space="preserve">
+    <value>Sua senha não atende as nossas políticas</value>
+  </data>
+  <data name="PasswordUpdatedSuccess" xml:space="preserve">
+    <value>Senha alterada com sucesso</value>
+  </data>
+  <data name="ProductRequired" xml:space="preserve">
+    <value>Ao menos um produto deve ser adicionado</value>
+  </data>
+  <data name="RequiredField" xml:space="preserve">
+    <value>O campo {0} é obrigatório</value>
+  </data>
+  <data name="SelectBeforeFemale" xml:space="preserve">
+    <value>Antes selecione uma {0}</value>
+  </data>
+  <data name="SelectBeforeMale" xml:space="preserve">
+    <value>Antes selecione um {0}</value>
+  </data>
+  <data name="SelectOneFemale" xml:space="preserve">
+    <value>Selecione uma {0}</value>
+  </data>
+  <data name="SelectOneMale" xml:space="preserve">
+    <value>Selecione um {0}</value>
+  </data>
+  <data name="SessionExpired" xml:space="preserve">
+    <value>Sessão Expirou</value>
+  </data>
+  <data name="SetDefault" xml:space="preserve">
+    <value>Utilizar padrão</value>
+  </data>
+  <data name="SetDefaultImage" xml:space="preserve">
+    <value>Utilizar imagem padrão</value>
+  </data>
+  <data name="SetEmpty" xml:space="preserve">
+    <value>Definir como vazio</value>
+  </data>
+  <data name="SetSame" xml:space="preserve">
+    <value>Definir como iguais</value>
+  </data>
+  <data name="SomethingWentWrong" xml:space="preserve">
+    <value>Algum erro inesperado ocorrou</value>
+  </data>
+  <data name="SuccessOnDelete" xml:space="preserve">
+    <value>O registro foi excluido com sucesso</value>
+  </data>
+  <data name="SuccessOnSave" xml:space="preserve">
+    <value>O registro foi salvo com sucesso</value>
+  </data>
+  <data name="TokenNotFoundOrExpired" xml:space="preserve">
+    <value>O token informado não é existe ou expirou</value>
+  </data>
+  <data name="UnauthorizedAccess" xml:space="preserve">
+    <value>Acesso não autorizado</value>
+  </data>
+  <data name="Undefined" xml:space="preserve">
+    <value>Não definido</value>
+  </data>
+  <data name="UnevenPassword" xml:space="preserve">
+    <value>As senhas não conferem</value>
+  </data>
+  <data name="UsernameTaken" xml:space="preserve">
+    <value>Nome de usuário já em uso</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>Usuário não encontrado</value>
+  </data>
+</root>

@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = Title.Home;
+
+    string[][] items = new string[][]
+    {
+        new string[] { "Item", Title.Item },
+        new string[] { "Product", Title.Product },
+        new string[] { "JuridicalPerson", Title.JuridicalPerson },
+        new string[] { "NaturalPerson", Title.NaturalPerson },
+        new string[] { "Rent", Title.Rent },
+        new string[] { "Drive", Title.Drive },
+        new string[] { "Sale", Title.Sale },
+        new string[] { "Bill", Title.Bill },
+        new string[] { "Role", Title.Role },
+        new string[] { "Group", Title.Group },
+        new string[] { "Payroll", Title.Payroll },
+        new string[] { "Expense", Title.Expense },
+        new string[] { "Exam", Title.Exam },
+        new string[] { "Overtime", Title.Overtime },
+        new string[] { "Vacation", Title.Vacation }
+    };
+}
+
+@*@if (ViewBag.games != null)
+    {
+        foreach (var game in ViewBag.games)
+        {
+            foreach (var number in game)
+            {
+                <text>@number.ToString("D2") </text>
+            }
+
+            <br />
+        }
+    }*@
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        @foreach (var item in items)
+        {
+            <div class="col col-6 col-sm-4 col-md-3">
+
+                <a asp-controller="@item[0]" asp-action="Index" class="card">
+
+                    <div class="card-info">
+
+                        <div class="card-title">@item[1]</div>
+
+                    </div>
+
+                </a>
+
+            </div>
+        }
+
+    </div>
+
+</div>

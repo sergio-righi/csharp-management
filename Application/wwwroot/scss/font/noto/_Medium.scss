@@ -1,0 +1,8 @@
+/* BEGIN Medium */
+@font-face {
+	font-family: $font-family;
+	@include fontdef-ttf($font-family, "Medium");
+	font-weight: 500;
+	font-style: normal;
+}
+/* END Medium */

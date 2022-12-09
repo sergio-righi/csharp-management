@@ -1,0 +1,206 @@
+﻿
+.dialog {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9;
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: fixed;
+    overflow-y: auto;
+    @extend .block-selection;
+    background-color: $background-overlay;
+
+    &.active {
+        display: block;
+
+        .dialog-popup {
+            display: unset;
+
+            &.animation-open {
+                @include animation(scale_in_top 300ms ease);
+            }
+
+            &.animation-close {
+                @include animation(scale_out 300ms ease);
+            }
+
+            &.animation-block {
+                @extend .a-shake;
+            }
+        }
+    }
+
+    .dialog-popup {
+        width: 90%;
+        @extend .box-shadow;
+        color: $color-dialog;
+        @extend .center-absolute;
+        background-color: $background-dialog;
+        @include border-radius($border-radius);
+
+        .dialog-header {
+            font-size: 175%;
+            font-weight: 500;
+            padding: 16px 16px 8px;
+
+            &:after {
+                float: right;
+                font-size: 75%;
+                font-weight: 300;
+                content: attr(data-text);
+                color: $color-dialog-header;
+            }
+        }
+
+        .dialog-content {
+            width: 100%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 18px;
+            padding-right: 18px;
+            color: $color-dialog-content;
+
+            p {
+                text-align: justify;
+            }
+
+            img {
+                width: 100%;
+                vertical-align: middle;
+            }
+        }
+
+        .dialog-footer {
+            @include d-flex;
+            @include align-items(center);
+            padding: 12px 14px 16px 14px;
+            @include justify-content(flex-end);
+
+            & > div {
+                margin-right: auto;
+            }
+        }
+    }
+}
+
+@media(min-width: $media-sm) {
+
+    .dialog {
+
+        .dialog-popup {
+            width: 70%;
+        }
+    }
+}
+
+@media(min-width: $media-md) {
+
+    .dialog {
+
+        .dialog-popup {
+            width: 50%;
+        }
+    }
+}
+
+@media(min-width: $media-xl) {
+
+    .dialog {
+
+        .dialog-popup {
+            width: 30%;
+        }
+    }
+}
+
+@-webkit-keyframes scale_in_top {
+
+    0% {
+        @include transform(translate(-50%, -70%) scaleX(0.8) scaleY(0.8));
+    }
+
+    100% {
+        @include transform(translate(-50%, -50%) scaleX(1) scaleY(1));
+    }
+}
+
+@-moz-keyframes scale_in_top {
+
+    0% {
+        @include transform(translate(-50%, -70%) scaleX(0.8) scaleY(0.8));
+    }
+
+    100% {
+        @include transform(translate(-50%, -50%) scaleX(1) scaleY(1));
+    }
+}
+
+@-o-keyframes scale_in_top {
+
+    0% {
+        @include transform(translate(-50%, -70%) scaleX(0.8) scaleY(0.8));
+    }
+
+    100% {
+        @include transform(translate(-50%, -50%) scaleX(1) scaleY(1));
+    }
+}
+
+@keyframes scale_in_top {
+
+    0% {
+        @include transform(translate(-50%, -70%) scaleX(0.8) scaleY(0.8));
+    }
+
+    100% {
+        @include transform(translate(-50%, -50%) scaleX(1) scaleY(1));
+    }
+}
+
+@-webkit-keyframes scale_out {
+
+    0% {
+        @include transform(translate(-50%, -50%) scaleX(1) scaleY(1));
+    }
+
+    100% {
+        @include transform(translate(-50%, -50%) scaleX(0.8) scaleY(0.8));
+    }
+}
+
+@-moz-keyframes scale_out {
+
+    0% {
+        @include transform(translate(-50%, -50%) scaleX(1) scaleY(1));
+    }
+
+    100% {
+        @include transform(translate(-50%, -50%) scaleX(0.8) scaleY(0.8));
+    }
+}
+
+@-o-keyframes scale_out {
+
+    0% {
+        @include transform(translate(-50%, -50%) scaleX(1) scaleY(1));
+    }
+
+    100% {
+        @include transform(translate(-50%, -50%) scaleX(0.8) scaleY(0.8));
+    }
+}
+
+@keyframes scale_out {
+
+    0% {
+        @include transform(translate(-50%, -50%) scaleX(1) scaleY(1));
+    }
+
+    100% {
+        @include transform(translate(-50%, -50%) scaleX(0.8) scaleY(0.8));
+    }
+}

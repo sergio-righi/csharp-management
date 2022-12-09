@@ -1,0 +1,320 @@
+﻿@namespace Domain.Entity.Generic
+@model Application.Models.Sale.SaleModel
+@{
+    ViewBag.Title = Title.ManageSale;
+}
+
+<section id="section_header" class="section-header">
+
+    <div class="title">@Title.ManageSale</div>
+
+    <div class="toolbar">
+
+        <a asp-controller="Sale" asp-action="Manage" asp-route-id="0" class="button button-add">
+
+            @Button.New
+
+        </a>
+
+        @if (Model.Sale.Id.IsPositive())
+        {
+            <a asp-controller="SearchProduct"
+               asp-action="Index"
+               asp-route-toolId="@Model.Sale.Id"
+               asp-route-controllerId="@EController.Sale" class="button button-config" target="_blank">
+                @Button.Select
+            </a>
+
+            <a asp-controller="Sale" asp-action="Delete" asp-route-id="@Model.Sale.Id" class="button button-delete">
+
+                @Button.Delete
+
+            </a>
+        }
+
+    </div>
+
+    <ol class="breadcrumb">
+
+        <li><a asp-controller="Home" asp-action="Index">@Title.Home</a></li>
+        <li><a asp-controller="Sale" asp-action="Index">@Title.Sale</a></li>
+        <li>@Title.ManageSale</li>
+
+    </ol>
+
+</section>
+
+<section id="section_content" class="section-content">
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            <div id="message">
+
+                @await Html.PartialAsync("~/Views/Shared/Feedback/_Message.cshtml")
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            @using (Html.BeginForm("Manage", "Sale", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.Sale.SellerId)
+                @Html.HiddenFor(model => model.Sale.Id, new { @id = "hidden_id" })
+                @Html.HiddenFor(model => model.Sale.VendorId, new { @id = "hidden_vendor" })
+                @Html.HiddenFor(model => model.Sale.CustomerId, new { @id = "hidden_person" })
+                @Html.HiddenFor(model => model.Sale.InstallmentId, new { @id = "hidden_installment" })
+
+                <div class="row">
+
+                    <div class="col col-12 col-sm-6 col-md-4">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Sale.NotCustomerName, new { @class = "required" })
+
+                            <div class="input-group">
+
+                                @Html.TextBoxFor(model => model.Sale.NotCustomerName, string.Empty, new { @data_reference = "hidden_person", @required = "required", @readonly = "readonly" })
+
+                                <button type="button" class="button button-search button-plain" data-modal="#search_person">
+
+                                    @Button.Search
+
+                                </button>
+
+                            </div>
+
+                            <span>@Html.ValidationMessageFor(model => model.Sale.NotCustomerName)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-6 col-md-4">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Sale.NotVendorName, new { @class = "" })
+
+                            <div class="input-group">
+
+                                @Html.TextBoxFor(model => model.Sale.NotVendorName, string.Empty, new { @data_reference = "hidden_vendor", @readonly = "readonly" })
+
+                                <button type="button" class="button button-search button-plain" data-modal="#search_person">
+
+                                    @Button.Search
+
+                                </button>
+
+                            </div>
+
+                            <span>@Html.ValidationMessageFor(model => model.Sale.NotVendorName)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-md-4">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Sale.Date, new { @class = "required" })
+
+                            @Html.TextBoxFor(model => model.Sale.Date, StringFormatHelper.Date, new { @id = "date_installment", @required = "required" })
+
+                            <span>@Html.ValidationMessageFor(model => model.Sale.Date)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Sale.Description, new { @class = "required" })
+
+                            @Html.TextAreaFor(model => model.Sale.Description, new { @required = "required" })
+
+                            <span>@Html.ValidationMessageFor(model => model.Sale.Description)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-6 col-md-6">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Sale.AddressId, new { @class = "required" })
+
+                            @Html.DropDownListFor(model => model.Sale.AddressId, Model.Addresses.AsSelectList(nameof(GCustomInformation.Id), nameof(GCustomInformation.Name), EStringGender.Male.GetSelectFormat(Label.Address)), new { @id = "dropdownlist_address", @required = "required" })
+
+                            <span>@Html.ValidationMessageFor(model => model.Sale.AddressId)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-3">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Sale.PaymentMethodId, new { @class = "required" })
+
+                            @Html.DropDownListFor(model => model.Sale.PaymentMethodId, EPaymentMethod.Cash.GetSelectList<EPaymentMethod>(), EStringGender.Male.GetSelectFormat(Label.PaymentMethod), new { @required = "required" })
+
+                            <span>@Html.ValidationMessageFor(model => model.Sale.PaymentMethodId)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-3">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Sale.ShippingFee, new { @class = "" })
+
+                            @Html.TextBoxFor(model => model.Sale.ShippingFee, new { @class = "" })
+
+                            <span>@Html.ValidationMessageFor(model => model.Sale.ShippingFee)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-4">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Sale.DownPayment, new { @class = "" })
+
+                            @Html.TextBoxFor(model => model.Sale.DownPayment, new { @class = "" })
+
+                            <span>@Html.ValidationMessageFor(model => model.Sale.DownPayment)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-4">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Sale.InstallmentCount, new { @class = "required" })
+
+                            <div class="input-group">
+
+                                @Html.TextBoxFor(model => model.Sale.InstallmentCount, new { @id = "quantity_installment", @required = "required" })
+
+                                <button type="button" class="button button-config button-plain" data-modal="#config_installment" @(Model.Sale.Id.IsPositive() ? string.Empty : "disabled")>
+
+                                    @Button.Config
+
+                                </button>
+
+                            </div>
+
+                            <span>@Html.ValidationMessageFor(model => model.Sale.InstallmentCount)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-4">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Sale.InterestRate, new { @class = "" })
+
+                            @Html.TextBoxFor(model => model.Sale.InterestRate, new { @class = "" })
+
+                            <span>@Html.ValidationMessageFor(model => model.Sale.InterestRate)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Sale.SituationId, new { @class = "required" })
+
+                            @Html.DropDownListFor(model => model.Sale.SituationId, ESale.Budgeted.GetSelectList<ESale>(), EStringGender.Female.GetSelectFormat(Label.Status), new { @class = "" })
+
+                            <span>@Html.ValidationMessageFor(model => model.Sale.SituationId)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div id="sale_product" class="col col-12">
+
+                        @{
+                            await Html.RenderPartialAsync("~/Views/Sale/_List.cshtml", Model.Products);
+                        }
+
+                    </div>
+
+                    <div class="col col-12">
+
+                        <div class="form-group">
+
+                            @if (Model.Sale.Id.IsPositive())
+                            {
+                                <button type="submit" class="button button-save">@Button.Save</button>
+                            }
+                            else
+                            {
+                                <button type="submit" class="button button-add">@Button.Create</button>
+                            }
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+    @{
+        await Html.RenderPartialAsync("~/Views/Search/Person/_Person.cshtml");
+    }
+
+    @{
+        await Html.RenderPartialAsync("~/Views/Config/Installment/_Installment.cshtml");
+    }
+
+</section>
+
+@section ScriptsHeader
+{
+    <environment include="Development">
+        <script type="text/javascript" src="~/js/vanilla/element/list.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/component/mask.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/component/modal.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script type="text/javascript" src="~/js/vanilla/element/list.min.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/component/mask.min.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/component/modal.min.js"></script>
+    </environment>
+}
+
+@section ScriptsFooter
+{
+    <script type="text/javascript" src="~/js/jquery/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="~/js/vanilla/page/sale/manage.min.js"></script>
+    <script type="text/javascript" src="~/js/vanilla/page/address/index.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery/unobtrusive-ajax/jquery-unobtrusive-ajax.min.js"></script>
+}

@@ -1,0 +1,26 @@
+
+.#{$mdi-css-prefix} {
+    direction: ltr;
+    //font-size: 150%; /* Preferred icon size */
+    word-wrap: normal;
+    align-self: center;
+    position: relative;
+    font-style: normal;
+    font-weight: normal;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.#{$mdi-css-prefix}:before,
+.#{$mdi-css-prefix}-set {
+    position: relative;
+    font-size: inherit; // can't have font-size inherit on line above, so need to override
+    vertical-align: sub;
+    text-rendering: auto; // optimizelegibility throws things off #1094
+    line-height: inherit;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font: normal normal normal #{$mdi-font-size-base}/1 '#{$mdi-font-name}'; // shortening font declaration
+}

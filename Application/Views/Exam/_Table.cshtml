@@ -1,0 +1,84 @@
+﻿@model Application.Models.Exam.ExamFilter
+
+@if (Model.Pagination.Count > 0)
+{
+    await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Header.cshtml");
+
+    <div class="table-responsive">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th class="fit"></th>
+                    <th>
+
+                        <a asp-controller="Exam"
+                           asp-action="Index"
+                           asp-route-Sort="1"
+                           asp-route-Direction="@Model.Filter.GetDirection(Model.Filter.Sort)"
+                           asp-route-Model-Date="@Model.Filter.Model.Date"
+                           asp-route-Model-Id="@Model.Filter.Model.Id">
+                            @Label.Name
+                        </a>
+
+                    </th>
+                    <th>
+
+                        <a asp-controller="Exam"
+                           asp-action="Index"
+                           asp-route-Sort="2"
+                           asp-route-Direction="@Model.Filter.GetDirection(Model.Filter.Sort)"
+                           asp-route-Model-Date="@Model.Filter.Model.Date"
+                           asp-route-Model-Id="@Model.Filter.Model.Id">
+                            @Label.Date
+                        </a>
+
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var exam in Model.Pagination)
+                {
+                    <tr>
+
+                        <td class="fit">
+
+                            <a asp-controller="Exam" 
+                               asp-action="Manage" 
+                               asp-route-id="@exam.Id" class="button button-edit button-raw"></a>
+
+                        </td>
+                        <td>@exam.Name</td>
+                        <td>@exam.Date</td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    if (Model.Pagination.Quantity > 1)
+    {
+        <ul class="pagination">
+
+            @{
+                await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Footer.cshtml");
+            }
+
+        </ul>
+    }
+}
+else
+{
+    @Html.Feedback(EFeedback.Info, Message.NothingToList, false)
+}

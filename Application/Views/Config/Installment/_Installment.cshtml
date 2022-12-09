@@ -1,0 +1,19 @@
+﻿
+<div id="config_installment" class="modal">
+
+    <div data-header>
+
+        @Label.Configurations
+
+    </div>
+
+    <div data-content></div>
+
+</div>
+
+<environment include="Development">
+    <script type="text/javascript" src="~/js/vanilla/page/config/installment.js"></script>
+</environment>
+<environment exclude="Development">
+    <script type="text/javascript" src="~/js/vanilla/page/config/installment.min.js"></script>
+</environment>

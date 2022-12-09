@@ -1,0 +1,110 @@
+﻿@model Application.Models.Overtime.OvertimeFilter
+
+@if (Model.Pagination.Count > 0)
+{
+    await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Header.cshtml");
+
+    <div class="table-responsive">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th class="fit"></th>
+                    <th>
+
+                        <a asp-controller="Overtime"
+                           asp-action="Index"
+                           asp-route-Sort="1"
+                           asp-route-Direction="@Model.Filter.GetDirection(Model.Filter.Sort)"
+                           asp-route-Model-Date="@Model.Filter.Model.Date"
+                           asp-route-Model-Id="@Model.Filter.Model.Id">
+                            @Label.Name
+                        </a>
+
+                    </th>
+                    <th>
+
+                        <a asp-controller="Overtime"
+                           asp-action="Index"
+                           asp-route-Sort="2"
+                           asp-route-Direction="@Model.Filter.GetDirection(Model.Filter.Sort)"
+                           asp-route-Model-Date="@Model.Filter.Model.Date"
+                           asp-route-Model-Id="@Model.Filter.Model.Id">
+                            @Label.Date
+                        </a>
+
+                    </th>
+                    <th>@Label.Paid</th>
+                    <th>@Label.Confirmed</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var overtime in Model.Pagination)
+                {
+                    <tr>
+
+                        <td class="fit">
+
+                            <a asp-controller="Overtime"
+                               asp-action="Manage"
+                               asp-route-id="@overtime.Id" class="button button-edit button-raw"></a>
+
+                        </td>
+                        <td>@overtime.Name</td>
+                        <td>@overtime.Date</td>
+                        <td>
+
+                            @if (overtime.IsPaid)
+                            {
+                                <text>@Label.Yes</text>
+                            }
+                            else
+                            {
+                                <text>@Label.No</text>
+                            }
+
+                        </td>
+                        <td>
+
+                            @if (overtime.IsConfirmed)
+                            {
+                                <text>@Label.Yes</text>
+                            }
+                            else
+                            {
+                                <text>@Label.No</text>
+                            }
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    if (Model.Pagination.Quantity > 1)
+    {
+        <ul class="pagination">
+
+            @{
+                await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Footer.cshtml");
+            }
+
+        </ul>
+    }
+}
+else
+{
+    @Html.Feedback(EFeedback.Info, Message.NothingToList, false)
+}

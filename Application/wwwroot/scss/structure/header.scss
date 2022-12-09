@@ -1,0 +1,60 @@
+﻿
+.section-header {
+    @include d-flex;
+    margin-bottom: 16px;
+    align-items: center;
+    @include flex-wrap(wrap);
+    color: $color-header-title;
+
+    .title {
+        display: block;
+        font-size: 150%;
+        font-weight: 400;
+    }
+
+    .toolbar {
+        margin-left: auto;
+
+        .button {
+            font-size: 87.5%;
+        }
+    }
+
+    .breadcrumb {
+        margin: 0;
+        width: 100%;
+        font-size: 75%;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        display: inline-block;
+        background-color: transparent;
+
+        li {
+            color: $color-path;
+            display: inline-block;
+
+            &.active {
+                color: $color-path-active;
+            }
+
+            &:not(:last-child):after {
+                content: '/';
+                margin-left: 8px;
+                margin-right: 4px;
+                display: inline-block;
+                color: $color-path-divisor;
+            }
+
+            i {
+                color: inherit;
+                margin-right: 8px;
+            }
+
+            a {
+                color: inherit;
+                font-weight: 500;
+            }
+        }
+    }
+}

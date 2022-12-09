@@ -1,0 +1,456 @@
+﻿
+.editor {
+    width: 100%;
+    @include d-flex;
+    overflow: hidden;
+    //max-height: 300px;
+    position: relative;
+    max-height: 10000px;
+    @include transition(max-height 750ms ease);
+
+    &.active {
+        max-height: 10000px;
+    }
+
+    .sidebar {
+        width: 10%;
+        z-index: 0;
+        @include d-flex;
+        position: relative;
+        background-color: #EEEEEE;
+        @include flex-direction(column);
+
+        .toggle-button {
+            width: 100%;
+            height: 56px;
+            cursor: pointer;
+            font-size: 87.5%;
+            color: #404040;
+            background-color: #CCCCCC;
+            @include border-radius($border-radius 0 0 0);
+
+            &:before {
+                font-size: 200%;
+                content: mdi("eye");
+                font-family: $font-family-material;
+            }
+
+            &.active {
+
+                &:before {
+                    content: mdi("pencil");
+                }
+            }
+        }
+
+        .sidebar-items {
+            width: 100%;
+
+            &.absolute {
+                left: 0;
+                position: absolute;
+            }
+
+            .item-container {
+                border-top: 1px solid #CCCCCC;
+
+                &:last-child {
+                    @include border-radius(0 0 $border-radius 0);
+                }
+            }
+
+            .item-container,
+            .structure-container {
+                width: 100%;
+                opacity: .2;
+                height: 56px;
+                @include d-flex;
+                cursor: pointer;
+                color: #808080;
+                position: relative;
+                background-color: #DDDDDD;
+                @include align-items(center);
+                @include justify-content(center);
+                @include transition(opacity 300ms ease, color 300ms ease);
+
+                &.active {
+                    opacity: 1;
+
+                    &:hover {
+                        color: #404040;
+                    }
+                }
+
+                &.selected {
+                    color: #FFFFFF;
+                    background-color: #1C9FDA;
+
+                    &:hover {
+                        color: #FFFFFF;
+                    }
+                }
+            }
+
+            .item-container .item-content,
+            .item-container .item-control,
+            .structure-container .structure-content,
+            .structure-container .structure-control {
+                display: none;
+            }
+        }
+    }
+
+    .main {
+        margin: 0 auto;
+        @include d-flex;
+        position: relative;
+        @include flex(0 1 100%);
+        background-color: #FFFFFF;
+        border: 1px solid #DDDDDD;
+        @include flex-direction(column);
+        @include border-radius(0 $border-radius $border-radius 0);
+
+        .section-build {
+            overflow-y: auto;
+
+            .block {
+
+                &.structure {
+                    width: 100%;
+                    opacity: .5;
+                    padding: 8px;
+                    @include d-flex;
+                    background-color: #FFFFFF;
+                    @include flex-direction(column);
+                    @include transition(opacity 300ms ease);
+
+                    &.active {
+                        opacity: 1;
+                    }
+
+                    &:not(.active) .menu-action,
+                    &:not(.active) .menu-item.cut,
+                    &:not(.active) .menu-item.copy,
+                    &:not(.active) .menu-item.paste {
+                        display: none;
+                    }
+                    /*& > .toolbar {
+                        &:before {
+                            font-size: 87.5%;
+                            font-weight: 400;
+                            color: #666666;
+                            padding: 12px 12px;
+                            content: attr(data-identifier);
+                            border-right: 1px solid #EEEEEE;
+                        }
+                    }*/
+                    .content {
+                        width: 100%;
+                        height: 100%;
+                        @include d-flex;
+                        max-height: 5000px;
+                        border: solid #D0D0D0;
+                        @include flex-wrap(wrap);
+                        background-color: #FFFFFF;
+                        border-width: 0 1px 1px 1px;
+                        @include border-radius(0 0 $border-radius $border-radius);
+
+                        & > .col {
+                            opacity: .5;
+                            min-height: 100px;
+                            background-color: #E8E8E8;
+                            @include transition(opacity 300ms ease);
+
+                            &.active {
+                                opacity: 1;
+                            }
+
+                            &:not(.active) {
+                                overflow: hidden;
+                            }
+                        }
+
+                        &.collapse {
+                            max-height: 40px;
+                            overflow: hidden;
+
+                            & .col {
+                                min-height: 0;
+                            }
+
+                            &:before {
+                                width: 100%;
+                                font-size: 75%;
+                                display: block;
+                                color: #666666;
+                                line-height: 40px;
+                                text-align: center;
+                                background-color: #E8E8E8;
+                                content: attr(data-quantity) ' elemento(s)';
+                            }
+                        }
+                    }
+                }
+
+                &.component {
+                    width: 100%;
+                    @include d-flex;
+                    margin: 16px auto;
+                    @include flex-wrap(wrap);
+                    background-color: #FFFFFF;
+
+                    &.right {
+                        float: right;
+                    }
+
+                    &.left {
+                        float: left;
+                    }
+
+                    &.right,
+                    &.left {
+                        width: 100%;
+                    }
+
+                    .content {
+                        //padding-top: 16px;
+                        //padding-bottom: 16px;
+                        .accordion-header.selected {
+                            background-color: #13437E !important;
+                        }
+
+                        .accordion-paragraph.selected,
+                        .accordion-subitem.selected {
+                            background-color: #90D3F4 !important;
+                        }
+
+                        .tab {
+                            .tab-header {
+
+                                .tab-item {
+
+                                    &.selected {
+                                        background-color: #1C9FDA !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &.highlight {
+
+                        .block-content {
+                            background-color: #C6E7F9 !important;
+                        }
+                    }
+                }
+
+                .toolbar {
+                    width: 100%;
+                    @include d-flex;
+                    border: 1px solid #D0D0D0;
+                    background-color: #EEEEEE;
+
+                    .menu-action {
+                        overflow: auto;
+                        @include d-flex;
+                        position: relative;
+                        -ms-overflow-style: none;
+                        overflow: -moz-scrollbars-none;
+
+                        &::-webkit-scrollbar {
+                            display: none;
+                            width: 0 !important;
+                            background-color: transparent;
+                        }
+
+                        .configuration-block {
+                            height: 100%;
+                            color: #FFFFFF;
+                            @include d-inline-flex;
+
+                            .action-item {
+                                font-size: 75%;
+                                line-height: 2;
+                                padding: 0 12px;
+                                color: #666666;
+                                background-color: #EEEEEE;
+                                border-right: 1px solid #D0D0D0;
+
+                                i {
+                                    font-size: 75%;
+                                }
+                            }
+
+                            &.disabled,
+                            .action-item.disabled {
+                                opacity: .2;
+                                cursor: default;
+                            }
+                        }
+                    }
+
+                    .menu-control {
+                        margin-left: auto;
+                        text-align: center;
+                        @include d-inline-flex;
+
+                        .control-item {
+                            padding: 8px;
+
+                            &.highlight {
+                                background-color: #1C9FDA !important;
+                            }
+
+                            &:before {
+                                font-size: 100%;
+                                color: #666666;
+                                vertical-align: middle;
+                                font-family: $font-family-material;
+                            }
+
+                            &.arrow {
+                                background-color: #DDDDDD;
+
+                                &:before {
+                                    color: #404040;
+                                }
+
+                                &.move-down:before {
+                                    content: mdi("arrow-down");
+                                }
+
+                                &.move-up:before {
+                                    content: mdi("arrow-up");
+                                }
+                            }
+
+                            &.paste {
+                                background-color: #EEEEEE;
+
+                                &:before {
+                                    color: #404040;
+                                    content: mdi("content-paste");
+                                }
+                            }
+
+                            &.cut {
+                                background-color: #EEEEEE;
+
+                                &:before {
+                                    color: #404040;
+                                    content: mdi("content-cut");
+                                }
+                            }
+
+                            &.copy {
+                                background-color: #EEEEEE;
+
+                                &:before {
+                                    color: #404040;
+                                    content: mdi("content-copy");
+                                }
+                            }
+
+                            &.view {
+                                background-color: #EEEEEE;
+
+                                &.active {
+
+                                    &:before {
+                                        content: mdi("eye-off");
+                                    }
+                                }
+
+                                &:before {
+                                    color: #404040;
+                                    content: mdi("eye");
+                                }
+                            }
+
+                            &.collapse {
+                                background-color: #EEEEEE;
+
+                                &.active {
+
+                                    &:before {
+                                        content: mdi("window-restore");
+                                    }
+                                }
+
+                                &:before {
+                                    color: #404040;
+                                    content: mdi("window-minimize");
+                                }
+                            }
+
+                            &.delete {
+                                background-color: #D14545;
+
+                                &:before {
+                                    color: #FFFFFF;
+                                    content: mdi("close");
+                                }
+                            }
+
+                            &.code {
+                                display: none;
+                                background-color: #EEEEEE;
+
+                                &:before {
+                                    color: #404040;
+                                    content: mdi("code-tags");
+                                }
+
+                                &.active {
+                                    @include d-inline-flex;
+                                }
+                            }
+                        }
+                    }
+
+                    .menu-action {
+
+                        .action-item {
+                            height: 100%;
+                            cursor: pointer;
+                        }
+                    }
+
+                    .menu-control {
+
+                        .control-item {
+                            height: 100%;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+
+        .section-preview {
+            padding: 16px;
+            overflow-y: hidden;
+        }
+
+        .section-build,
+        .section-preview {
+            height: 100%;
+            display: none;
+
+            &.active {
+                display: block;
+            }
+        }
+    }
+}
+
+@media (min-width: $media-sm) {
+
+    .editor {
+
+        .sidebar {
+            width: 5%;
+        }
+    }
+}

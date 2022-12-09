@@ -1,0 +1,84 @@
+﻿@model Application.Models.Email.EmailModel
+@{
+    ViewBag.Title = Title.Email;
+}
+
+<section id="section_header" class="section-header">
+
+    <div class="title">@Title.Email</div>
+
+    <div class="toolbar">
+
+        @if (Model.Email.Id.IsPositive())
+        {
+            <a asp-controller="Email" 
+               asp-action="Index" 
+               asp-route-personId="@Model.Email.PersonId" 
+               asp-route-id="0" class="button button-add">
+
+                @Button.New
+
+            </a>
+        }
+
+    </div>
+
+    <ol class="breadcrumb">
+
+        <li><a asp-controller="Home" asp-action="Index">@Title.Home</a></li>
+
+        @{
+            await Html.RenderPartialAsync("~/Views/Person/_Breadcrumb.cshtml", new ViewDataDictionary(ViewData)
+            {
+                { "personId", Model.Email.PersonId },
+                { "typeId", Model.Email.NotPersonTypeId }
+            });
+        }
+
+        <li>@Title.Email</li>
+
+    </ol>
+
+</section>
+
+<section id="section_content" class="section-content">
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            <div id="message">
+
+                @await Html.PartialAsync("~/Views/Shared/Feedback/_Message.cshtml")
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div id="form">
+
+                @{
+                    await Html.RenderPartialAsync("~/Views/Email/_Form.cshtml", Model.Email);
+                }
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div id="result">
+
+                @{
+                    await Html.RenderPartialAsync("~/Views/Email/_Table.cshtml", Model.Emails);
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

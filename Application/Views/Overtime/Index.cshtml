@@ -1,0 +1,93 @@
+﻿@model Application.Models.Overtime.OvertimeFilter
+@{
+    ViewBag.Title = Title.Overtime;
+}
+
+<section id="section_header" class="section-header">
+
+    <div class="title">@Title.Overtime</div>
+
+    <div class="toolbar">
+
+        <a asp-controller="Overtime" asp-action="Manage" asp-route-id="0" class="button button-add">
+
+            @Button.Create
+
+        </a>
+
+    </div>
+
+    <ol class="breadcrumb">
+
+        <li><a asp-controller="Home" asp-action="Index">@Title.Home</a></li>
+        <li>@Title.Overtime</li>
+
+    </ol>
+
+</section>
+
+<section id="section_content" class="section-content">
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            <div id="message">
+
+                @await Html.PartialAsync("~/Views/Shared/Feedback/_Message.cshtml")
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div id="filter">
+
+                @{
+                    await Html.RenderPartialAsync("~/Views/Overtime/_Filter.cshtml", Model.Filter);
+                }
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div id="result">
+
+                @{
+                    await Html.RenderPartialAsync("~/Views/Overtime/_Table.cshtml", Model);
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+    @{
+        await Html.RenderPartialAsync("~/Views/Search/Person/_Person.cshtml");
+    }
+
+</section>
+
+@section ScriptsHeader
+{
+    <environment include="Development">
+        <script type="text/javascript" src="~/js/vanilla/element/list.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/component/mask.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/component/modal.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script type="text/javascript" src="~/js/vanilla/element/list.min.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/component/mask.min.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/component/modal.min.js"></script>
+    </environment>
+}
+
+@section ScriptsFooter
+{
+    <script type="text/javascript" src="~/js/jquery/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery/unobtrusive-ajax/jquery-unobtrusive-ajax.min.js"></script>
+}

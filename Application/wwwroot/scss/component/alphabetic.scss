@@ -1,0 +1,50 @@
+﻿
+.alphabetic {
+    left: 0;
+    top: 50%;
+    z-index: 3;
+    position: fixed;
+    max-height: 100%;
+    @include transform(translateY(-50%));
+
+    .title-item {
+        @extend h4;
+    }
+
+    .navigation-item {
+        padding: 8px;
+        cursor: pointer;
+        font-size: 112.5%;
+        text-align: center;
+        position: relative;
+        color: $color-alphabetic-navigation;
+        background-color: $background-alphabetic-navigation;
+
+        &.active {
+            z-index: 1;
+            font-weight: 600;
+            color: $color-alphabetic-navigation-active;
+            background-color: $background-alphabetic-navigation-active;
+
+            &:after {
+                top: 50%;
+                z-index: 1;
+                content: '';
+                right: -2.64px;
+                position: absolute;
+                border: 1.32px solid;
+                @include transform(translateY(-50%));
+                border-color: transparent transparent transparent $background-alphabetic-navigation-active;
+            }
+        }
+
+        &.pending {
+            color: $color-alphabetic-navigation-pendent;
+            background-color: $background-alphabetic-navigation-pendent;
+
+            &:after {
+                border-color: transparent transparent transparent $background-alphabetic-navigation-pendent;
+            }
+        }
+    }
+}

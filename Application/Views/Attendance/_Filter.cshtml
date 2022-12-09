@@ -1,0 +1,57 @@
+﻿@model Application.Models.Attendance.AttendanceFilter
+
+@using (Html.BeginForm("Index", "Attendance", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+
+        <div class="col col-12 col-sm-8">
+
+            <div class="form-group">
+
+                <label class="required">@Label.Month</label>
+
+                @Html.DropDownListFor(model => model.month, EMonth.January.GetSelectList<EMonth>(), new { @required = "required" })
+
+                <span>@Html.ValidationMessageFor(model => model.month)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-4">
+
+            <div class="form-group">
+
+                <label class="required">@Label.Year</label>
+
+                @Html.TextBoxFor(model => model.year, new { @required = "required", @autocomplete = "off" })
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div class="form-group">
+
+                <button type="submit" class="button button-search">
+
+                    @Button.Find
+
+                </button>
+
+                <a asp-controller="Attendance"
+                   asp-action="Index" class="button button-clean">
+
+                    @Button.Clean
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+}

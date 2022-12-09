@@ -1,0 +1,413 @@
+﻿@model Domain.Entity.Paycheck
+@{
+    ViewBag.Title = Title.ManagePaycheck;
+}
+
+<section id="section_header" class="section-header">
+
+    <div class="title">@Title.ManagePaycheck</div>
+
+    <div class="toolbar">
+
+        <a asp-controller="Paycheck"
+           asp-action="Manage"
+           asp-route-id="0"
+           asp-route-payrollId="@Model.PayrollId" class="button button-add">
+
+            @Button.New
+
+        </a>
+
+        @if (Model.Id.IsPositive())
+        {
+            <a asp-controller="Paycheck"
+               asp-action="Delete"
+               asp-route-id="@Model.Id"
+               asp-route-payrollId="@Model.PayrollId" class="button button-delete">
+
+                @Button.Delete
+
+            </a>
+        }
+
+    </div>
+
+    <ol class="breadcrumb">
+
+        <li><a asp-controller="Home" asp-action="Index">@Title.Home</a></li>
+        <li><a asp-controller="Payroll" asp-action="Index">@Title.Payroll</a></li>
+        <li><a asp-controller="Paycheck" asp-action="Index" asp-route-referenceId="@Model.PayrollId">@Title.Paycheck</a></li>
+        <li>@Title.ManagePaycheck</li>
+
+    </ol>
+
+</section>
+
+<section id="section_content" class="section-content">
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            @await Html.PartialAsync("~/Views/Shared/Feedback/_Message.cshtml")
+
+        </div>
+
+        <div class="col col-12">
+
+            @using (Html.BeginForm("Manage", "Paycheck", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.FileId)
+                @Html.HiddenFor(model => model.PayrollId)
+                @Html.HiddenFor(model => model.ConfirmationDate)
+                @Html.HiddenFor(model => model.PersonId, new { @id = "hidden_person" })
+
+                <div class="row">
+
+                    <div class="col col-12 col-sm-8">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.NotName, new { @class = "" })
+
+                            <div class="input-group">
+
+                                @Html.TextBoxFor(model => model.NotName, string.Empty, new { @data_reference = "hidden_person", @readonly = "readonly" })
+
+                                @if (Model.Id.IsZero())
+                                {
+                                    <button type="button" class="button button-search button-plain" data-modal="#search_employee">
+
+                                        @Button.Search
+
+                                    </button>
+                                }
+
+                            </div>
+
+                            <span>@Html.ValidationMessageFor(model => model.NotName)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-4">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.PaymentDate, new { @class = "required" })
+
+                            @Html.TextBoxFor(model => model.PaymentDate, StringFormatHelper.Date, new { @class = "required" })
+
+                            <span>@Html.ValidationMessageFor(model => model.PaymentDate)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-6 col-md-4">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Week, new { @class = "" })
+
+                            @Html.TextBoxFor(model => model.Week, string.Empty, new { @class = "" })
+
+                            <span>@Html.ValidationMessageFor(model => model.Week)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-6 col-md-4">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.RegularHour, new { @class = "required" })
+
+                            @Html.TextBoxFor(model => model.RegularHour, string.Empty, new { @required = "required" })
+
+                            <span>@Html.ValidationMessageFor(model => model.RegularHour)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-6 col-md-4">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.HourRate, new { @class = "required" })
+
+                            @Html.TextBoxFor(model => model.HourRate, string.Empty, new { @required = "required" })
+
+                            <span>@Html.ValidationMessageFor(model => model.HourRate)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-6 col-md-4">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.OvertimeCount, new { @class = "required" })
+
+                            @Html.TextBoxFor(model => model.OvertimeCount, string.Empty, new { @required = "required" })
+
+                            <span>@Html.ValidationMessageFor(model => model.OvertimeCount)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-6 col-md-4">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.OvertimeValue, new { @class = "required" })
+
+                            @Html.TextBoxFor(model => model.OvertimeValue, string.Empty, new { @required = "required" })
+
+                            <span>@Html.ValidationMessageFor(model => model.OvertimeValue)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-6 col-md-4">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Bonus, new { @class = "required" })
+
+                            @Html.TextBoxFor(model => model.Bonus, string.Empty, new { @required = "required" })
+
+                            <span>@Html.ValidationMessageFor(model => model.Bonus)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-4">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.GrossEarning, new { @class = "required" })
+
+                            @Html.TextBoxFor(model => model.GrossEarning, string.Empty, new { @required = "required" })
+
+                            <span>@Html.ValidationMessageFor(model => model.GrossEarning)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-4">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Tax, new { @class = "required" })
+
+                            @Html.TextBoxFor(model => model.Tax, string.Empty, new { @required = "required" })
+
+                            <span>@Html.ValidationMessageFor(model => model.Tax)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-sm-4">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Deduction, new { @class = "required" })
+
+                            @Html.TextBoxFor(model => model.Deduction, string.Empty, new { @required = "required" })
+
+                            <span>@Html.ValidationMessageFor(model => model.Deduction)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12">
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Observation, new { @class = "" })
+
+                            @Html.TextAreaFor(model => model.Observation, new { @class = "" })
+
+                            <span>@Html.ValidationMessageFor(model => model.Observation)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12">
+
+                        <div class="form-group">
+
+                            <label>@Label.Voucher</label>
+
+                            <div class="file">
+
+                                @Html.TextBoxFor(model => model.NotVoucher.HttpFile, string.Empty, new { @type = "file" })
+
+                                @Html.LabelFor(model => model.NotVoucher.HttpFile, EStringGender.Male.GetSelectFormat(Label.File), new { @data_message = "{counter} arquivos selecionados" })
+
+                            </div>
+
+                            @if (Model.File != null)
+                            {
+                                <div class="checkbox">
+
+                                    @Html.CheckBoxFor(model => model.NotVoucher.IsSetDefault, new { @class = "" })
+
+                                    @Html.LabelFor(model => model.NotVoucher.IsSetDefault, Message.SetEmpty, new { @class = "" })
+
+                                </div>
+
+                                <span>@Html.ValidationMessageFor(model => model.NotVoucher.IsSetDefault)</span>
+                            }
+
+                        </div>
+
+                    </div>
+
+                    @if (Model.File != null)
+                    {
+                        <div class="col col-12">
+
+                            <div class="card">
+
+                                @if (FileManagement.IsImage(Model.File.Extension))
+                                {
+                                    <div class="card-content">
+
+                                        <img src="@($"{FileManagement.GetExtensionDirectory(Model.File.Extension)}{Model.File.NotGeneratedName}")" />
+
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="card-avatar">
+
+                                        <i class="file-icon-@Model.File.Extension.TrimStart('.')"></i>
+
+                                        <div class="card-description">
+
+                                            <div class="card-header">@Model.File.Name</div>
+
+                                        </div>
+
+                                        <div class="card-icon">
+
+                                            <a asp-controller="Drive"
+                                               asp-action="Download"
+                                               asp-route-key="@Model.File.Key" class="button button-download button-raw"></a>
+
+                                        </div>
+
+                                    </div>
+                                }
+
+                            </div>
+
+                        </div>
+                    }
+
+                    <div class="col col-12">
+
+                        <div class="form-group">
+
+                            <div class="checkbox">
+
+                                @Html.CheckBoxFor(model => model.IsExtra, new { @class = "" })
+
+                                @Html.LabelFor(model => model.IsExtra, new { @class = "" })
+
+                            </div>
+
+                            <span>@Html.ValidationMessageFor(model => model.IsExtra)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12">
+
+                        <div class="form-group">
+
+                            <div class="checkbox">
+
+                                @Html.CheckBoxFor(model => model.IsConfirmed, new { @class = "" })
+
+                                @Html.LabelFor(model => model.IsConfirmed, new { @class = "" })
+
+                            </div>
+
+                            <span>@Html.ValidationMessageFor(model => model.IsConfirmed)</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12">
+
+                        <div class="form-group">
+
+                            @if (Model.Id.IsPositive())
+                            {
+                                <button type="submit" class="button button-save">@Button.Save</button>
+                            }
+                            else
+                            {
+                                <button type="submit" class="button button-add">@Button.Create</button>
+                            }
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+    @{
+        await Html.RenderPartialAsync("~/Views/Search/Employee/_Employee.cshtml");
+    }
+
+</section>
+
+@section ScriptsHeader
+{
+    <environment include="Development">
+        <script type="text/javascript" src="~/js/vanilla/element/list.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/component/mask.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/component/modal.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script type="text/javascript" src="~/js/vanilla/element/list.min.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/component/mask.min.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/component/modal.min.js"></script>
+    </environment>
+}
+
+@section ScriptsFooter
+{
+    <script type="text/javascript" src="~/js/jquery/jquery-3.4.1.min.js"></script>
+    <environment include="Development">
+        <script type="text/javascript" src="~/js/vanilla/element/file.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script type="text/javascript" src="~/js/vanilla/element/file.min.js"></script>
+    </environment>
+    <script type="text/javascript" src="~/js/jquery/unobtrusive-ajax/jquery-unobtrusive-ajax.min.js"></script>
+}

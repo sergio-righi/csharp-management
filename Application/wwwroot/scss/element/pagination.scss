@@ -1,0 +1,92 @@
+﻿
+ul {
+    padding: 0;
+
+    &.pagination {
+        width: 100%;
+        @include d-flex;
+        @include justify-content(center);
+
+        li {
+            @include d-flex;
+            cursor: pointer;
+            padding: 8px 12px;
+            vertical-align: middle;
+            color: $color-pagination;
+            list-style: none;
+            line-height: $line-height;
+            background-color: $background-pagination;
+
+            &:nth-child(3) {
+                @include border-radius($border-radius 0 0 $border-radius);
+            }
+
+            &:nth-last-child(3) {
+                @include border-radius(0 $border-radius $border-radius 0);
+            }
+
+            &:hover {
+                color: $color-pagination-hover;
+                background-color: $background-pagination-hover;
+            }
+
+            &.active {
+                cursor: default;
+                @include d-flex;
+                cursor: pointer;
+                font-weight: 700;
+                padding: 8px 12px;
+                pointer-events: none;
+                vertical-align: middle;
+                @extend .block-selection;
+                color: $color-pagination-active;
+                background-color: $background-pagination-active;
+            }
+
+            &.disabled {
+                cursor: default;
+                pointer-events: none;
+                @extend .block-selection;
+                color: $color-pagination-disabled;
+                /*background-color: $background-pagination-disabled;*/
+            }
+
+            &.last,
+            &.next,
+            &.first,
+            &.prev {
+                line-height: 1;
+                background-color: transparent;
+
+                &:before {
+                    font-size: 150%;
+                    font-family: $font-family-material;
+                }
+            }
+
+            &.first {
+                &:before {
+                    content: mdi("page-first");
+                }
+            }
+
+            &.prev {
+                &:before {
+                    content: mdi("chevron-left");
+                }
+            }
+
+            &.next {
+                &:before {
+                    content: mdi("chevron-right");
+                }
+            }
+
+            &.last {
+                &:before {
+                    content: mdi("page-last");
+                }
+            }
+        }
+    }
+}

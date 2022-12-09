@@ -1,0 +1,59 @@
+﻿@namespace Domain.Entity
+@model ICollection<InstallmentInfo>
+@{
+    string prefix = $"{nameof(Installment.Dates)}";
+}
+
+@if (!Model.IsNullOrEmpty())
+{
+    <div class="col col-12">
+
+        <ul class="list list-col list-border list-hover">
+
+            @foreach (var installment in Model)
+            {
+                int index = installment.Number;
+
+                <li class="col col-12 col-sm-6 list-item list-border list-disabled@(installment.NotIsDeleted ? " bg-deleted" : string.Empty)">
+
+                    <input type="hidden" name="@($"{prefix}.Index")" value="@index" />
+
+                    @Html.Hidden($"{prefix}[{index}].{nameof(InstallmentInfo.Id)}", installment.Id)
+                    @Html.Hidden($"{prefix}[{index}].{nameof(InstallmentInfo.Number)}", installment.Number)
+                    @Html.Hidden($"{prefix}[{index}].{nameof(InstallmentInfo.IsConfirmed)}", installment.IsConfirmed)
+                    @Html.Hidden($"{prefix}[{index}].{nameof(InstallmentInfo.NotIsDeleted)}", installment.NotIsDeleted)
+                    @Html.Hidden($"{prefix}[{index}].{nameof(InstallmentInfo.InstallmentId)}", installment.InstallmentId)
+                    @Html.Hidden($"{prefix}[{index}].{nameof(InstallmentInfo.ConfirmationDate)}", installment.ConfirmationDate)
+
+                    <div class="list-content">
+
+                        <div class="list-title">@(installment.Number)ª</div>
+
+                        <div class="list-title small">@Label.Installment</div>
+
+                    </div>
+
+                    <div class="list-control">
+
+                        <span>@Label.Date</span>
+
+                        @if (installment.IsConfirmed || installment.NotIsDeleted)
+                        {
+                            @Html.TextBox($"{prefix}[{index}].{nameof(InstallmentInfo.Date)}", installment.Date, StringFormatHelper.Date, new { @readonly = "readonly", @required = "required" })
+                        }
+                        else
+                        {
+                            @Html.TextBox($"{prefix}[{index}].{nameof(InstallmentInfo.Date)}", installment.Date, StringFormatHelper.Date, new { @data_date = installment.Date.ToShortDateString(), @required = "required" })
+                        }
+
+                    </div>
+
+                </li>
+            }
+
+        </ul>
+
+        <br />
+
+    </div>
+}

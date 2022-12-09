@@ -1,0 +1,88 @@
+﻿@model Application.Models.Vacation.VacationFilter
+
+@if (Model.Pagination.Count > 0)
+{
+    await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Header.cshtml");
+
+    <div class="table-responsive">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th class="fit"></th>
+                    <th>
+
+                        <a asp-controller="Vacation"
+                           asp-action="Index"
+                           asp-route-Sort="1"
+                           asp-route-Direction="@Model.Filter.GetDirection(Model.Filter.Sort)"
+                           asp-route-Model-Year="@Model.Filter.Model.Year"
+                           asp-route-Model-Id="@Model.Filter.Model.Id">
+                            @Label.Name
+                        </a>
+
+                    </th>
+                    <th>
+
+                        <a asp-controller="Vacation"
+                           asp-action="Index"
+                           asp-route-Sort="1"
+                           asp-route-Direction="@Model.Filter.GetDirection(Model.Filter.Sort)"
+                           asp-route-Model-Year="@Model.Filter.Model.Year"
+                           asp-route-Model-Id="@Model.Filter.Model.Id">
+                            @Label.Year
+                        </a>
+
+                    </th>
+                    <th>@Label.StartDate</th>
+                    <th>@Label.EndDate</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var vacation in Model.Pagination)
+                {
+                    <tr>
+
+                        <td class="fit">
+
+                            <a asp-controller="Vacation" 
+                               asp-action="Manage" 
+                               asp-route-id="@vacation.Id" class="button button-edit button-raw"></a>
+
+                        </td>
+                        <td>@vacation.Name</td>
+                        <td>@vacation.StartDate.Value.Year</td>
+                        <td>@vacation.StartDate.Value.ToShortDateString()</td>
+                        <td>@vacation.EndDate.Value.ToShortDateString()</td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    if (Model.Pagination.Quantity > 1)
+    {
+        <ul class="pagination">
+
+            @{
+                await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Footer.cshtml");
+            }
+
+        </ul>
+    }
+}
+else
+{
+    @Html.Feedback(EFeedback.Info, Message.NothingToList, false)
+}

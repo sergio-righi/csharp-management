@@ -1,0 +1,111 @@
+﻿
+.timeline {
+    width: 90%;
+    margin: 0 auto;
+    list-style: none;
+
+    .timeline-item {
+        position: relative;
+        color: $color-timeline;
+        padding: 12px 32px 8px 32px;
+        font-family: $font-family-material;
+
+        &:before {
+            top: 12px;
+            left: -5px;
+            content: '';
+            width: 16px;
+            height: 16px;
+            display: block;
+            position: absolute;
+            border: 4px solid $background-timeline-icon;
+            @include border-radius($border-radius-circle);
+        }
+
+        &:not(:last-child) {
+
+            &:after {
+                top: 45px;
+                left: 5px;
+                content: '';
+                position: absolute;
+                height: calc(100% - 45px);
+                border: 2px dashed $background-timeline-icon;
+            }
+        }
+
+        &.complete {
+
+            &:before {
+                background-color: $background-timeline-icon;
+            }
+
+            &:not(:last-child) {
+
+                &:after {
+                    border-style: solid;
+                }
+            }
+        }
+
+        &.active {
+
+            &:before {
+                border-color: $background-timeline-active;
+                background-color: $background-timeline-active;
+            }
+
+            &:after {
+                border-style: solid;
+            }
+        }
+
+        &.cancel {
+
+            &:before {
+                top: 3px;
+                left: -7px;
+                font-size: 150%;
+                color: $color-red;
+                background: none !important;
+                content: mdi("cancel") !important;
+                border: unset;
+            }
+
+            &:after {
+                border-style: solid;
+                background-color: $color-red;
+            }
+
+            .timeline-header {
+                text-decoration: line-through;
+                color: $color-timeline-disabled;
+            }
+        }
+
+        &.disabled {
+
+            &:after,
+            &:before {
+                background-color: $background-timeline-disabled;
+            }
+
+            .timeline-header {
+                text-decoration: line-through;
+                color: $color-timeline-disabled;
+            }
+        }
+
+        .timeline-header {
+            font-size: 87.5%;
+            font-weight: 700;
+            line-height: $line-height;
+        }
+
+        .timeline-content {
+            font-size: 87.5%;
+            margin-top: 16px;
+            line-height: $line-height;
+        }
+    }
+}

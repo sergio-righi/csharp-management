@@ -1,0 +1,108 @@
+﻿@{
+    var prevDisabled = !Model.Pagination.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Pagination.HasNextPage ? "disabled" : "";
+}
+
+@if (Model.Pagination.Total > 1)
+{
+    if (Model.Pagination.Page > 1)
+    {
+        <li>
+
+            <a asp-action="Index"
+               asp-route-page="1"
+               asp-route-Sort="@Model.Filter.Sort"
+               asp-route-Name="@Model.Filter.Name"
+               asp-route-EndDate="@Model.Filter.EndDate"
+               asp-route-Direction="@Model.Filter.Direction"
+               asp-route-Activated="@Model.Filter.Activated"
+               asp-route-StartDate="@Model.Filter.StartDate"
+               asp-route-ReferenceId="@Model.Filter.ReferenceId" class="first"></a>
+
+        </li>
+
+        <li>
+
+            <a asp-action="Index"
+               asp-route-page="@(Model.Pagination.Page - 1)"
+               asp-route-Sort="@Model.Filter.Sort"
+               asp-route-Name="@Model.Filter.Name"
+               asp-route-EndDate="@Model.Filter.EndDate"
+               asp-route-Direction="@Model.Filter.Direction"
+               asp-route-Activated="@Model.Filter.Activated"
+               asp-route-StartDate="@Model.Filter.StartDate"
+               asp-route-ReferenceId="@Model.Filter.ReferenceId" class="prev"></a>
+
+        </li>
+    }
+
+    for (var i = (Model.Pagination.Page - 2); i < Model.Pagination.Page; i++)
+    {
+        if (i > 0)
+        {
+            <li>
+
+                <a asp-action="Index"
+                   asp-route-page="@i"
+                   asp-route-Sort="@Model.Filter.Sort"
+                   asp-route-Name="@Model.Filter.Name"
+                   asp-route-EndDate="@Model.Filter.EndDate"
+                   asp-route-Direction="@Model.Filter.Direction"
+                   asp-route-Activated="@Model.Filter.Activated"
+                   asp-route-StartDate="@Model.Filter.StartDate"
+                   asp-route-ReferenceId="@Model.Filter.ReferenceId">@i</a>
+
+            </li>
+        }
+    }
+
+    <li class="active">@Model.Pagination.Page</li>
+
+    for (var i = Model.Pagination.Page + 1; i <= (Model.Pagination.Page + 2) && i <= Model.Pagination.Quantity; i++)
+    {
+        <li>
+
+            <a asp-action="Index"
+               asp-route-page="@i"
+               asp-route-Sort="@Model.Filter.Sort"
+               asp-route-Name="@Model.Filter.Name"
+               asp-route-EndDate="@Model.Filter.EndDate"
+               asp-route-Direction="@Model.Filter.Direction"
+               asp-route-Activated="@Model.Filter.Activated"
+               asp-route-StartDate="@Model.Filter.StartDate"
+               asp-route-ReferenceId="@Model.Filter.ReferenceId">@i</a>
+
+        </li>
+    }
+
+    if (Model.Pagination.Total > Model.Pagination.Page)
+    {
+        <li>
+
+            <a asp-action="Index"
+               asp-route-page="@(Model.Pagination.Page + 1)"
+               asp-route-Sort="@Model.Filter.Sort"
+               asp-route-Name="@Model.Filter.Name"
+               asp-route-EndDate="@Model.Filter.EndDate"
+               asp-route-Direction="@Model.Filter.Direction"
+               asp-route-Activated="@Model.Filter.Activated"
+               asp-route-StartDate="@Model.Filter.StartDate"
+               asp-route-ReferenceId="@Model.Filter.ReferenceId" class="next"></a>
+
+        </li>
+
+        <li>
+
+            <a asp-action="Index"
+               asp-route-page="@(Model.Pagination.Quantity)"
+               asp-route-Sort="@Model.Filter.Sort"
+               asp-route-Name="@Model.Filter.Name"
+               asp-route-EndDate="@Model.Filter.EndDate"
+               asp-route-Direction="@Model.Filter.Direction"
+               asp-route-Activated="@Model.Filter.Activated"
+               asp-route-StartDate="@Model.Filter.StartDate"
+               asp-route-ReferenceId="@Model.Filter.ReferenceId" class="last"></a>
+
+        </li>
+    }
+}

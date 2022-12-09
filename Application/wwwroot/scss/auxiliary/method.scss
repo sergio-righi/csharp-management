@@ -1,0 +1,184 @@
+﻿
+@mixin box-shadow($property...) {
+    box-shadow: $property;
+    -moz-box-shadow: $property;
+    -webkit-box-shadow: $property;
+}
+
+@mixin transition($property...) {
+    transition: $property;
+    -o-transition: $property;
+    -moz-transition: $property;
+    -webkit-transition: $property;
+}
+
+@mixin filter($property...) {
+    filter: $property;
+    -ms-filter: $property;
+    -moz-filter: $property;
+    -webkit-filter: $property;
+}
+
+@mixin animation($property...) {
+    animation: $property;
+    -o-animation: $property;
+    -moz-animation: $property;
+    -webkit-animation: $property;
+}
+
+@mixin animation-fill-mode($property) {
+    animation-fill-mode: $property;
+    -o-animation-fill-mode: $property;
+    -moz-animation-fill-mode: $property;
+    -webkit-animation-fill-mode: $property;
+}
+
+@mixin animation-delay($property) {
+    animation-delay: $property;
+    -o-animation-delay: $property;
+    -moz-animation-delay: $property;
+    -webkit-animation-delay: $property;
+}
+
+@mixin transition-delay($property) {
+    transition-delay: $property;
+    -o-transition-delay: $property;
+    -moz-transition-delay: $property;
+    -webkit-transition-delay: $property;
+}
+
+@mixin transform($property) {
+    transform: $property;
+    -ms-transform: $property;
+    -moz-transform: $property;
+    -webkit-transform: $property;
+}
+
+@mixin border-radius($property) {
+    border-radius: $property;
+    -moz-border-radius: $property;
+    -webkit-border-radius: $property;
+}
+
+@mixin flex($property) {
+    flex: $property;
+    -ms-flex: $property;
+    -webkit-flex: $property;
+    -moz-box-flex: $property;
+    -webkit-box-flex: $property;
+}
+
+@mixin flex-direction($property) {
+    flex-direction: $property;
+    -ms-flex-direction: $property;
+    -moz-flex-direction: $property;
+    -webkit-flex-direction: $property;
+}
+
+@mixin flex-order($property) {
+    order: $property;
+    -webkit-order: $property;
+    -ms-flex-order: $property;
+    -moz-box-ordinal-group: $property;
+    -webkit-box-ordinal-group: $property;
+}
+
+@mixin justify-content($property) {
+    -webkit-justify-content: $property;
+    justify-content: $property;
+}
+
+@mixin align-items($property) {
+    -webkit-align-items: $property;
+    align-items: $property;
+}
+
+@mixin flex-wrap($property) {
+    flex-wrap: $property;
+    -ms-flex-wrap: $property;
+}
+
+@mixin appearance($property) {
+    appearance: $property;
+    -moz-appearance: $property;
+    -webkit-appearance: $property;
+}
+
+@mixin user-select($property) {
+    user-select: $property;
+    -ms-user-select: $property;
+    -moz-user-select: $property;
+    -webkit-user-select: $property;
+}
+
+@mixin d-flex {
+    display: flex;
+    display: -moz-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+}
+
+@mixin d-inline-flex {
+    display: inline-flex;
+    display: -ms-inline-flexbox;
+    display: -webkit-inline-flex;
+}
+
+@mixin block-selection {
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+}
+
+@mixin input-placeholder {
+    &.placeholder {
+        @content;
+    }
+
+    &:-moz-placeholder {
+        @content;
+    }
+
+    &::-moz-placeholder {
+        @content;
+    }
+
+    &:-ms-input-placeholder {
+        @content;
+    }
+
+    &::-webkit-input-placeholder {
+        @content;
+    }
+}
+
+@mixin keyframes($property) {
+
+    @-webkit-keyframes #{$property} {
+        @content;
+    }
+
+    @-moz-keyframes #{$property} {
+        @content;
+    }
+
+    @-o-keyframes #{$property} {
+        @content;
+    }
+
+    @keyframes #{$property} {
+        @content;
+    }
+}
+
+@mixin fontdef-woff($font-type) {
+    src: url('../../Fonts/Roboto/#{$font-type}/Roboto-#{$font-type}.woff2') format('woff2'), url('../../Fonts/Roboto/#{font-type}/Roboto-#{$font-type}.woff') format('woff');
+}
+
+@mixin fontdef-ttf($font-family, $font-type) {
+    src: url('../../Fonts/#{$font-family}/#{$font-family}-#{$font-type}.ttf') format('truetype');
+}

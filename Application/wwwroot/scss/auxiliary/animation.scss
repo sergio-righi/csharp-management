@@ -1,0 +1,236 @@
+﻿
+.a-pulse {
+    @include animation(pulse 500ms ease-in-out);
+}
+
+@include keyframes(pulse) {
+    0% {
+        @include box-shadow(0 3px 20px rgba(0, 0, 0, .14));
+        @include transform(translate(-50%, -50%) scale3d(.1, .1, 1));
+    }
+
+    55% {
+        @include box-shadow(0 10px 20px rgba(0, 0, 0, .2));
+        @include transform(translate(-50%, -50%) scale3d(1.08, 1.08, 1));
+    }
+
+    75% {
+        @include box-shadow(0 0 20px rgba(0, 0, 0, .14));
+        @include transform(translate(-50%, -50%) scale3d(.95, .95, 1));
+    }
+
+    100% {
+        @include box-shadow(0 3px 20px rgba(0, 0, 0, .14));
+        @include transform(translate(-50%, -50%) scale3d(1, 1, 1));
+    }
+}
+
+.a-rotate-delay {
+    @include animation(rotate-delay 3s linear infinite);
+}
+
+@include keyframes(rotate-delay) {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    65% {
+        -webkit-transform: rotate(360deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.a-rotate {
+    @include animation(rotate 750ms linear infinite);
+}
+
+@include keyframes(rotate) {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.a-dash-color {
+    @include animation(dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite);
+}
+
+@include keyframes(dash) {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+
+    50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
+    }
+
+    100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
+    }
+}
+
+@include keyframes(color) {
+    100%, 0% {
+        stroke: $color-primary-4;
+    }
+
+    40% {
+        stroke: $color-primary-3;
+    }
+
+    66% {
+        stroke: $color-primary-2;
+    }
+
+    80%, 90% {
+        stroke: $color-primary-1;
+    }
+}
+
+.a-shake {
+    @include animation(shake 300ms ease-in-out);
+}
+
+@include keyframes(shake) {
+    10%, 90% {
+        @include transform(translate3d(-53%, -50%, 0));
+    }
+
+    20%, 80% {
+        @include transform(translate3d(-55%, -50%, 0));
+    }
+
+    30%, 50%, 70% {
+        @include transform(translate3d(-50%, -53%, 0));
+    }
+
+    40%, 60% {
+        @include transform(translate3d(-50%, -55%, 0));
+    }
+}
+
+/*.a-slide-in-bottom {
+    @include animation(slide-in-bottom 300ms linear);
+}
+
+@include keyframes(slide-in-bottom) {
+    0% {
+        @include transform(translate(-50%, 100%));
+    }
+
+    50% {
+        @include transform(translate(-50%, 0%));
+    }
+
+    100% {
+        @include transform(translate(-50%, -50%));
+    }
+}
+
+.a-slide-out-bottom {
+    @include animation(slide-out-bottom 300ms linear);
+}
+
+@include keyframes(slide-out-bottom) {
+    0% {
+        @include transform(translate(-50%, -50%));
+    }
+
+    50% {
+        @include transform(translate(-50%, 0%));
+    }
+
+    100% {
+        @include transform(translate(-50%, 100%));
+    }
+}*/
+
+.a-indeterminate {
+    @include animation(indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite);
+}
+
+@include keyframes(indeterminate) {
+    0% {
+        left: -35%;
+        right: 100%;
+    }
+
+    60% {
+        left: 100%;
+        right: -90%;
+    }
+
+    100% {
+        left: 100%;
+        right: -90%;
+    }
+}
+
+.a-indeterminate-short {
+    @include animation(indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite);
+    animation-delay: 1.15s;
+}
+
+@include keyframes(indeterminate-short) {
+    0% {
+        left: -200%;
+        right: 100%;
+    }
+
+    60% {
+        left: 107%;
+        right: -8%;
+    }
+
+    100% {
+        left: 107%;
+        right: -8%;
+    }
+}
+
+.a-shimmer {
+    @include animation(shimmer 1s linear infinite forwards);
+}
+
+@include keyframes(shimmer) {
+    0% {
+        background-position: -468px 0;
+    }
+
+    100% {
+        background-position: 468px 0;
+    }
+}
+
+/*.a-pulse-button {
+    @include animation(pulse 1s cubic-bezier(0.24, 0, 0.38, 1) infinite);
+}
+
+@-webkit-keyframes pulse {
+    to {
+        box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);
+    }
+}
+
+@-moz-keyframes pulse {
+    to {
+        box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);
+    }
+}
+
+@-ms-keyframes pulse {
+    to {
+        box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);
+    }
+}
+
+@keyframes pulse {
+    to {
+        box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);
+    }
+}*/

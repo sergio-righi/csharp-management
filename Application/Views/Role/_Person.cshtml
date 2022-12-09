@@ -1,0 +1,47 @@
+﻿@namespace  Domain.Entity.Specific
+@model Domain.Entity.Specific.SRolePerson
+@{
+    int index = Model.PersonId;
+
+    string prefix = $"{nameof(Application.Models.Role.RolePeopleModel.People)}";
+}
+
+<div class="list-item list-border c-pointer">
+
+    <input type="hidden" name="@($"{prefix}.Index")" value="@index" />
+
+    @Html.Hidden($"{prefix}[{index}].{nameof(SRolePerson.Id)}", Model.Id)
+    @Html.Hidden($"{prefix}[{index}].{nameof(SRolePerson.Name)}", Model.Name)
+    @Html.Hidden($"{prefix}[{index}].{nameof(SRolePerson.RoleId)}", Model.RoleId)
+    @Html.Hidden($"{prefix}[{index}].{nameof(SRolePerson.EndDate)}", Model.EndDate)
+    @Html.Hidden($"{prefix}[{index}].{nameof(SRolePerson.PersonId)}", Model.PersonId)
+    @Html.Hidden($"{prefix}[{index}].{nameof(SRolePerson.StartDate)}", Model.StartDate)
+
+    <div class="list-control">
+
+        <div class="checkbox checkbox-delete">
+
+            @Html.CheckBox($"{prefix}[{index}].{nameof(SRolePerson.Deleted)}", Model.IsDeleted(), new { @id = $"checkbox_{index}", @value = "true" })
+
+            @Html.Label($"checkbox_{index}", string.Empty)
+
+            @*<input type="checkbox" id="@($"checkbox_{index}")" name="@($"{prefix}[{index}].{nameof(SRolePerson.deleted)}")" @(Model.IsDeleted() ? "checked" : "") value="true">
+            <label for="@($"checkbox_{index}")"></label>*@
+
+        </div>
+
+    </div>
+
+    <div class="list-content">
+
+        <div class="list-title">
+
+            @Model.Name
+
+        </div>
+
+        <p>@Model.StartDate.ToLongDateString()</p>
+
+    </div>
+
+</div>

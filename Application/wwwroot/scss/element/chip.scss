@@ -1,0 +1,95 @@
+﻿
+.chip {
+    padding: 0;
+    width: auto;
+    margin: 4px;
+    outline: none;
+    font-size: 100%;
+    position: relative;
+    color: $color-chip;
+    white-space: nowrap;
+    font-weight: inherit;
+    text-decoration: none;
+    @include d-inline-flex;
+    box-sizing: border-box;
+    vertical-align: middle;
+    @include align-items(center);
+    background-color: $background-chip;
+    @include border-radius($border-radius-rounded);
+
+    &:hover {
+        color: $color-chip;
+        background-color: darken($background-chip, 5);
+    }
+
+    &.chip-outline {
+        background-color: transparent;
+        border: 1px solid $border-color-chip;
+
+        &:hover {
+            background-color: $background-chip;
+        }
+    }
+
+    &.chip-small {
+        font-size: 75%;
+    }
+
+    &.chip-large {
+        font-size: 125%;
+    }
+
+    .chip-icon,
+    .chip-image {
+        width: 32px;
+        height: 32px;
+        overflow: hidden;
+        margin-right: -4px;
+        @include d-inline-flex;
+        @include user-select(none);
+        @include align-items(center);
+        @include justify-content(center);
+        @include border-radius($border-radius-rounded);
+        background-color: darken($background-chip, 10);
+
+        img {
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .chip-title {
+        color: inherit;
+        line-height: 32px;
+        padding-left: 12px;
+        white-space: nowrap;
+        padding-right: 12px;
+        font-weight: $font-weight;
+        @include user-select(none);
+    }
+
+    .chip-control {
+        cursor: pointer;
+        margin-right: 8px;
+        display: inline-block;
+        @include user-select(none);
+
+        i:before {
+            width: 20px;
+        }
+    }
+
+    .chip-icon,
+    .chip-control {
+
+        i {
+
+            &:before {
+                font-size: 125%;
+                text-align: center;
+                color: $color-chip-control;
+            }
+        }
+    }
+}

@@ -1,0 +1,89 @@
+﻿$cores: ( gray: $color-gray, blue: $color-blue, teal: $color-teal, green: $color-green, yellow: $color-yellow, red: $color-red, orange: $color-orange, pink: $color-pink, purple: $color-purple );
+
+.bg-white {
+    background-color: $color-white !important;
+}
+
+.bg-black {
+    background-color: $color-black !important;
+}
+
+.bg-deleted {
+    opacity: .6;
+    cursor: default;
+    @include box-shadow(none);
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36zwjjgzhhYWGMYAEYB8RmROaABADeOQ8CXl/xfgAAAABJRU5ErkJggg==) repeat;
+}
+
+.color-white {
+    color: $color-white !important;
+}
+
+.color-black {
+    color: $color-black !important;
+}
+
+.border-white {
+    border-color: $color-white !important;
+}
+
+.border-black {
+    border-color: $color-black !important;
+}
+
+@each $name, $color in $cores {
+
+    .bg-#{$name} {
+        background-color: $color !important;
+    }
+
+    @for $i from 4 to 0 {
+
+        .bg-#{$name}-lighten-#{$i} {
+            background-color: lighten($color, $i * 5) !important;
+        }
+    }
+
+    @for $i from 4 to 0 {
+
+        .bg-#{$name}-darken-#{$i} {
+            background-color: darken($color, $i * 5) !important;
+        }
+    }
+
+    .border-#{$name} {
+        border-color: $color !important;
+    }
+
+    @for $i from 4 to 0 {
+
+        .border-#{$name}-lighten-#{$i} {
+            border-color: lighten($color, $i * 5) !important;
+        }
+    }
+
+    @for $i from 4 to 0 {
+
+        .border-#{$name}-darken-#{$i} {
+            border-color: darken($color, $i * 5) !important;
+        }
+    }
+
+    .color-#{$name} {
+        color: $color !important;
+    }
+
+    @for $i from 4 to 0 {
+
+        .color-#{$name}-lighten-#{$i} {
+            color: lighten($color, $i * 5) !important;
+        }
+    }
+
+    @for $i from 4 to 0 {
+
+        .color-#{$name}-darken-#{$i} {
+            color: darken($color, $i * 5) !important;
+        }
+    }
+}

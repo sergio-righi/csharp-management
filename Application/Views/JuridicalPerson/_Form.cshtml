@@ -1,0 +1,193 @@
+﻿@model Domain.Entity.JuridicalPerson
+
+@using (Html.BeginForm("Manage", "JuridicalPerson", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.Person.PhotoId)
+
+    <div class="row">
+
+        <div class="col col-12 col-sm-4">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.CompanyName, new { @class = "required" })
+
+                @Html.TextBoxFor(model => model.CompanyName, string.Empty, new { @autofocus = "autofocus", @required = "required" })
+
+                <span>@Html.ValidationMessageFor(model => model.CompanyName)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-4">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.FantasyName, new { @class = "required" })
+
+                @Html.TextBoxFor(model => model.FantasyName, string.Empty, new { @required = "required" })
+
+                <span>@Html.ValidationMessageFor(model => model.FantasyName)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-4">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.CNPJ, new { @class = "required" })
+
+                @Html.TextBoxFor(model => model.CNPJ, string.Empty, new { @class = "m-cnpj", @required = "required" })
+
+                <span>@Html.ValidationMessageFor(model => model.CNPJ)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-4">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.TypeId, new { @class = "required" })
+
+                @Html.DropDownListFor(model => model.TypeId, EBusinessType.Other.GetSelectList<EBusinessType>(), EStringGender.Male.GetSelectFormat(Label.Type), new { @required = "required" })
+
+                <span>@Html.ValidationMessageFor(model => model.TypeId)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-4">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.AreaId, new { @class = "required" })
+
+                @Html.DropDownListFor(model => model.AreaId, EBusinessArea.Other.GetSelectList<EBusinessArea>(), EStringGender.Male.GetSelectFormat(Label.Area), new { @required = "required" })
+
+                <span>@Html.ValidationMessageFor(model => model.AreaId)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12 col-sm-4">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.ActivityId, new { @class = "required" })
+
+                @Html.DropDownListFor(model => model.ActivityId, EBusinessActivity.Other.GetSelectList<EBusinessActivity>(), EStringGender.Male.GetSelectFormat(Label.Activity), new { @required = "required" })
+
+                <span>@Html.ValidationMessageFor(model => model.ActivityId)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Description, new { @class = "" })
+
+                @Html.TextAreaFor(model => model.Description, new { @class = "" })
+
+                <span>@Html.ValidationMessageFor(model => model.Description)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div class="form-group">
+
+                <div class="checkbox">
+
+                    @Html.CheckBoxFor(model => model.Person.IsActivated, new { @class = "" })
+
+                    @Html.LabelFor(model => model.Person.IsActivated, new { @class = "" })
+
+                </div>
+
+                <span>@Html.ValidationMessageFor(model => model.Person.IsActivated)</span>
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div class="form-group">
+
+                <label>@Label.Photo</label>
+
+                <div class="file">
+
+                    @Html.TextBoxFor(model => model.Person.NotPhoto.HttpFile, string.Empty, new { @type = "file" })
+
+                    @Html.LabelFor(model => model.Person.NotPhoto.HttpFile, EStringGender.Female.GetSelectFormat(Label.Photo), new { @data_message = "{counter} arquivos selecionados" })
+
+                </div>
+
+                @if (Model.Person?.Photo != null)
+                {
+                    <div class="checkbox">
+
+                        @Html.CheckBoxFor(model => model.Person.NotPhoto.IsSetDefault, new { @class = "" })
+
+                        @Html.LabelFor(model => model.Person.NotPhoto.IsSetDefault, Message.SetEmpty, new { @class = "" })
+
+                    </div>
+
+                    <span>@Html.ValidationMessageFor(model => model.Person.NotPhoto.IsSetDefault)</span>
+                }
+
+            </div>
+
+        </div>
+
+        @if (Model.Person?.Photo != null)
+        {
+            <div class="col col-12 col-sm-4 col-md-3">
+
+                <div class="card">
+
+                    <div class="card-content">
+
+                        <img src="@($"{FileManagement.Avatar.Read}{Model.Person.Photo.NotGeneratedName}")" />
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+        <div class="col col-12">
+
+            <div class="form-group">
+
+                @if (Model.Id.IsPositive())
+                {
+                    <button type="submit" class="button button-save">@Button.Save</button>
+                }
+                else
+                {
+                    <button type="submit" class="button button-add">@Button.Create</button>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+}

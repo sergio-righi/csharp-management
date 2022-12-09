@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = Title.Role;
+}
+
+<section id="section_header" class="section-header">
+
+    <div class="title">@Title.Role</div>
+
+    <div class="toolbar"></div>
+
+    <ol class="breadcrumb">
+
+        <li><a asp-controller="Home" asp-action="Index">@Title.Home</a></li>
+        <li>@Title.Role</li>
+
+    </ol>
+
+</section>
+
+<section id="section_content" class="section-content">
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            <div id="message">
+
+                @await Html.PartialAsync("~/Views/Shared/Feedback/_Message.cshtml")
+
+            </div>
+
+        </div>
+
+        <div class="col col-12">
+
+            <div id="result">
+
+                @{
+                    await Html.RenderPartialAsync("~/Views/Role/_Table.cshtml");
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

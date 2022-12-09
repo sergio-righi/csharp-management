@@ -1,0 +1,124 @@
+﻿@model Application.Models.Role.RolePeopleModel
+@{
+    ViewBag.Title = Title.ManageRole;
+}
+
+<section id="section_header" class="section-header">
+
+    <div class="title">@Title.ManageRole - @Model.RolePerson.RoleId.GetDescription()</div>
+
+    <div class="toolbar"></div>
+
+    <ol class="breadcrumb">
+
+        <li><a asp-controller="Home" asp-action="Index">@Title.Home</a></li>
+        <li><a asp-controller="Role" asp-action="Index">@Title.Role</a></li>
+        <li>@Title.ManageRole</li>
+
+    </ol>
+
+</section>
+
+<section id="section_content" class="section-content">
+
+    <div class="row">
+
+        <div id="feedback_message" class="col col-12">
+
+            @await Html.PartialAsync("~/Views/Shared/Feedback/_Message.cshtml")
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            @{
+                await Html.RenderPartialAsync("~/Views/Role/_FormPerson.cshtml", Model.RolePerson);
+            }
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col col-12">
+
+            @using (Html.BeginForm("Manage", "Role", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.RolePerson.RoleId)
+
+                <div class="row">
+
+                    <div class="col col-12">
+
+                        @{
+                            bool activated = Model.People.Count > 0;
+                        }
+
+                        <div id="list_message" class="@(activated ? "d-none" : "")">
+
+                            @Html.Feedback(EFeedback.Info, Message.NothingToList, false)
+
+                        </div>
+
+                        <div id="list_result" class="list list-border@(activated ? "" : " d-none")">
+
+                            @for (var i = 0; i < Model.People.Count; i++)
+                            {
+                                await Html.RenderPartialAsync("~/Views/Role/_Person.cshtml", Model.People.ElementAt(i));
+                            }
+
+                        </div>
+
+                        <br />
+
+                    </div>
+
+                    <div class="col col-12">
+
+                        <div class="form-group">
+
+                            <button type="submit" class="button button-save">@Button.Save</button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+    @{
+        await Html.RenderPartialAsync("~/Views/Search/Person/_Person.cshtml");
+    }
+
+</section>
+
+@section ScriptsHeader
+{
+    <environment include="Development">
+        <script type="text/javascript" src="~/js/vanilla/element/list.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/component/mask.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/component/modal.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script type="text/javascript" src="~/js/vanilla/element/list.min.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/component/mask.min.js"></script>
+        <script type="text/javascript" src="~/js/vanilla/component/modal.min.js"></script>
+    </environment>
+}
+
+@section ScriptsFooter
+{
+    <script type="text/javascript" src="~/js/jquery/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="~/js/vanilla/page/role/manage.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery/unobtrusive-ajax/jquery-unobtrusive-ajax.min.js"></script>
+}

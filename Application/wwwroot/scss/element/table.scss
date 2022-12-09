@@ -1,0 +1,149 @@
+﻿
+.table-responsive {
+    width: 100%;
+    max-width: 100%;
+    @include d-flex;
+    overflow-x: auto;
+    position: relative;
+    border-collapse: collapse;
+    @include flex-direction(column);
+    background-color: $background-table;
+    border: 1px solid $border-color-table;
+    @include border-radius($border-radius);
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+
+    table {
+        border: 0;
+        width: 100%;
+        white-space: nowrap;
+        border-collapse: collapse;
+
+        thead {
+            white-space: nowrap;
+            color: $color-header;
+            border-color: inherit;
+            vertical-align: middle;
+            border-collapse: collapse;
+
+            tr {
+                height: 52px;
+                display: table-row;
+                white-space: nowrap;
+                border-collapse: collapse;
+
+                th {
+                    padding: 0 16px;
+                    font-size: 100%;
+                    font-weight: 500;
+                    text-align: right;
+                    letter-spacing: .3px;
+                    vertical-align: middle;
+
+                    &:first-child {
+                        text-align: left;
+                        padding-left: 16px;
+
+                        &.fit + th {
+                            text-align: left;
+                            padding-left: 16px;
+                        }
+                    }
+
+                    &.fit {
+                        width: 1px;
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+
+        tbody {
+            white-space: nowrap;
+            border-color: inherit;
+            vertical-align: middle;
+            border-collapse: collapse;
+
+            tr {
+                height: 52px;
+                font-weight: 400;
+                position: relative;
+                letter-spacing: .3px;
+                border-color: inherit;
+                vertical-align: inherit;
+                border-collapse: collapse;
+                border-top: 1px solid $border-color-table;
+                @include transition(background-color 200ms cubic-bezier(.4, 0, .2, 1));
+
+                th,
+                td {
+                    padding: 0 16px;
+                    font-size: 87.5%;
+                    text-align: right;
+                    position: relative;
+                    white-space: nowrap;
+                    vertical-align: middle;
+
+                    &:first-child {
+                        text-align: left;
+
+                        &.fit + td {
+                            text-align: left;
+                        }
+                    }
+
+                    /*a {
+                        color: $color-table;
+                    }*/
+                }
+
+                &:hover {
+                    color: $color-table-hover;
+                    background-color: $background-table-hover;
+                }
+
+                &.active {
+
+                    td {
+                        color: $color-table-active;
+                        background-color: $background-table-active;
+                    }
+                }
+            }
+        }
+
+        tfoot {
+            tr {
+                td {
+                }
+            }
+        }
+
+        thead,
+        tbody,
+        tfoot {
+
+            td,
+            th {
+                &.active {
+                    color: $color-table-active;
+                    background-color: $background-table-active;
+                }
+            }
+        }
+    }
+}
+
+@media(min-width: $media-md) {
+
+    .table-responsive {
+        table {
+            tbody {
+                tr {
+                    td {
+                        white-space: unset;
+                    }
+                }
+            }
+        }
+    }
+}

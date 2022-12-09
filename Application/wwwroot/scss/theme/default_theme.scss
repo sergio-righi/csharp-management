@@ -1,0 +1,624 @@
+﻿
+/*
+ * --- Font
+ */
+
+$color-font: #404040;
+$color-anchor: #5C9DD7;
+
+/*
+ * --- Message
+ */
+
+$color-info: #2196F3;
+$color-error: #E23942;
+$color-success: #47C141;
+$color-warning: #FBCF2E;
+
+/*
+ * --- Situation
+ */
+
+$color-pendent: $color-yellow;
+
+/*
+ * --- Disabled
+ */
+
+$color-disabled: #AAAAAA;
+$background-disabled: #E4E4E4;
+
+/*
+ * --- Readonly
+ */
+
+$color-readonly: #606060;
+$background-readonly: #FFFFFF;
+
+/*
+ * --- Navbar
+ */
+
+$color-navbar: #FFFFFF;
+$background-navbar: #6F6F6F;
+
+/*
+ * --- Sidebar
+ */
+
+$color-sidebar: #FFFFFF;
+$background-sidebar: #4A6C9C;
+$border-color-sidebar: #425F87;
+
+$color-sidebar-hover: #FFFFFF;
+$background-sidebar-hover: #4A6C9C;
+
+$color-sidebar-active: #FFFFFF;
+$background-sidebar-active: #3F5B83;
+
+$color-sidebar-subitem: #FFFFFF;
+$background-sidebar-subitem: #4A6C9C;
+
+$color-sidebar-subitem-hover: #FFFFFF;
+$background-sidebar-subitem-hover: #425F87;
+
+$border-color-sidebar-subitem: #425F87;
+
+/*
+ * --- Header
+ */
+
+$background-header-title: #F3F3F3;
+$color-header-title: #404040;
+$border-color-header-title: #D0D0D0;
+$color-path-active: #808080;
+$color-path: #606060;
+$color-path-divisor: #808080;
+
+/*
+ * --- Body
+ */
+
+$background-content: #F9F9F9;
+$color-content: #404040;
+
+$color-section-title: #404040;
+$border-color-section-title: #404040;
+
+/*
+ * --- Footer
+ */
+
+$background-footer: #000000;
+$color-footer: #404040;
+
+/*
+ * --- Login
+ */
+
+$background-login: #FFFFFF;
+$color-login: #404040;
+
+/*
+ * --- Scrollbar
+ */
+$background-scrollbar-track: rgba(0, 0, 0, .1);
+$background-scrollbar-track-hover: rgba(0, 0, 0, .05);
+
+$background-scrollbar-hover: rgba(0, 0, 0, .2);
+
+/*
+ * --- Tab
+ */
+
+$color-tab: #404040;
+$background-tab: #DDDDDD;
+$border-color-tab: #DDDDDD;
+
+$color-tab-active: #FFFFFF;
+$border-color-tab-active: $color-primary-3;
+
+$color-tab-disabled: #AAAAAA;
+
+$color-tab-highlight: $color-orange;
+
+/*
+ * --- Alert
+ */
+
+$background-alert-success: $color-success;
+$color-alert-success: #FFFFFF;
+
+$background-alert-error: $color-error;
+$color-alert-error: #FFFFFF;
+
+$background-alert-warning: $color-warning;
+$color-alert-warning: #404040;
+
+$background-alert-info: $color-primary-3;
+$color-alert-info: #FFFFFF;
+
+/*
+ * --- Avatar
+ */
+
+$background-avatar: #4A6C9C;
+$color-avatar: #FFFFFF;
+
+/*
+ * --- File
+ */
+
+$background-file: #FCFCFC;
+$border-color-file: #EAEAEA;
+
+$border-color-file-hover: $color-primary-3;
+$border-color-file-selected: $color-primary-3;
+
+$background-file-tag: #FFFFFF;
+$color-file-tag: #404040;
+
+$background-file-info: #FFFFFF;
+$color-file-info: #404040;
+
+/*
+ * --- Button
+ */
+
+$color-button: #404040;
+$background-button: rgba(150, 150, 150, .10);
+
+$color-button-hover: inherit;
+$background-button-hover: rgba(150, 150, 150, .15);
+
+$color-button-focus: #FFFFFF;
+$background-button-focus: rgba(150, 150, 150, .20);
+
+$color-button-active: #FFFFFF;
+$background-button-active: rgba(150, 150, 150, .25);
+
+$color-button-selected: #FFFFFF;
+$background-button-selected: $color-primary-4;
+
+$color-button-flat: #404040;
+$background-button-flat: transparent;
+
+$color-button-search: #FFFFFF;
+$background-button-search: $color-primary-3;
+
+$color-button-cancel: #FFFFFF;
+$background-button-cancel: $color-orange;
+
+$color-button-save: #FFFFFF;
+$background-button-save: $color-primary-3;
+
+$color-button-send: #FFFFFF;
+$background-button-send: $color-primary-3;
+
+$color-button-add: #FFFFFF;
+$background-button-add: $color-primary-3;
+
+$color-button-edit: #FFFFFF;
+$background-button-edit: $color-primary-2;
+
+$color-button-attach: #FFFFFF;
+$background-button-attach: $color-primary-2;
+
+$color-button-switch: #FFFFFF;
+$background-button-switch: $color-primary-2;
+
+$color-button-print: #FFFFFF;
+$background-button-print: $color-primary-2;
+
+$color-button-clean: #FFFFFF;
+$background-button-clean: $color-primary-2;
+
+$color-button-download: #FFFFFF;
+$background-button-download: $color-primary-2;
+
+$color-button-upload: #FFFFFF;
+$background-button-upload: $color-primary-2;
+
+$color-button-config: #FFFFFF;
+$background-button-config: $color-primary-2;
+
+$color-button-sort: #FFFFFF;
+$background-button-sort: $color-primary-2;
+
+$color-button-external: #FFFFFF;
+$background-button-external: $color-primary-2;
+
+$color-button-filter: #FFFFFF;
+$background-button-filter: $color-primary-1;
+
+$color-button-delete: #FFFFFF;
+$background-button-delete: $color-red;
+
+$color-button-float: #FFFFFF;
+$background-button-float: $color-primary-3;
+
+/*
+ * --- Calendar
+ */
+
+$background-calendar: transparent;
+$color-calendar: #404040;
+
+$background-calendar-hover: $color-primary-2;
+$color-calendar-hover: #FFFFFF;
+
+$color-calendar-header: #404040;
+$color-calendar-header-disabled: $color-disabled;
+
+$border-color-calendar-content: #F8F8F8;
+
+$background-calendar-highlight: $color-primary-3;
+$color-calendar-highlight: #404040;
+
+$background-calendar-today: $color-primary-4;
+$color-calendar-today: #FFFFFF;
+
+$background-calendar-selected: $color-primary-1;
+$color-calendar-selected: #FFFFFF;
+
+$background-calendar-footer: #FFFFFF;
+$color-calendar-footer: #404040;
+$border-color-calendar-footer: #EEEEEE;
+
+/*
+ * --- Card
+ */
+
+$background-card: #FFFFFF;
+$border-color-card: #ABABAB;
+$color-card: #404040;
+
+$color-card-title: #606060;
+$color-card-subtitle: #808080;
+
+$color-card-icon: #808080;
+$color-card-icon-hover: #404040;
+
+$background-card-subtitle: rgba(60, 60, 60, .45);
+$color-card-subtitle: #EEEEEE;
+
+$background-card-button-hover: inherit;
+$color-card-button: $color-primary-3;
+$color-card-button-hover: #404040;
+
+/*
+ * --- Datetime
+ */
+
+$background-datetime: #FFFFFF;
+$color-datetime: #404040;
+$color-datetime-active: #FFFFFF;
+
+$background-datetime-header: $color-primary-3;
+$color-datetime-header: #FFFFFF;
+
+$color-datetime-arrow: #FFFFFF;
+
+$background-datetime-today: $color-primary-4;
+$color-datetime-today: #FFFFFF;
+
+$background-datetime-selected: $color-primary-3;
+$color-datetime-selected: #FFFFFF;
+
+$background-datetime-pointer: $color-primary-3;
+$background-datetime-pointer-round: $color-primary-3;
+
+$background-datetime-time: #FFFFFF;
+$color-datetime-time: #404040;
+
+$background-datetime-time-active: #FFFFFF;
+$color-datetime-time-active: $color-primary-3;
+
+$color-datetime-time-disabled: #DDDDDD;
+
+$background-datetime-control: #FBFBFB;
+$background-datetime-control-hover: #EEEEEE;
+
+/*
+ * --- Stepper
+ */
+
+$background-stepper: #ECECEC;
+$color-stepper: #404040;
+$border-color-stepper: #DDDDDD;
+
+$background-stepper-hover: rgba(0, 0, 0, .06);
+$color-stepper-hover: #404040;
+
+$background-stepper-active: $color-primary-3;
+$color-stepper-active: #FFFFFF;
+
+$color-stepper-subtitle: #808080;
+
+$background-stepper-linha: #EEEEEE;
+
+$background-stepper-icon: #EEEEEE;
+$color-stepper-icon: #808080;
+$color-stepper-icon-active: #FFFFFF;
+$background-stepper-icon-active: $color-primary-3;
+$color-stepper-icon-success: #FFFFFF;
+$background-stepper-icon-success: #2cc438;
+$background-stepper-icon-error: #E50C17;
+$color-stepper-icon-error: #FFFFFF;
+
+/*
+ * --- Dialog
+ */
+
+$background-dialog: #FFFFFF;
+$color-dialog: #404040;
+
+$color-dialog-header: #C1C3C2;
+
+$color-dialog-content: #404040;
+
+/*
+ * --- Tooltip
+ */
+
+$background-tooltip: #6B6B6B;
+$color-tooltip: #FFFFFF;
+$border-color-tooltip: #FFFFFF;
+
+/*
+ * --- Dropzone
+ */
+
+$background-dropzone-overlay: rgba(225, 225, 225, .7);
+$color-dropzone-overlay: #404040;
+$border-color-dropzone-overlay: #999999;
+
+$color-dropzone-list-header: #FFFFFF;
+$background-dropzone-list-header: $color-primary-4;
+
+$background-dropzone-list-content: #F9F9F9;
+$color-dropzone-list-content: #777777;
+
+/*
+ * --- Badge
+ */
+
+$color-badge: #404040;
+$background-badge: rgba(150, 150, 150, .10);
+
+$color-badge-float: #FFFFFF;
+$background-badge-float: $color-red;
+
+/*
+ * --- Chip
+ */
+
+$background-chip: #EEEEEE;
+$color-chip: #404040;
+$border-color-chip: #EEEEEE;
+
+$background-chip-active: $color-error;
+$color-chip-active: #FFFFFF;
+
+$background-chip-content: #FFFFFF;
+$color-chip-content: #FFFFFF;
+$border-color-chip-content: #EEEEEE;
+
+$color-chip-control: #808080;
+
+/*
+ * --- Float
+ */
+
+$background-float-header: $color-primary-3;
+$color-float-header: #FFFFFF;
+
+$background-float-content: #FFFFFF;
+$color-float-content: $color-font;
+$border-color-float-content: #EEEEEE;
+
+$background-float-footer: #EEEEEE;
+$border-color-float-footer: #EEEEEE;
+
+/*
+ * --- Form
+ */
+
+$color-label: #404040;
+
+$background-field: #EFEFEF;
+$color-field: #252525;
+$border-color-field: #D6D6D6;
+
+$color-field-placeholder: #606060;
+$border-color-field-focus: $color-primary-3;
+$color-shadow-field-focus: $color-primary-2;
+
+$color-checkbox: #404040;
+$color-checkbox-indeterminate: #DDDDDD;
+$color-checkbox-focus: $color-primary-3;
+$color-checkbox-checked: $color-primary-3;
+
+$background-switch: #BBBBBB;
+$background-switch-label: #DDDDDD;
+$background-switch-label-focus: $color-primary-1;
+$background-switch-label-checked: $color-primary-3;
+
+$background-range: $color-primary-3;
+$background-range-linha: #DDDDDD;
+$background-range-icon: $color-primary-3;
+$color-range: $color-primary-3;
+
+/*
+ * --- Gallery
+ */
+
+$margin-gallery: 8px;
+
+/*
+ * --- Horizontal Line
+ */
+
+$background-horizontal-line: #DDDDDD;
+
+/*
+ * --- Timeline
+ */
+
+$color-timeline: #404040;
+$background-timeline-icon: #606060;
+
+$background-timeline-active: $color-primary-3;
+$background-timeline-pendent: $color-pendent;
+$background-timeline-disponivel: $color-green;
+$background-timeline-indisponivel: $color-red;
+
+$background-timeline-disabled: #606060;
+$color-timeline-disabled: $color-disabled;
+
+/*
+ * --- List
+ */
+
+$color-list: #404040;
+$border-color-list: #DDDDDD;
+$background-list-hover: #EEEEEE;
+$background-list-active: #E8E8E8;
+$color-list-active: #FFFFFF;
+$color-list-header: #808080;
+
+$color-list-icon: #404040;
+$background-list-icon: #DDDDDD;
+
+/*
+ * --- Modal
+ */
+
+$background-modal-overlay: rgba(100, 100, 100, .5);
+
+$color-modal-close-icon: #FFFFFF;
+
+$background-modal: #FFFFFF;
+$color-modal: #404040;
+$border-color-modal: #E8E8E8;
+
+/*
+ * --- Pagination
+ */
+
+$background-pagination: $color-secondary-1;
+$color-pagination: #404040;
+
+$background-pagination-hover: $color-secondary-2;
+$color-pagination-hover: #404040;
+
+$background-pagination-active: $color-primary-3;
+$color-pagination-active: #FFFFFF;
+
+$background-pagination-disabled: $color-secondary-1;
+$color-pagination-disabled: #808080;
+
+/*
+ * --- Progressbar
+ */
+
+$background-progress: $color-primary-3;
+
+/*
+ * --- Acoordion
+ */
+
+$background-accordion-header: #ECECEC;
+$color-accordion-header: #404040;
+$background-accordion-header-hover: #DBDBDB;
+$color-accordion-header-hover: #404040;
+$background-accordion-header-active: $color-primary-3;
+$color-accordion-header-active: #FFFFFF;
+
+$background-accordion-body: #FFFFFF;
+$color-accordion-body: #404040;
+
+$background-accordion-subitem: #F8F8F8;
+$color-accordion-subitem: #404040;
+$border-color-accordion-subitem: #D0D0D0;
+
+$background-accordion-subitem-header: #F8F8F8;
+$color-accordion-subitem-header: #404040;
+$border-color-accordion-subitem-header: #ECECEC;
+
+/*
+ * --- Treatment
+ *
+
+$background-service: $color-primary-1;
+
+$color-service-title: #404040;
+
+$color-service-control: #404040;
+$background-service-control: $color-primary-2;
+
+$color-service-control-active: $color-yellow;
+
+/*
+ * --- Dropdown
+ */
+
+$background-dropdown: #FFFFFF;
+$color-dropdown: #404040;
+$border-color-dropdown: #EEEEEE;
+
+$background-dropdown-hover: #EBEBEB;
+$color-dropdown-hover: #404040;
+$background-dropdown-active: #EBEBEB;
+
+$color-dropdown-active: #404040;
+
+/*
+ * --- Process
+ */
+
+$background-process-overlay: rgba(0, 0, 0, .5);
+
+$background-placeholder: #FFFFFF;
+$background-placeholder-line: #444444;
+$background-placeholder-image: #666666;
+
+/*
+ * --- Table
+ */
+
+$background-table: #FFFFFF;
+$color-table: #404040;
+$border-color-table: #CCCCCC;
+
+$background-table-stripped: #F8F8F8;
+$color-table-stripped: #404040;
+
+$background-header: #FFFFFF;
+$color-header: #808080;
+
+$background-table-hover: #FBFBFB;
+$color-table-hover: #404040;
+
+$background-table-active: $color-primary-1;
+$color-table-active: #404040;
+
+/*
+ * --- Indexer
+ */
+
+$background-indexer-navigation: $color-secondary-1;
+$color-indexer-navigation: #404040;
+
+$background-indexer-navigation-active: $color-primary-3;
+$color-indexer-navigation-active: #FFFFFF;
+
+$background-indexer-navigation-pendent: $color-pendent;
+$color-indexer-navigation-pendent: #404040;
+
+/*
+ * --- Snackbar
+*/
+
+$color-snackbar: #EEEEEE;
+$background-snackbar: #303030;

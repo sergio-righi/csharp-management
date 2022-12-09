@@ -1,0 +1,19 @@
+﻿
+@if (TempData.GetMessage().Any())
+{
+    foreach (Application.Classes.Feedback feedback in TempData.GetMessage())
+    {
+        @*<div class="alert @feedback.type">
+
+            <div class="alert-content">
+
+                <div class="alert-description">@feedback.message.Replace("'", "\\'")</div>
+
+            </div>
+
+            <div class="alert-close" data-fechar="alert"></div>
+
+        </div>*@
+        @Html.Feedback(feedback.type, feedback.message, true);
+    }
+}

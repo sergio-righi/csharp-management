@@ -1,0 +1,162 @@
+﻿
+.carousel {
+    width: 100%;
+    @include d-flex;
+    overflow: hidden;
+    position: relative;
+    @include flex(1 100%);
+    height: auto !important;
+    @include flex-wrap(wrap);
+    @include align-items(center);
+    @include justify-content(center);
+
+    img {
+        width: 100%;
+        vertical-align: middle;
+    }
+
+    .carousel-control {
+
+        &.active {
+
+            .control-left {
+                left: 16px;
+            }
+
+            .control-right {
+                right: 16px;
+            }
+
+            .control {
+                bottom: 18px;
+            }
+        }
+
+        .control {
+            bottom: -80px;
+            @include d-inline-flex;
+            @extend .horizontal-absolute;
+
+            .control-item {
+                width: 15px;
+                height: 15px;
+                margin: 0 6px;
+                cursor: pointer;
+                background-color: rgba(255, 255, 255, .5);
+                @include border-radius($border-radius-circle);
+
+                &.active {
+                    color: #FFFFFF;
+                    font-weight: 600;
+                    background-color: $color-primary-3;
+                }
+
+                &.square {
+                    @include border-radius(0);
+                }
+
+                &.number {
+                    width: 30px;
+                    height: 30px;
+                    line-height: 30px;
+                    text-align: center;
+                }
+            }
+        }
+
+        .control,
+        .control-left,
+        .control-right {
+            @include transition(all 300ms ease);
+        }
+
+        .control-right,
+        .control-left {
+            cursor: pointer;
+            text-align: center;
+            @extend .vertical-absolute;
+
+            &:before {
+                color: #FFFFFF;
+                font-size: 200%;
+                font-family: $font-family-material;
+            }
+        }
+
+        .control-left {
+            left: -80px;
+
+            &:before {
+                content: mdi("chevron-left");
+            }
+        }
+
+        .control-right {
+            right: -80px;
+
+            &:before {
+                content: mdi("chevron-right");
+            }
+        }
+    }
+
+    .carousel-content {
+        margin: 0;
+        padding: 0;
+        display: block;
+        overflow: hidden;
+        position: relative;
+
+        .carousel-items {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: block;
+            position: relative;
+
+            &.animation-transition {
+                @include transition(transform 300ms ease);
+            }
+
+            .item,
+            .item-clone {
+                float: left;
+                height: 100%;
+                @include d-flex;
+                min-height: 1px;
+                //@extend .c-grab;
+                position: relative;
+                @include flex(1 100%);
+                @include flex-wrap(nowrap);
+                @include align-items(center);
+                @include justify-content(center);
+            }
+
+            .item:active,
+            .item-clone:active {
+                @extend .c-grabbing;
+            }
+        }
+    }
+}
+
+@media (min-width: $media-md) {
+
+    .carousel {
+        height: unset !important;
+
+        .carousel-control {
+
+            .control-left,
+            .control-right {
+
+                &:before {
+                    color: #FFFFFF;
+                    font-size: 400%;
+                    font-family: $font-family-material;
+                }
+            }
+        }
+    }
+}

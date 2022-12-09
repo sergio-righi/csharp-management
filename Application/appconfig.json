@@ -1,0 +1,136 @@
+{
+  "connection": {
+    "set": 0,
+    "server": "localhost",
+    "port": "3306",
+    "database": "management2",
+    "username": "root",
+    "password": "",
+    "odbc": {
+      "mysql": "server={0};port={1};database={2};uid={3};password={4}",
+      "postgresql": "server={0};port={1};database={2};user;id={3};password={4};integrated security=true;pooling=true;"
+    }
+  },
+  "service": {
+    "recaptcha": {
+      "SiteKey": "6LfrHfsUAAAAAI-3_AFNVlOVu22Bsp7OlzH6ss8k",
+      "SecretKey": "6LfrHfsUAAAAANGOEOZ6KNZeJRS8Im4QJHPI-GnB"
+    }
+  },
+  "cookie": {
+    "login": ".ApplicationManagement.Cookie.Login"
+  },
+  "session": {
+    "key": ".ApplicationManagement.Session.Key",
+    "user": ".ApplicationManagement.Session.User",
+    "folder": ".ApplicationManagement.Session.Folder",
+    "product": ".ApplicationManagement.Session.Product",
+    "installment": ".ApplicationManagement.Session.Installment"
+  },
+  "client": {
+    "name": "The Lazy Company",
+    "brand": "~/images/brand.png",
+    "domain": "@thelazycompany.ca",
+    "schedule": {
+      "workday": [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday"
+      ],
+      "shift": [
+        "morning",
+        "afternoon",
+        "night"
+      ],
+      "worktime": {
+        "monday": {
+          "morning": {
+            "start": 8,
+            "end": 12
+          },
+          "afternnon": {
+            "start": 13,
+            "end": 18
+          },
+          "night": {
+            "start": 18,
+            "end": 2
+          }
+        },
+        "tuesday": {
+          "morning": {
+            "start": 8,
+            "end": 12
+          },
+          "afternnon": {
+            "start": 13,
+            "end": 18
+          },
+          "night": {
+            "start": 18,
+            "end": 2
+          }
+        },
+        "wednesday": {
+          "morning": {
+            "start": 8,
+            "end": 12
+          },
+          "afternnon": {
+            "start": 13,
+            "end": 18
+          },
+          "night": {
+            "start": 18,
+            "end": 2
+          }
+        },
+        "thursday": {
+          "morning": {
+            "start": 8,
+            "end": 12
+          },
+          "afternnon": {
+            "start": 13,
+            "end": 18
+          },
+          "night": {
+            "start": 18,
+            "end": 2
+          }
+        },
+        "friday": {
+          "morning": {
+            "start": 8,
+            "end": 12
+          },
+          "afternnon": {
+            "start": 13,
+            "end": 18
+          },
+          "night": {
+            "start": 18,
+            "end": 2
+          }
+        },
+        "saturday": {
+          "morning": {
+            "start": 8,
+            "end": 12
+          },
+          "afternnon": {
+            "start": 13,
+            "end": 18
+          },
+          "night": {
+            "start": 18,
+            "end": 2
+          }
+        }
+      }
+    }
+  }
+}

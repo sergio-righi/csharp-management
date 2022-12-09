@@ -1,0 +1,30 @@
+﻿@model Application.Models.Search.Product.SearchProductFilter
+
+@if (Model.Pagination.Count > 0)
+{
+    await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Header.cshtml");
+
+    <ul class="list list-border">
+
+        @foreach (var product in Model.Pagination)
+        {
+            await Html.RenderPartialAsync("~/Views/Search/Product/_Product.cshtml", product);
+        }
+
+    </ul>
+
+    if (Model.Pagination.Quantity > 1)
+    {
+        <ul class="pagination">
+
+            @{
+                await Html.RenderPartialAsync("~/Views/Shared/Pagination/_Footer.cshtml");
+            }
+
+        </ul>
+    }
+}
+else
+{
+    @Html.Feedback(EFeedback.Info, Message.NothingToList, false)
+}

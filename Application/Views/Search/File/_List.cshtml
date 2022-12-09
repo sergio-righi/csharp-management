@@ -1,0 +1,57 @@
+﻿@model ICollection<Domain.Entity.File>
+
+@if (Model.Count > 0)
+{
+    <form id="select_file_form" asp-controller="SearchFile" asp-action="Select"
+          data-ajax-success="selectFileSuccess" data-ajax="true" data-ajax-method="POST">
+
+        <div class="form-group">
+
+            <div class="list list-border list-hover">
+
+                @foreach (var file in Model)
+                {
+                    <div class="list-item list-border c-pointer">
+
+                        <div class="list-control">
+
+                            <div class="checkbox">
+
+                                <input type="checkbox" id="@file.Id" name="chk_id" value="@file.Id">
+                                <label for="@file.Id"></label>
+
+                            </div>
+
+                        </div>
+
+                        <div class="list-content">
+
+                            <div class="list-title">
+                                @file.Name
+                            </div>
+
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+        <br />
+
+        <div class="form-group">
+
+            <button type="submit" class="button button-send">
+
+                @Button.Send
+
+            </button>
+
+        </div>
+
+        <br />
+
+    </form>
+}

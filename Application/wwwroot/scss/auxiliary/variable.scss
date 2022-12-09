@@ -1,0 +1,111 @@
+﻿/*
+ * - Font
+*/
+
+$line-height: 1.8;
+$font-weight: 300;
+$font-family: 'KumbhSans';
+$font-family-material: 'Material Design Icons';
+
+/*
+ * - Media
+*/
+
+$media-xs: 576px;
+$media-sm: 768px;
+$media-md: 992px;
+$media-lg: 1280px;
+$media-xl: 1440px;
+
+/*
+ * - Width
+*/
+
+$width-xs: 100%;
+$width-sm: 100%;
+$width-md: 90%;
+$width-lg: 90%;
+$width-xl: 80%;
+
+/*
+ * - Margin
+*/
+
+$space-multiplier: 4px;
+
+/*
+ * - Border radius
+*/
+
+$border-radius: 3px;
+$border-radius-circle: 50%;
+$border-radius-rounded: 30px;
+
+/*
+ * - Placeholder
+*/
+
+$margin-placeholder: 15px;
+$padding-placeholder: 30px;
+
+/*
+ * - Typhografy
+*/
+
+$fontsize-h1: 57px !default;
+$fontsize-h2: 49px !default;
+$fontsize-h3: 43px !default;
+$fontsize-h4: 36px !default;
+$fontsize-h5: 26px !default;
+$fontsize-h6: 18px !default;
+
+/*
+ * - Navigation
+*/
+
+$nav-width-xs: 90%;
+$nav-width-sm: 60%;
+$nav-width-md: 40%;
+$nav-width-lg: 20%;
+$nav-width-xl: 15%;
+
+$nav-height: 60px;
+
+/*
+ * - Main color
+ */
+
+$color-primary-1: #1481E4;
+$color-primary-2: #6aa0cc;
+$color-primary-3: #4881b9;
+$color-primary-4: #0d47a1;
+
+/*
+ * - Secondary color
+ */
+
+$color-secondary-1: #EDEDED;
+$color-secondary-2: #C1C3C2;
+$color-secondary-3: #BDBCBC;
+
+/*
+ * - Pallete color
+ */
+
+$color-blue: #698AD1;
+$color-gray: #9E9E9E;
+$color-pink: #ff679b;
+$color-purple: #ba6dc7;
+$color-green: #8FAF88;
+$color-black: #000000;
+$color-white: #FFFFFF;
+$color-yellow: #F5C819;
+$color-orange: #F2911E;
+$color-teal: #26C3A0;
+$color-red: #9E3F3E;
+
+/*
+ * - Overlay
+*/
+
+$background-overlay: rgba(60, 60, 60, .6);

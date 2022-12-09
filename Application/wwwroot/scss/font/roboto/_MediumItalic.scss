@@ -1,0 +1,8 @@
+/* BEGIN Medium Italic */
+@font-face {
+	font-family: Roboto;
+	@include fontdef-woff("MediumItalic");
+	font-weight: 500;
+	font-style: italic;
+}
+/* END Medium Italic */
